@@ -20,3 +20,10 @@ Source/host checks pass. A complete Settings APK/Soong build, ROM boot and coral
 Maintainer: Hecker
 
 [HeckerOS sources](https://github.com/its-hecker/HeckerOS) · [Channel](https://t.me/pixel4seriesupdates) · [Support](https://t.me/Pixel4Roms)
+
+The current pins select the stock Pixel pose-grid renderer in native Settings and
+the scoped Axion October 19 integrity port in our Android 17 framework. Native
+Settings > Hecker's Suite > Play Integrity can fetch/import/disable the profile;
+restart the phone after changing it. Actual enrollment and Play verdict testing
+remain required. Platform ownership is partial: 4/91 projects have verified
+HeckerOS forks; see HeckerOS migration/README.md for the remaining 87.

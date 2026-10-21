@@ -156,12 +156,12 @@
     }
   },
   "hecker_suite": {
-    "source_branch": "main",
-    "integration_branch": "main",
+    "source_branch": "feat/about-phone-official",
+    "integration_branch": "feat/about-phone-official",
     "release": "hecker_suite",
     "base_release": "cp2a",
     "status": "Source validation only; full ROM build and phone tests required",
-    "source_revision": "4492757b9d7294aa7059669fa6d3f08cfb3cced5"
+    "source_revision": "f65be47c1f6f7e72d30efd35be894023e2c10d44"
   },
   "heckeros": {
     "version": "1.0",

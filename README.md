@@ -21,9 +21,11 @@ Maintainer: Hecker
 
 [HeckerOS sources](https://github.com/its-hecker/HeckerOS) · [Channel](https://t.me/pixel4seriesupdates) · [Support](https://t.me/Pixel4Roms)
 
-The current pins select the stock Pixel pose-grid renderer in native Settings and
-the scoped Axion October 19 integrity port in our Android 17 framework. Native
-Settings > Hecker's Suite > Play Integrity can fetch/import/disable the profile;
-restart the phone after changing it. Actual enrollment and Play verdict testing
-remain required. Platform ownership is partial: 4/91 projects have verified
-HeckerOS forks; see HeckerOS migration/README.md for the remaining 87.
+The current pins select the stock Pixel pose-grid renderer and the Axion-derived
+PIF, game profile, keybox import and TrickyStore integration in native Settings.
+Photos retains PixelOS's existing implementation. Open Settings > Hecker's Suite >
+Play Integrity to configure profiles, targets and your keybox; restart the phone
+after changing them. No keybox is bundled. Actual enrollment and attestation
+verdict testing remain required. Four platform projects use owned HeckerOS forks;
+the other 87 stay at their existing upstream repositories with exact source pins.
+Bulk repository migration is optional and does not block this build.

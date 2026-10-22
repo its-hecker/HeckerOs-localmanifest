@@ -68,6 +68,14 @@ The migration helper keeps source files, untracked edits and a binary diff under
 `out/retired-projects/`; rerunning it after the switch leaves Infinity-X intact.
 The existing ServerHive RBE environment and product target remain in use.
 
+Development builds also enable USB debugging and accept every connected PC
+without an authorization prompt. For the final image, use
+`HECKER_DEV_USB_ADB=false HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh`
+to restore PC authorization, then flash the rebuilt ROM. The output verifier
+checks that this flag reached the installed product properties. An existing
+saved USB-debugging choice can survive a dirty flash; enable it in Settings if
+needed for the test build.
+
 The same update selects the enrollment grid on both Pixel 4 preview paths, themes
 Compose Wi-Fi and cellular icons, fades the compact QS tray during expansion, and
 shrinks the face-unlock feedback window. These changes need a new ROM build and

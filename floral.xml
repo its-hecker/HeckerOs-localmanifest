@@ -17,7 +17,7 @@
   <project name="its-hecker/vendor_lunaris_dolby" path="vendor/lunaris/dolby" remote="floral-github" revision="544e6271c955e2bf450c8481ac1e71551cb5a800" upstream="refs/heads/pixelos-compat" dest-branch="pixelos-compat" />
   <project name="its-hecker/floral-motionsense-plugin" path="vendor/hecker/floral/motionsense" remote="floral-github" revision="92d0051faf53acac3dfefec6597a12d587eefa73" upstream="refs/heads/main" dest-branch="main" />
   <project name="its-hecker/floral-3D-faceid-plugin" path="vendor/hecker/floral/faceid" remote="floral-github" revision="d998995e1452d2c3d9882bfdf659e1db760a99be" upstream="refs/heads/main" dest-branch="main" />
-  <project name="its-hecker/HeckerOS" path="vendor/hecker/floral/suite" remote="floral-github" revision="add0e7c4d62720fa642753e6f61f312a517baee5" upstream="refs/heads/feat/about-phone-official" dest-branch="feat/about-phone-official" />
+  <project name="its-hecker/HeckerOS" path="vendor/hecker/floral/suite" remote="floral-github" revision="fa46e5401466b2b42ff9a5666e348cdab84594d9" upstream="refs/heads/feat/about-phone-official" dest-branch="feat/about-phone-official" />
   <remove-project path="packages/apps/Launcher3" optional="true" />
   <project path="packages/apps/Launcher3" name="projectInfinity-x/packages_apps_Launcher3" remote="floral-gitea" revision="8a89db313ebfafc80572795e613679050095d5db" upstream="refs/heads/17" dest-branch="17" />
   <remove-project path="packages/services/OmniJaws" optional="true" />

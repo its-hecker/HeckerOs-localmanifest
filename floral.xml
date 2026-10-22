@@ -16,7 +16,7 @@
   <project name="its-hecker/vendor_lunaris_dolby" path="vendor/lunaris/dolby" remote="floral-github" revision="544e6271c955e2bf450c8481ac1e71551cb5a800" upstream="refs/heads/pixelos-compat" dest-branch="pixelos-compat" />
   <project name="its-hecker/floral-motionsense-plugin" path="vendor/hecker/floral/motionsense" remote="floral-github" revision="92d0051faf53acac3dfefec6597a12d587eefa73" upstream="refs/heads/main" dest-branch="main" />
   <project name="its-hecker/floral-3D-faceid-plugin" path="vendor/hecker/floral/faceid" remote="floral-github" revision="d998995e1452d2c3d9882bfdf659e1db760a99be" upstream="refs/heads/main" dest-branch="main" />
-  <project name="its-hecker/HeckerOS" path="vendor/hecker/floral/suite" remote="floral-github" revision="075daf8e3c011fd16ea462471743b411e691c62a" upstream="refs/heads/feat/about-phone-official" dest-branch="feat/about-phone-official" />
+  <project name="its-hecker/HeckerOS" path="vendor/hecker/floral/suite" remote="floral-github" revision="5f27241d4809ff29c8d0b69b040b432189260501" upstream="refs/heads/feat/about-phone-official" dest-branch="feat/about-phone-official" />
   <remove-project path="packages/apps/Launcher3" optional="true" />
   <project path="packages/apps/Launcher3" name="RisingOS-Revived/android_packages_apps_Launcher3" remote="floral-github" revision="e2331fb7bc34fa33ecbe6040615457324a9ea60d" upstream="refs/heads/seventeen" dest-branch="seventeen" />
   <remove-project path="packages/services/OmniJaws" optional="true" />
@@ -31,4 +31,5 @@
   <extend-project name="PixelOS-AOSP/android_system_sepolicy" path="system/sepolicy" revision="99c58a7cc9a44fe33c93808452d018e756d84753" upstream="refs/heads/seventeen" />
   <extend-project name="PixelOS-AOSP/android_system_core" path="system/core" revision="a5313eaec0219b021aaa5e59cc10dd07cfa8504c" upstream="refs/heads/seventeen" />
   <extend-project name="its-hecker/heckeros_packages_apps_Settings" path="packages/apps/Settings" revision="63e2adf289417fb9a3578216754c2281d8f46c7e" upstream="refs/heads/heckeros-17" />
+  <extend-project name="platform/frameworks/libs/systemui" path="frameworks/libs/systemui" revision="11e04f60f563aed48e4ec080bd7bde06bae1b2f3" upstream="refs/tags/android-17.0.0_r1" />
 </manifest>

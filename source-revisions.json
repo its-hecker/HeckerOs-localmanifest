@@ -153,6 +153,14 @@
         "res/xml/",
         "res/layout/"
       ]
+    },
+    "frameworks/libs/systemui": {
+      "repository": "https://android.googlesource.com/platform/frameworks/libs/systemui",
+      "branch": "android-17.0.0_r1",
+      "revision": "11e04f60f563aed48e4ec080bd7bde06bae1b2f3",
+      "files": [
+        "iconloaderlib/src/com/android/launcher3/icons/BaseIconFactory.kt"
+      ]
     }
   },
   "hecker_suite": {
@@ -161,7 +169,7 @@
     "release": "hecker_suite",
     "base_release": "cp2a",
     "status": "Source validation only; full ROM build and phone tests required",
-    "source_revision": "075daf8e3c011fd16ea462471743b411e691c62a"
+    "source_revision": "5f27241d4809ff29c8d0b69b040b432189260501"
   },
   "heckeros": {
     "version": "1.0",

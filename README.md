@@ -83,6 +83,13 @@ phone validation; syncing source does not update the running phone.
 
 The follow-up phone fixes keep vertical brightness from moving into a horizontal
 drag mirror, expose the lyrics page directly, observe saved theme changes in
-SystemUI and separate the infrared camera buttons. Home selection keeps the
-running Recents provider unchanged. Use **Restart phone** on Suite's Launcher
-page to apply the selected Recents overlay and reboot together.
+SystemUI and separate the infrared camera buttons. Launcher selection stages a
+choice while keeping the current HOME and Recents active. Use **Restart phone**
+on Suite's Launcher page to change HOME and the highest-priority Recents overlay
+together, with rollback on failure. The restart prompt checks Android's effective
+Recents component too, so an enabled overlay at a lower priority can be repaired.
+
+Bundled lock-screen clock providers are explicitly trusted by SystemUI's
+production plugin policy. Dark boots fall back to the normal branded product
+animation, whose installed size and hash are checked after building. Brightness
+vector icons load as drawables instead of going through ImageDecoder.

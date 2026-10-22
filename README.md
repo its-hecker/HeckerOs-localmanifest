@@ -93,3 +93,10 @@ Bundled lock-screen clock providers are explicitly trusted by SystemUI's
 production plugin policy. Dark boots fall back to the normal branded product
 animation, whose installed size and hash are checked after building. Brightness
 vector icons load as drawables instead of going through ImageDecoder.
+
+## Game Booster reference dashboard
+
+`feat/game-booster-reference` pins the Game Booster-style Suite and its matching
+Floral kernel charging inhibitor. See the [implementation and build notes](https://github.com/its-hecker/HeckerOS/blob/feat/game-booster-reference/docs/game-booster.md).
+Both `vendor/hecker/floral/suite` and `kernel/google/msm-4.14` must be synced before
+running `build.sh`. These changes require a new ROM build and phone validation.

@@ -1,5 +1,5 @@
 {
-  "checked_on": "2026-10-21",
+  "checked_on": "2026-10-22",
   "pixelos_manifest": {
     "repository": "PixelOS-AOSP/android_manifest",
     "branch": "seventeen",
@@ -146,7 +146,7 @@
     "packages/apps/Settings": {
       "repository": "its-hecker/heckeros_packages_apps_Settings",
       "branch": "heckeros-17",
-      "revision": "924f5306fee94a3ef37dd6e422c2ae4b9ebcda37",
+      "revision": "0c2c5aed4fd8e4a9507cfc26fa7a38f36f28dcba",
       "files": [
         "src/com/android/settings/homepage/",
         "src/com/android/settings/DisplaySettings.java",
@@ -169,7 +169,7 @@
     "release": "hecker_suite",
     "base_release": "cp2a",
     "status": "Source validation only; full ROM build and phone tests required",
-    "source_revision": "ea45b26f9817044aee9429b65e61b1ece1a3b640"
+    "source_revision": "39172798a4f6af052780492ac11559c5ee51d0f0"
   },
   "heckeros": {
     "version": "1.0",
@@ -206,5 +206,11 @@
     "updates": "Upstream changes require explicit pin updates, review and another build. No automatic merges or phone updates.",
     "bulk_migration_required": false,
     "upstream_lock": "integration/upstream-platform-lock.json"
+  },
+  "launcher": {
+    "repository": "https://gitea.com/projectInfinity-x/packages_apps_Launcher3",
+    "branch": "17",
+    "revision": "8a89db313ebfafc80572795e613679050095d5db",
+    "module": "HeckerLauncher"
   }
 }

@@ -80,3 +80,9 @@ The same update selects the enrollment grid on both Pixel 4 preview paths, theme
 Compose Wi-Fi and cellular icons, fades the compact QS tray during expansion, and
 shrinks the face-unlock feedback window. These changes need a new ROM build and
 phone validation; syncing source does not update the running phone.
+
+The follow-up phone fixes keep vertical brightness from moving into a horizontal
+drag mirror, expose the lyrics page directly, observe saved theme changes in
+SystemUI and separate the infrared camera buttons. Home selection keeps the
+running Recents provider unchanged. Use **Restart phone** on Suite's Launcher
+page to apply the selected Recents overlay and reboot together.

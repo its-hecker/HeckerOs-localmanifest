@@ -93,3 +93,43 @@ Bundled lock-screen clock providers are explicitly trusted by SystemUI's
 production plugin policy. Dark boots fall back to the normal branded product
 animation, whose installed size and hash are checked after building. Brightness
 vector icons load as drawables instead of going through ImageDecoder.
+
+## Game Booster reference dashboard
+
+`feat/game-booster-reference` pins the Game Booster-style Suite and its matching
+Floral kernel charging inhibitor. See the [implementation and build notes](https://github.com/its-hecker/HeckerOS/blob/feat/game-booster-reference/docs/game-booster.md).
+Both `vendor/hecker/floral/suite` and `kernel/google/msm-4.14` must be synced before
+running `build.sh`. These changes require a new ROM build and phone validation.
+
+## Gaming SELinux fix and terminal boot animation
+
+The Suite pin includes migration of the obsolete `hecker_game` / `activity_service`
+mapping. Build preparation backs up the affected source files and removes that
+fallback, retaining the dedicated `hecker_game_service` label and its access rules.
+It also assembles Hecker's supplied terminal boot ZIP byte for byte from locked
+binary chunks, validates all 210 PNG frames, and selects it for the product image.
+CI validates the asset without restoring the retired animation.
+
+The build wrapper runs the whole-source gaming policy repair after all plugin
+preparation, prints the affected files, clears only cached service-context modules,
+then requires `m merged_service_contexts_test` to pass before building the ROM.
+Look for `Gaming SELinux repair: platform-source scan v3` and the executing
+script path in its output. The platform-private input is inspected explicitly
+even in a linked checkout, and recovery context caches are refreshed too. The direct
+repair saves originals under `out/hecker-service-context-backups/`.
+
+For an existing `feat/game-booster-reference` checkout, run from the Android source root:
+
+```bash
+git -C .repo/local_manifests pull --ff-only origin feat/game-booster-reference
+repo sync -c -j2 --fail-fast --no-clone-bundle --no-tags vendor/hecker/floral/suite
+HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
+```
+
+The existing build output can be reused. This update does not require a clean build.
+
+For an explicit repair of an already prepared checkout after syncing:
+
+```bash
+/usr/bin/python3 vendor/hecker/floral/suite/tools/service_contexts.py --rom-root "$PWD" --apply --clear-cache
+```

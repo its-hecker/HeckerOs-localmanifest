@@ -197,7 +197,9 @@
       "files": [
         "private/init.te",
         "private/su.te",
-        "private/service_contexts"
+        "private/service_contexts",
+        "build/soong/service_fuzzer_bindings.go",
+        "tools/fuzzer_bindings_check.py"
       ]
     },
     "system/core": {
@@ -253,7 +255,7 @@
         "notes": "Inspected Xposed gestures and glass, including per-corner radii and wallpaper zoom fix. Native empty-home double-tap and glass adapters are original Apache-2.0 code, not an Xposed port."
       }
     },
-    "source_revision": "b291d1e85504f37d1300777ce9946b9a24022978"
+    "source_revision": "59371253a30360f2997ec04e84fbb4f5ca9534b2"
   },
   "heckeros": {
     "version": "1.0",

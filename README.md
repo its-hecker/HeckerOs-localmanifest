@@ -156,5 +156,12 @@ Android 17's public `getProcState()` API. Normal build preparation upgrades the
 known earlier adapter; sync the Suite and rerun `build.sh` in the existing
 initialized ServerHive session. Compiled outputs and the LibrePods cache can be reused.
 
+It also registers all three new Java Binder services in Android's fuzzer-binding
+map and upgrades the status popup hook into the existing touch-dispatch method,
+fixing `fuzzer_bindings_test` and SystemUI's duplicate-method overload error.
+Pinned-source checks exercise Android's own binding checker and compile the
+prepared Java dispatch method with a Kotlin caller. Normal preparation repairs
+the known earlier hook without a clean checkout or output wipe.
+
 Source and integration checks pass; full Android/Soong compilation and Coral
 hardware tests remain required. See the [feature notes](https://github.com/its-hecker/HeckerOS/blob/feat/suite-polish/docs/interaction-features.md).

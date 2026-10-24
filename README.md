@@ -7,13 +7,15 @@ The manifest pins the dedicated HeckerOS device, vendor and kernel imports, Moti
 ## Sync and build
 
 ```bash
-repo init -u https://github.com/its-hecker/HeckerOS -b main --git-lfs
-git clone https://github.com/its-hecker/HeckerOs-localmanifest .repo/local_manifests
+mkdir -p ~/heckeros-coral
+cd ~/heckeros-coral
+repo init -u https://github.com/its-hecker/HeckerOS -b feat/suite-polish --git-lfs
+git clone --branch feat/suite-polish https://github.com/its-hecker/HeckerOs-localmanifest .repo/local_manifests
 repo sync -c -j8 --fail-fast --no-clone-bundle --no-tags
 bash .repo/local_manifests/build.sh
 ```
 
-Run these commands in a fresh Android source directory with the normal AOSP build prerequisites, Git LFS, Python 3, Pillow and numpy. The script prepares original APKs, theme assets and guarded source adapters, then builds `hecker_coral-hecker_suite-userdebug` with `m heckeros`. It does not sign or publish a release.
+Run these commands in a fresh Android source directory with the normal AOSP build prerequisites, Git LFS, Python 3.12+, Java 21+, Pillow and numpy. The script prepares original APKs, theme assets and guarded source adapters, then builds `hecker_coral-hecker_suite-userdebug` with `m heckeros`. It does not sign or publish a release.
 
 ## Upgrade an existing feature-branch checkout
 
@@ -24,9 +26,10 @@ so move it aside before Repo removes the project:
 cd ~/heckeros-coral
 git -C .repo/local_manifests fetch origin
 git -C .repo/local_manifests switch feat/suite-polish
+git -C .repo/local_manifests pull --ff-only
 python3 .repo/local_manifests/tools/retire_launcher.py
 python3 .repo/local_manifests/tools/retire_omnijaws.py
-repo sync -c -j2 --fail-fast --no-clone-bundle --no-tags vendor/hecker/floral/suite packages/apps/Settings kernel/google/msm-4.14
+repo sync -c -j2 --fail-fast --no-clone-bundle --no-tags vendor/hecker/floral/suite packages/apps/Launcher3 packages/apps/Settings kernel/google/msm-4.14
 HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
 ```
 
@@ -51,26 +54,6 @@ the other 87 stay at their existing upstream repositories with exact source pins
 Bulk repository migration is optional and does not block this build.
 
 
-### Infinity Launcher and compact Game Space upgrade
-
-The feature branch pins Infinity-X Android 17 from its official Gitea repository.
-Before syncing an existing RisingOS-based checkout, preserve its local adapters:
-
-```bash
-cd ~/heckeros-coral
-git -C .repo/local_manifests fetch origin
-git -C .repo/local_manifests switch feat/suite-polish
-python3 .repo/local_manifests/tools/retire_launcher.py
-python3 .repo/local_manifests/tools/retire_launcher.py
-python3 .repo/local_manifests/tools/retire_omnijaws.py
-repo sync -c -j2 --fail-fast --no-clone-bundle --no-tags --force-sync vendor/hecker/floral/suite packages/apps/Launcher3 packages/apps/Settings
-HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
-```
-
-The migration helper keeps source files, untracked edits and a binary diff under
-`out/retired-projects/`; rerunning it after the switch leaves Infinity-X intact.
-The existing ServerHive RBE environment and product target remain in use.
-
 Development builds also enable USB debugging and accept every connected PC
 without an authorization prompt. For the final image, use
 `HECKER_DEV_USB_ADB=false HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh`
@@ -81,16 +64,8 @@ needed for the test build.
 
 The same update selects the enrollment grid on both Pixel 4 preview paths, themes
 Compose Wi-Fi and cellular icons, fades the compact QS tray during expansion, and
-shrinks the face-unlock feedback window. These changes need a new ROM build and
+centers the face-unlock feedback icon and label. These changes need a new ROM build and
 phone validation; syncing source does not update the running phone.
-
-The follow-up phone fixes keep vertical brightness from moving into a horizontal
-drag mirror, expose the lyrics page directly, observe saved theme changes in
-SystemUI and separate the infrared camera buttons. Launcher selection stages a
-choice while keeping the current HOME and Recents active. Use **Restart phone**
-on Suite's Launcher page to change HOME and the highest-priority Recents overlay
-together, with rollback on failure. The restart prompt checks Android's effective
-Recents component too, so an enabled overlay at a lower priority can be repaired.
 
 Bundled lock-screen clock providers are explicitly trusted by SystemUI's
 production plugin policy. Dark boots fall back to the normal branded product
@@ -118,7 +93,7 @@ edits; the build helper checks for staged retired apps before invoking installcl
 Source PR: https://github.com/its-hecker/HeckerOS/pull/3
 Settings PR: https://github.com/its-hecker/heckeros_packages_apps_Settings/pull/1
 
-Suite source pin: `8b06798f7b9b4ba668457094abcdafa52ecbf9f0`.
+Suite source pin: `aaca8a28d581ab8266ec1e415ed138ef68a14985`.
 Preparation composes the App Lock permission and theme broadcast edits before
 writing the framework manifest, so a fresh checkout verifies after one apply.
 PIN entry also falls back to the normal explicit confirm button when length
@@ -127,3 +102,18 @@ Full Android/Soong compilation, dirty-upgrade Pixel HOME/Recents, visual compari
 and Coral hardware validation remain pending.
 
 Stock AOSP Launcher3 sources remain available for SystemUI flag and TAPL build libraries. The Launcher3 APKs and Hecker Launcher remain unselected; Pixel Launcher supplies HOME and Recents.
+
+Motion Sense retains the original Oslo glow on lockscreen/AOD and hosts it in a
+trusted non-touchable window on HOME/apps while feedback is requested. The Face ID
+and Unlocked pill centers its icon and measured label. The Bluetooth connection
+card animates an opening case and rising earbuds. The source-built LibrePods
+variant routes connected R50i/non-Apple headphones to their own page, with real
+Android battery metadata and bounded R50i left/right status and firmware reads.
+AirPods retain upstream controls. R50i case battery is unknown unless Android
+reports it. Physical case opening is not detected by this connection animation.
+
+The first preparation builds LibrePods from its pinned GPL source, downloading a
+cached Android SDK/NDK as needed. It requires Java 21+ (the synced AOSP JDK is
+selected automatically) and gives Gradle a 4 GiB heap with two workers. Later
+preparations verify and reuse the APK's source recipe and content hashes.
+See the [companion source/build notes](https://github.com/its-hecker/HeckerOS/blob/feat/suite-polish/prebuilts/librepods/README.md).

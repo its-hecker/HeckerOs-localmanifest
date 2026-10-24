@@ -163,7 +163,8 @@
         "packages/SystemUI/src/com/android/systemui/authentication/domain/interactor/AuthenticationInteractor.kt",
         "packages/SystemUI/src/com/android/systemui/bouncer/ui/viewmodel/PinBouncerViewModel.kt",
         "packages/SystemUI/src/com/android/systemui/bouncer/ui/viewmodel/AuthMethodBouncerViewModel.kt",
-        "packages/SystemUI/src/com/android/systemui/bouncer/ui/viewmodel/PinInputViewModel.kt"
+        "packages/SystemUI/src/com/android/systemui/bouncer/ui/viewmodel/PinInputViewModel.kt",
+        "packages/SystemUI/src/com/android/systemui/statusbar/phone/CentralSurfacesImpl.java"
       ]
     },
     "hardware/google/camera": {
@@ -225,7 +226,7 @@
     "release": "hecker_suite",
     "base_release": "cp2a",
     "status": "Source validation only; full ROM build and phone tests required",
-    "source_revision": "8b06798f7b9b4ba668457094abcdafa52ecbf9f0"
+    "source_revision": "aaca8a28d581ab8266ec1e415ed138ef68a14985"
   },
   "heckeros": {
     "version": "1.0",

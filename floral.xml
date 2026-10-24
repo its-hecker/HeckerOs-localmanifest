@@ -16,7 +16,7 @@
   <project name="its-hecker/vendor_lunaris_dolby" path="vendor/lunaris/dolby" remote="floral-github" revision="544e6271c955e2bf450c8481ac1e71551cb5a800" upstream="refs/heads/pixelos-compat" dest-branch="pixelos-compat" />
   <project name="its-hecker/floral-motionsense-plugin" path="vendor/hecker/floral/motionsense" remote="floral-github" revision="92d0051faf53acac3dfefec6597a12d587eefa73" upstream="refs/heads/main" dest-branch="main" />
   <project name="its-hecker/floral-3D-faceid-plugin" path="vendor/hecker/floral/faceid" remote="floral-github" revision="d998995e1452d2c3d9882bfdf659e1db760a99be" upstream="refs/heads/main" dest-branch="main" />
-  <project name="its-hecker/HeckerOS" path="vendor/hecker/floral/suite" remote="floral-github" revision="e4a7639969b7785a4e9c7d276e02ca8f8a5c6106" upstream="refs/heads/feat/suite-polish" dest-branch="feat/suite-polish" />
+  <project name="its-hecker/HeckerOS" path="vendor/hecker/floral/suite" remote="floral-github" revision="d99b92c3ba63d349b8cd1c2315aa9bceb74b54bf" upstream="refs/heads/feat/suite-polish" dest-branch="feat/suite-polish" />
   <remove-project path="packages/apps/Launcher3" optional="true" />
   <remove-project path="packages/services/OmniJaws" optional="true" />
   <extend-project name="PixelOS-AOSP/android_packages_apps_DolbyAtmos" path="packages/apps/DolbyAtmos" revision="13bbe61cf3e1046e3a1f0bda4719c321c953ce50" upstream="refs/heads/seventeen" />

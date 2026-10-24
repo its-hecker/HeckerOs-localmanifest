@@ -98,7 +98,7 @@ edits; the build helper checks for staged retired apps before invoking installcl
 Source PR: https://github.com/its-hecker/HeckerOS/pull/3
 Settings PR: https://github.com/its-hecker/heckeros_packages_apps_Settings/pull/1
 
-Suite source pin: `aaca8a28d581ab8266ec1e415ed138ef68a14985`.
+Suite source pin: `1bb1b0ae4a5116cf971c4a44ba4eeb315770aec8`.
 Preparation composes the App Lock permission and theme broadcast edits before
 writing the framework manifest, so a fresh checkout verifies after one apply.
 PIN entry also falls back to the normal explicit confirm button when length
@@ -122,3 +122,20 @@ cached Android SDK/NDK as needed. It requires Java 21+ (the synced AOSP JDK is
 selected automatically) and gives Gradle a 4 GiB heap with two workers. Later
 preparations verify and reuse the APK's source recipe and content hashes.
 See the [companion source/build notes](https://github.com/its-hecker/HeckerOS/blob/feat/suite-polish/prebuilts/librepods/README.md).
+
+The Suite cache now has a tracked `out/.find-ignore` marker. It prevents the
+downloaded LibrePods NDK `cpufeatures` makefile from being scanned as an Android
+module, preserving the SDK/APK cache and compiled ROM outputs. To recover from
+the duplicate `MODULE.TARGET.STATIC_LIBRARIES.cpufeatures` error in an already
+initialized ServerHive build session:
+
+```bash
+cd ~/heckeros-coral
+git -C .repo/local_manifests pull --ff-only
+repo sync -c -j2 --fail-fast --no-clone-bundle --no-tags vendor/hecker/floral/suite
+HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
+```
+
+This pin also includes the already-committed automatic-brightness toggles for
+One UI and Hecker Quick Settings. The in-progress memory controls, status-bar
+popup, volume redesign and Pixel Launcher enhancements are not part of this pin.

@@ -183,3 +183,22 @@ asset without rendering the superseded animation.
 Use the existing incremental update instructions on `feat/suite-polish` after
 any running build has finished. Keep this branch for the Pixel Launcher-only
 product, PIN guard, Memory Boost and other latest native interaction changes.
+
+## 24 October UI and runtime refinement
+
+The Suite pin includes the glass Hecker QS layout, matching vertical brightness/volume tracks, compact session-backed media with artwork, the Lunaris Dolby shortcut, adaptive OneUI battery colors and size controls, lower lock-screen/AOD lyrics, the caracal lock-screen signature, and corrected Suite/header spacing and back buttons. App Lock refreshes native protection state after its authenticated change flow. QS previews and GameSpace use bundled Lottie artwork.
+
+The unlocked Oslo feedback surface no longer forces the native shade open. Game Booster has a smaller landscape control layout, real custom-mode FPS/render-scale fallback for games without native profiles, and more specific charging-pause diagnostics. The independent Coral kernel charge inhibitor and its fail-safe lease are retained.
+
+Let any running build finish before syncing. In an already updated checkout, use:
+
+```bash
+cd ~/heckeros-coral
+git -C .repo/local_manifests pull --ff-only origin feat/suite-polish
+repo sync -c -j2 --fail-fast --no-clone-bundle --no-tags vendor/hecker/floral/suite
+HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
+```
+
+This pin changes the Suite adapters; the current framework, Settings and kernel source pins are retained. Existing source adaptations upgrade through the build helper. The 79 host tests, 77 integration tests, SDK/Compose compilation and 71 pinned native source roundtrips pass. A full ROM build and on-device visual, Soli, AOD and wired-charging checks remain required. Charging pause is not a guarantee of electrical battery isolation.
+
+[Implementation and verification notes](https://github.com/its-hecker/HeckerOS/blob/8c08d3486ac7c86366075cbf6ea42eeff0b35282/docs/ui-refinement-2026-10-24.md)

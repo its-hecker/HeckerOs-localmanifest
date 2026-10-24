@@ -1,5 +1,5 @@
 {
-  "checked_on": "2026-10-23",
+  "checked_on": "2026-10-25",
   "pixelos_manifest": {
     "repository": "PixelOS-AOSP/android_manifest",
     "branch": "seventeen",
@@ -255,7 +255,7 @@
         "notes": "Inspected Xposed gestures and glass, including per-corner radii and wallpaper zoom fix. Native empty-home double-tap and glass adapters are original Apache-2.0 code, not an Xposed port."
       }
     },
-    "source_revision": "59371253a30360f2997ec04e84fbb4f5ca9534b2"
+    "source_revision": "586695c646b5d2eafec7b5f4321eb31cc85dfc67"
   },
   "heckeros": {
     "version": "1.0",

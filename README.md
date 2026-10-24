@@ -1,8 +1,8 @@
 # HeckerOS coral build integration
 
-Coral-first local manifest for HeckerOS Android 17 targeting Google Pixel 4 XL (`coral`). The `feat/about-phone-official` branch carries the current About Phone, branding and build fixes. Pixel 4 (`flame`) support follows coral hardware testing.
+Coral-first local manifest for HeckerOS Android 17 targeting Google Pixel 4 XL (`coral`). The `feat/suite-polish` branch carries the current About Phone, branding and build fixes. Pixel 4 (`flame`) support follows coral hardware testing.
 
-The manifest pins the dedicated HeckerOS device, vendor and kernel imports, Motion Sense/3D Face Unlock plugins, Settings/framework baselines, launcher and HeckerOS integration. UI pages live directly in native Settings; supporting feature services remain system components.
+The manifest pins the dedicated HeckerOS device, vendor and kernel imports, Motion Sense/3D Face Unlock plugins, Settings/framework baselines, Pixel Launcher-only product and HeckerOS integration. UI pages live directly in native Settings; supporting feature services remain system components.
 
 ## Sync and build
 
@@ -22,16 +22,17 @@ so move it aside before Repo removes the project:
 
 ```bash
 cd ~/heckeros-coral
-git -C .repo/local_manifests pull --ff-only
+git -C .repo/local_manifests fetch origin
+git -C .repo/local_manifests switch feat/suite-polish
+python3 .repo/local_manifests/tools/retire_launcher.py
 python3 .repo/local_manifests/tools/retire_omnijaws.py
-repo sync -c -j2 --fail-fast --no-clone-bundle --no-tags vendor/hecker/floral/suite
+repo sync -c -j2 --fail-fast --no-clone-bundle --no-tags vendor/hecker/floral/suite packages/apps/Settings kernel/google/msm-4.14
 HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
 ```
 
 The retirement helper preserves its files under `out/retired-projects/` and is
 safe to rerun. The build helper clears staged app files with `installclean` only
-when necessary, keeping compiled intermediates. Launcher weather retains the
-separate Google feed when available. On ServerHive, use the initialized Byobu
+when necessary, keeping compiled intermediates. Pixel Launcher is the sole shipped HOME/Recents provider. On ServerHive, use the initialized Byobu
 build session and retain the provider's RBE environment.
 
 Source/host checks pass. A complete Settings APK/Soong build, ROM boot and coral hardware tests remain required. This is a source integration checkpoint, not a tested flashable release.
@@ -57,7 +58,9 @@ Before syncing an existing RisingOS-based checkout, preserve its local adapters:
 
 ```bash
 cd ~/heckeros-coral
-git -C .repo/local_manifests pull --ff-only
+git -C .repo/local_manifests fetch origin
+git -C .repo/local_manifests switch feat/suite-polish
+python3 .repo/local_manifests/tools/retire_launcher.py
 python3 .repo/local_manifests/tools/retire_launcher.py
 python3 .repo/local_manifests/tools/retire_omnijaws.py
 repo sync -c -j2 --fail-fast --no-clone-bundle --no-tags --force-sync vendor/hecker/floral/suite packages/apps/Launcher3 packages/apps/Settings
@@ -96,7 +99,25 @@ vector icons load as drawables instead of going through ImageDecoder.
 
 ## Game Booster reference dashboard
 
-`feat/game-booster-reference` pins the Game Booster-style Suite and its matching
+`feat/suite-polish` pins the Game Booster-style Suite and its matching
 Floral kernel charging inhibitor. See the [implementation and build notes](https://github.com/its-hecker/HeckerOS/blob/feat/game-booster-reference/docs/game-booster.md).
 Both `vendor/hecker/floral/suite` and `kernel/google/msm-4.14` must be synced before
 running `build.sh`. These changes require a new ROM build and phone validation.
+
+## Suite polish
+
+Includes the Game Booster reference work and its matching kernel revision. Suite
+uses measured inset-safe toolbars, animated layout cards, an energy-orbit charging
+effect, native App Lock prompt artwork, unified QS sliders and faster header
+collapse. Duplicate Suite routes, unsupported signal/system icon packs, Moto and
+Nothing charging resources, and the custom launcher are retired. Wi-Fi/battery
+styles live under Status bar. Protected-window capture is opt-in under Screenshots.
+The updated retirement helper preserves known custom-launcher checkouts and local
+edits; the build helper checks for staged retired apps before invoking installclean.
+
+Source PR: https://github.com/its-hecker/HeckerOS/pull/3
+Settings PR: https://github.com/its-hecker/heckeros_packages_apps_Settings/pull/1
+
+Suite source pin: `ade2cae8b32233e405d1dcfd98a18138e05dfe28`.
+Full Android/Soong compilation, dirty-upgrade Pixel HOME/Recents, visual comparison
+and Coral hardware validation remain pending.

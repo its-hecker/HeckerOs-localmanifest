@@ -150,5 +150,11 @@ and gains native empty-home double-tap sleep and frosted/liquid glass controls.
 These launcher features are a native subset, not the full PixelLauncherEnhanced
 Xposed module. The automatic-brightness toggles and NDK-cache isolation remain.
 
+The current Suite pin fixes the three `getCurProcState()` errors in
+`HeckerMemoryPolicy.java` during `services.core.unboosted` compilation by using
+Android 17's public `getProcState()` API. Normal build preparation upgrades the
+known earlier adapter; sync the Suite and rerun `build.sh` in the existing
+initialized ServerHive session. Compiled outputs and the LibrePods cache can be reused.
+
 Source and integration checks pass; full Android/Soong compilation and Coral
 hardware tests remain required. See the [feature notes](https://github.com/its-hecker/HeckerOS/blob/feat/suite-polish/docs/interaction-features.md).

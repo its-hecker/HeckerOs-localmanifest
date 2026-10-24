@@ -98,7 +98,7 @@ edits; the build helper checks for staged retired apps before invoking installcl
 Source PR: https://github.com/its-hecker/HeckerOS/pull/3
 Settings PR: https://github.com/its-hecker/heckeros_packages_apps_Settings/pull/1
 
-Suite source pin: `1bb1b0ae4a5116cf971c4a44ba4eeb315770aec8`.
+Suite source pin: `b291d1e85504f37d1300777ce9946b9a24022978`.
 Preparation composes the App Lock permission and theme broadcast edits before
 writing the framework manifest, so a fresh checkout verifies after one apply.
 PIN entry also falls back to the normal explicit confirm button when length
@@ -136,6 +136,19 @@ repo sync -c -j2 --fail-fast --no-clone-bundle --no-tags vendor/hecker/floral/su
 HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
 ```
 
-This pin also includes the already-committed automatic-brightness toggles for
-One UI and Hecker Quick Settings. The in-progress memory controls, status-bar
-popup, volume redesign and Pixel Launcher enhancements are not part of this pin.
+This pin retains the automatic-brightness toggles for One UI and Hecker Quick
+Settings and includes the native interaction features documented below.
+
+
+## Native interaction features
+
+This Suite pin adds the One UI compact/expanded volume panel with native hearing
+safety dialogs, status-bar long-press shortcuts and Memory Boost. Suite has a
+searchable per-app background start/task/clean task/resident policy page, with
+system apps hidden by default. Pixel Launcher remains the HOME/Recents provider
+and gains native empty-home double-tap sleep and frosted/liquid glass controls.
+These launcher features are a native subset, not the full PixelLauncherEnhanced
+Xposed module. The automatic-brightness toggles and NDK-cache isolation remain.
+
+Source and integration checks pass; full Android/Soong compilation and Coral
+hardware tests remain required. See the [feature notes](https://github.com/its-hecker/HeckerOS/blob/feat/suite-polish/docs/interaction-features.md).

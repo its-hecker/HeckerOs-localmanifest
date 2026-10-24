@@ -113,7 +113,9 @@ CI validates the asset without restoring the retired animation.
 The build wrapper runs the whole-source gaming policy repair after all plugin
 preparation, prints the affected files, clears only cached service-context modules,
 then requires `m merged_service_contexts_test` to pass before building the ROM.
-Look for `Gaming SELinux repair: whole-source scan v2` in its output. The direct
+Look for `Gaming SELinux repair: platform-source scan v3` and the executing
+script path in its output. The platform-private input is inspected explicitly
+even in a linked checkout, and recovery context caches are refreshed too. The direct
 repair saves originals under `out/hecker-service-context-backups/`.
 
 For an existing `feat/game-booster-reference` checkout, run from the Android source root:
@@ -129,5 +131,5 @@ The existing build output can be reused. This update does not require a clean bu
 For an explicit repair of an already prepared checkout after syncing:
 
 ```bash
-python3 vendor/hecker/floral/suite/tools/service_contexts.py --rom-root "$PWD" --apply --clear-cache
+/usr/bin/python3 vendor/hecker/floral/suite/tools/service_contexts.py --rom-root "$PWD" --apply --clear-cache
 ```

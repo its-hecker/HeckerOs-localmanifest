@@ -165,3 +165,21 @@ the known earlier hook without a clean checkout or output wipe.
 
 Source and integration checks pass; full Android/Soong compilation and Coral
 hardware tests remain required. See the [feature notes](https://github.com/its-hecker/HeckerOS/blob/feat/suite-polish/docs/interaction-features.md).
+
+## Gaming service label and terminal boot update
+
+The Suite pin keeps `hecker_game` exclusively under the dedicated
+`hecker_game_service` system_ext label. The platform adapter registers
+`hecker_memory` and `hecker_launcher` and upgrades both the previous conflicting
+block and one already repaired manually. Its native integration check combines
+platform and Suite declarations, rejects duplicate gaming labels, and retains
+all three Java service fuzzer registrations.
+
+The same pin includes Hecker's approved terminal boot animation. Preparation
+assembles the original ZIP byte for byte from checksum-pinned source chunks,
+then checks all 210 PNG frames and the locked payload hash. CI validates the
+asset without rendering the superseded animation.
+
+Use the existing incremental update instructions on `feat/suite-polish` after
+any running build has finished. Keep this branch for the Pixel Launcher-only
+product, PIN guard, Memory Boost and other latest native interaction changes.

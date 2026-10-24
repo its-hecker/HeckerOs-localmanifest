@@ -100,3 +100,22 @@ vector icons load as drawables instead of going through ImageDecoder.
 Floral kernel charging inhibitor. See the [implementation and build notes](https://github.com/its-hecker/HeckerOS/blob/feat/game-booster-reference/docs/game-booster.md).
 Both `vendor/hecker/floral/suite` and `kernel/google/msm-4.14` must be synced before
 running `build.sh`. These changes require a new ROM build and phone validation.
+
+## Gaming SELinux fix and terminal boot animation
+
+The Suite pin includes migration of the obsolete `hecker_game` / `activity_service`
+mapping. Build preparation backs up the affected source files and removes that
+fallback, retaining the dedicated `hecker_game_service` label and its access rules.
+It also assembles Hecker's supplied terminal boot ZIP byte for byte from locked
+binary chunks, validates all 210 PNG frames, and selects it for the product image.
+CI validates the asset without restoring the retired animation.
+
+For an existing `feat/game-booster-reference` checkout, run from the Android source root:
+
+```bash
+git -C .repo/local_manifests pull --ff-only origin feat/game-booster-reference
+repo sync -c -j2 --fail-fast --no-clone-bundle --no-tags vendor/hecker/floral/suite
+HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
+```
+
+The existing build output can be reused. This update does not require a clean build.

@@ -118,10 +118,12 @@ edits; the build helper checks for staged retired apps before invoking installcl
 Source PR: https://github.com/its-hecker/HeckerOS/pull/3
 Settings PR: https://github.com/its-hecker/heckeros_packages_apps_Settings/pull/1
 
-Suite source pin: `d99b92c3ba63d349b8cd1c2315aa9bceb74b54bf`.
+Suite source pin: `8b06798f7b9b4ba668457094abcdafa52ecbf9f0`.
 Preparation composes the App Lock permission and theme broadcast edits before
 writing the framework manifest, so a fresh checkout verifies after one apply.
 PIN entry also falls back to the normal explicit confirm button when length
 metadata is unavailable after reboot; wrong-PIN and lockout handling remain active.
 Full Android/Soong compilation, dirty-upgrade Pixel HOME/Recents, visual comparison
 and Coral hardware validation remain pending.
+
+Stock AOSP Launcher3 sources remain available for SystemUI flag and TAPL build libraries. The Launcher3 APKs and Hecker Launcher remain unselected; Pixel Launcher supplies HOME and Recents.

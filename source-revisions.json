@@ -208,6 +208,15 @@
         "src/com/android/settings/deviceinfo/aboutphone/MyDeviceInfoFragment.java",
         "res/xml/my_device_info.xml"
       ]
+    },
+    "packages/apps/Launcher3": {
+      "repository": "https://android.googlesource.com/platform/packages/apps/Launcher3",
+      "branch": "refs/tags/android-17.0.0_r1",
+      "revision": "c612e6ece389f21c40f8cb9cd9a4b44239f00009",
+      "files": [
+        "Android.bp",
+        "aconfig/Android.bp"
+      ]
     }
   },
   "hecker_suite": {
@@ -216,7 +225,7 @@
     "release": "hecker_suite",
     "base_release": "cp2a",
     "status": "Source validation only; full ROM build and phone tests required",
-    "source_revision": "d99b92c3ba63d349b8cd1c2315aa9bceb74b54bf"
+    "source_revision": "8b06798f7b9b4ba668457094abcdafa52ecbf9f0"
   },
   "heckeros": {
     "version": "1.0",

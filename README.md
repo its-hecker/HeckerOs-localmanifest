@@ -29,7 +29,8 @@ git -C .repo/local_manifests switch feat/suite-polish
 git -C .repo/local_manifests pull --ff-only
 python3 .repo/local_manifests/tools/retire_launcher.py
 python3 .repo/local_manifests/tools/retire_omnijaws.py
-repo sync -c -j2 --fail-fast --no-clone-bundle --no-tags vendor/hecker/floral/suite packages/apps/Launcher3 packages/apps/Settings kernel/google/msm-4.14
+repo sync -c -j1 --fail-fast --no-clone-bundle --no-tags --force-sync packages/apps/Launcher3
+repo sync -c -j2 --fail-fast --no-clone-bundle --no-tags vendor/hecker/floral/suite packages/apps/Settings kernel/google/msm-4.14
 HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
 ```
 
@@ -37,6 +38,10 @@ The retirement helper preserves its files under `out/retired-projects/` and is
 safe to rerun. The build helper clears staged app files with `installclean` only
 when necessary, keeping compiled intermediates. Pixel Launcher is the sole shipped HOME/Recents provider. On ServerHive, use the initialized Byobu
 build session and retain the provider's RBE environment.
+The Launcher3-only `--force-sync` lets Repo replace metadata for the retired custom
+repository after its source and edits have been preserved. It does not force a
+checkout over local tracked edits. Stock AOSP Launcher3 build libraries stay in
+the source tree even though its launcher APKs are not selected.
 
 Source/host checks pass. A complete Settings APK/Soong build, ROM boot and coral hardware tests remain required. This is a source integration checkpoint, not a tested flashable release.
 

@@ -211,7 +211,7 @@
     "release": "hecker_suite",
     "base_release": "cp2a",
     "status": "Source validation only; full ROM build and phone tests required",
-    "source_revision": "2aadf971154a5432cf30e763f56ebddcb684e750"
+    "source_revision": "e4a7639969b7785a4e9c7d276e02ca8f8a5c6106"
   },
   "heckeros": {
     "version": "1.0",

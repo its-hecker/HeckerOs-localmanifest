@@ -118,6 +118,8 @@ edits; the build helper checks for staged retired apps before invoking installcl
 Source PR: https://github.com/its-hecker/HeckerOS/pull/3
 Settings PR: https://github.com/its-hecker/heckeros_packages_apps_Settings/pull/1
 
-Suite source pin: `2aadf971154a5432cf30e763f56ebddcb684e750`.
+Suite source pin: `e4a7639969b7785a4e9c7d276e02ca8f8a5c6106`.
+Preparation composes the App Lock permission and theme broadcast edits before
+writing the framework manifest, so a fresh checkout verifies after one apply.
 Full Android/Soong compilation, dirty-upgrade Pixel HOME/Recents, visual comparison
 and Coral hardware validation remain pending.

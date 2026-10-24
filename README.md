@@ -110,6 +110,12 @@ It also assembles Hecker's supplied terminal boot ZIP byte for byte from locked
 binary chunks, validates all 210 PNG frames, and selects it for the product image.
 CI validates the asset without restoring the retired animation.
 
+The build wrapper runs the whole-source gaming policy repair after all plugin
+preparation, prints the affected files, clears only cached service-context modules,
+then requires `m merged_service_contexts_test` to pass before building the ROM.
+Look for `Gaming SELinux repair: whole-source scan v2` in its output. The direct
+repair saves originals under `out/hecker-service-context-backups/`.
+
 For an existing `feat/game-booster-reference` checkout, run from the Android source root:
 
 ```bash
@@ -119,3 +125,9 @@ HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
 ```
 
 The existing build output can be reused. This update does not require a clean build.
+
+For an explicit repair of an already prepared checkout after syncing:
+
+```bash
+python3 vendor/hecker/floral/suite/tools/service_contexts.py --rom-root "$PWD" --apply --clear-cache
+```

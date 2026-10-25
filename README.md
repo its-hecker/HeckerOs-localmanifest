@@ -2,7 +2,7 @@
 
 Coral-first local manifest for HeckerOS Android 17 targeting Google Pixel 4 XL (`coral`). The `feat/suite-polish` branch carries the current About Phone, branding and build fixes. Pixel 4 (`flame`) support follows coral hardware testing.
 
-The manifest pins the dedicated HeckerOS device, vendor and kernel imports, Motion Sense/3D Face Unlock plugins, Settings/framework baselines, Pixel Launcher-only product and HeckerOS integration. UI pages live directly in native Settings; supporting feature services remain system components.
+The manifest pins the dedicated HeckerOS device, vendor and kernel imports, Motion Sense/3D Face Unlock plugins, Settings/framework baselines and HeckerOS integration. Hecker Launcher supplies HOME customizations; Pixel Launcher supplies Recents. UI pages live directly in native Settings; supporting feature services remain system components.
 
 ## Sync and build
 
@@ -19,29 +19,29 @@ Run these commands in a fresh Android source directory with the normal AOSP buil
 
 ## Upgrade an existing feature-branch checkout
 
-OmniJaws has been removed. Its old checkout contains local source adaptations,
-so move it aside before Repo removes the project:
+The current Spoofing hub update changes **Suite, Settings and frameworks/base**.
+Let a running build finish first. Remove the old Suite's guarded source adapters
+before syncing the new framework; the build helper then reapplies the new adapters.
+This preserves build outputs and stops if an unfamiliar source edit needs review.
 
 ```bash
 cd ~/heckeros-coral
-git -C .repo/local_manifests fetch origin
-git -C .repo/local_manifests switch feat/suite-polish
-git -C .repo/local_manifests pull --ff-only
+python3 vendor/hecker/floral/suite/tools/prepare.py --rom-root "$PWD" --revert
+git -C .repo/local_manifests pull --ff-only origin feat/suite-polish
 python3 .repo/local_manifests/tools/retire_launcher.py
 python3 .repo/local_manifests/tools/retire_omnijaws.py
-repo sync -c -j1 --fail-fast --no-clone-bundle --no-tags --force-sync packages/apps/Launcher3
-repo sync -c -j2 --fail-fast --no-clone-bundle --no-tags vendor/hecker/floral/suite packages/apps/Settings kernel/google/msm-4.14
+repo sync -c -j2 --fail-fast --no-clone-bundle --no-tags vendor/hecker/floral/suite packages/apps/Settings frameworks/base
 HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
 ```
 
 The retirement helper preserves its files under `out/retired-projects/` and is
 safe to rerun. The build helper clears staged app files with `installclean` only
-when necessary, keeping compiled intermediates. Pixel Launcher is the sole shipped HOME/Recents provider. On ServerHive, use the initialized Byobu
+when necessary, keeping compiled intermediates. On ServerHive, use the initialized Byobu
 build session and retain the provider's RBE environment.
-The Launcher3-only `--force-sync` lets Repo replace metadata for the retired custom
-repository after its source and edits have been preserved. It does not force a
-checkout over local tracked edits. Stock AOSP Launcher3 build libraries stay in
-the source tree even though its launcher APKs are not selected.
+For an older checkout that still has the retired custom Launcher3 repository,
+run the retirement helper before replacing that project's Repo metadata. Do not
+force a checkout over local edits. Stock AOSP Launcher3 sources supply Hecker
+Launcher and the build libraries used by SystemUI.
 
 Source/host checks pass. A complete Settings APK/Soong build, ROM boot and coral hardware tests remain required. This is a source integration checkpoint, not a tested flashable release.
 
@@ -52,11 +52,21 @@ Maintainer: Hecker
 The current pins select the native Hecker 25-cell pose-grid renderer and the Axion-derived
 PIF, game profile, keybox import and TrickyStore integration in native Settings.
 Photos retains PixelOS's existing implementation. Open Settings > Hecker's Suite >
-Play Integrity to configure profiles, targets and your keybox; restart the phone
-after changing them. No keybox is bundled. Actual enrollment and attestation
+Spoofing hub to configure profiles, targets and your keybox; restart affected
+apps after changing them. No keybox is bundled. Actual enrollment and attestation
 verdict testing remain required. Four platform projects use owned HeckerOS forks;
 the other 87 stay at their existing upstream repositories with exact source pins.
 Bulk repository migration is optional and does not block this build.
+
+The hub adapts the latest verified Evolution X Android 17 `cnb` screens with
+TrickyStore/PIF masters, Canary fingerprint fetch, certificate checks, target
+search and Auto/Leaf/Cert/Skip modes, plus an original Lottie animation.
+Automatic refresh is opt-in and preserves manual imports. Private key material
+stays in system-only atomic storage. Certificate status is not an attestation
+verdict. [Source pins, adaptation and validation](https://github.com/its-hecker/HeckerOS/blob/feat/suite-polish/docs/spoofing-hub.md).
+
+The dated development checkpoints below describe earlier changes; the upgrade
+commands above select the current build.
 
 
 Development builds also enable USB debugging and accept every connected PC
@@ -98,7 +108,7 @@ edits; the build helper checks for staged retired apps before invoking installcl
 Source PR: https://github.com/its-hecker/HeckerOS/pull/3
 Settings PR: https://github.com/its-hecker/heckeros_packages_apps_Settings/pull/1
 
-Suite source pin: `b291d1e85504f37d1300777ce9946b9a24022978`.
+Suite source pin: `e3fd424368ba5a400ae946c482b681adff07bd3a`.
 Preparation composes the App Lock permission and theme broadcast edits before
 writing the framework manifest, so a fresh checkout verifies after one apply.
 PIN entry also falls back to the normal explicit confirm button when length

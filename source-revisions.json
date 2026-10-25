@@ -242,7 +242,7 @@
     "integration_branch": "feat/suite-polish",
     "release": "hecker_suite",
     "base_release": "cp2a",
-    "status": "Source validation only; full ROM build and phone tests required",
+    "status": "Source checks pass; full ROM/SELinux build and phone regression required",
     "feature_sources": {
       "risingos": {
         "repository": "RisingOS-Revived/android_frameworks_base",
@@ -254,15 +254,21 @@
         "repository": "Mahmud0808/PixelLauncherEnhanced",
         "revision": "a0e8e98cd338739aac82ec3bf7b044ee51ba1bdb",
         "notes": "Inspected Xposed gestures and glass, including per-corner radii and wallpaper zoom fix. Native empty-home double-tap and glass adapters are original Apache-2.0 code, not an Xposed port.",
-        "status": "retired after the 25 October device review; retained here as provenance only"
+        "status": "Pixel runtime/service adapters retired; reference retained for the independent native Launcher3 glass implementation"
       },
       "aosp_launcher3": {
         "repository": "https://android.googlesource.com/platform/packages/apps/Launcher3",
         "revision": "c612e6ece389f21c40f8cb9cd9a4b44239f00009",
-        "notes": "Native HOME-only Hecker Launcher module. Pixel remains the Recents/Quickstep provider."
+        "notes": "Native HOME-only Hecker Launcher with empty-home quick-QS swipe-down, double-tap sleep, per-container frosted/liquid glass and independent corner radii. Pixel remains the Recents/Quickstep provider."
       }
     },
-    "source_revision": "25f828c3c9cd7c9c84d3d43f71ec3a6e26d13fe2"
+    "source_revision": "01650dc7e8fbd2ca1470472116fb41ed0dcbad4f",
+    "retired_features": [
+      "Memory Boost UI, QS tile, Binder and framework process policy",
+      "Pixel Launcher runtime enhancements",
+      "TouchWiz volume panel",
+      "Status-bar popup actions"
+    ]
   },
   "heckeros": {
     "version": "1.0",

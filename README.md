@@ -4,6 +4,23 @@ Coral-first local manifest for HeckerOS Android 17 targeting Google Pixel 4 XL (
 
 The manifest pins the dedicated HeckerOS device, vendor and kernel imports, Motion Sense/3D Face Unlock plugins, Settings/framework baselines and HeckerOS integration. Hecker Launcher supplies HOME customizations; Pixel Launcher supplies Recents. UI pages live directly in native Settings; supporting feature services remain system components.
 
+## Dashboard and ambient follow-up — 26 October 2026
+
+Suite `75d1cb36338610a7adefb6cefd1a2af21fb3dceb` adds expanded GameSpace dragging,
+vertical edge-handle movement and independent portrait/landscape positions. It
+repairs charger-triggered ambient pulse races with bounded retries and a short
+CPU wake lock, and restores Oslo's locked-only shade hold, initial doze state and
+native pulse/tick GL refresh without reparenting its view during gesture callbacks.
+
+Validation: 101 host tests, 77 integration tests, Android Java/resources/AIDL,
+Kotlin/Compose and native feature compilation; 101 pinned native inputs and 218
+idempotent/reversible adapter operations. Full Android/Soong compilation and Coral
+visual/hardware tests remain required. See the [source and device checklist](https://github.com/its-hecker/HeckerOS/blob/75d1cb36338610a7adefb6cefd1a2af21fb3dceb/docs/dashboard-ambient-followup-2026-10-26.md).
+
+NetLab router-peer control and bandwidth enforcement still need the router/AP
+model, firmware and a supported management backend. Discovery and capability-gated
+phone-hotspot pause/restore are retained; this pin does not enable speed enforcement.
+
 ## Sync and build
 
 ```bash
@@ -19,7 +36,8 @@ Run these commands in a fresh Android source directory with the normal AOSP buil
 
 ## Upgrade an existing feature-branch checkout
 
-The current Spoofing hub update changes **Suite, Settings and frameworks/base**.
+The current pins include dashboard movement and ambient lifecycle repairs in Suite,
+alongside the matching **Settings and frameworks/base** Spoofing hub changes.
 Let a running build finish first. Remove the old Suite's guarded source adapters
 before syncing the new framework; the build helper then reapplies the new adapters.
 This preserves build outputs and stops if an unfamiliar source edit needs review.
@@ -108,7 +126,7 @@ edits; the build helper checks for staged retired apps before invoking installcl
 Source PR: https://github.com/its-hecker/HeckerOS/pull/3
 Settings PR: https://github.com/its-hecker/heckeros_packages_apps_Settings/pull/1
 
-Suite source pin: `e3fd424368ba5a400ae946c482b681adff07bd3a`.
+Suite source pin: `75d1cb36338610a7adefb6cefd1a2af21fb3dceb`.
 Preparation composes the App Lock permission and theme broadcast edits before
 writing the framework manifest, so a fresh checkout verifies after one apply.
 PIN entry also falls back to the normal explicit confirm button when length

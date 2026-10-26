@@ -4,20 +4,53 @@ Coral-first local manifest for HeckerOS Android 17 targeting Google Pixel 4 XL (
 
 The manifest pins the dedicated HeckerOS device, vendor and kernel imports, Motion Sense/3D Face Unlock plugins, Settings/framework baselines and HeckerOS integration. Hecker Launcher supplies HOME customizations; Pixel Launcher supplies Recents. UI pages live directly in native Settings; supporting feature services remain system components.
 
+## Simplified Network Lab device list — 26 October 2026
+
+Network Lab now opens directly to a compact device list with Scan Wi-Fi and More.
+Each device has a Manage menu for pause, upload/download speed limits, restore
+and details. Multiple-device controls, traffic, network information, history,
+diagnostics and advanced root controls are in More. Root identity scanning and
+optional service-name discovery share the primary Scan action. Native hotspot
+controls and root IPv4 controls retain their separate backends and privileges.
+The existing single-session and selected-device restoration rules remain.
+
+The same feature branch includes the reviewed launcher search spacing/gradient,
+One UI charging animation and three optional right-side bolts, ambient Motion
+Sense suppression, keybox certificate parsing/revocation handling and per-device
+forwarding guards. Full ROM/phone acceptance is still required.
+
+## Launcher, charging indicator and fetch follow-up — 26 October 2026
+
+The accompanying Suite review reserves the whole below-dock search slot in native
+Launcher3 grid sizing and hotseat padding. The search colours/border are muted,
+with the existing wallpaper frosting retained. One UI battery animation now runs
+in both the legacy status bar and Compose, including a visible full-fill shimmer.
+Battery appearance provides an animation switch and optional right-side Classic,
+Split or Spark bolts. Motion Sense glow is hidden during ambient/doze; no Oslo
+ambient pulses are requested.
+
+The Settings revision below normalizes downloaded certificate PEM to DER and
+separates live revocation parsing errors from invalid chains. The NetLab native
+helper now owns selected-peer FORWARD guards instead of refusing all sessions
+when kernel forwarding is enabled. It preserves global forwarding, hotspot and
+NAT configuration and supervises cleanup after relay death. NetLab still needs
+an explicit KernelSU/root grant in this implementation.
+
+These source changes require a complete Android build and device testing. The matching Settings/Suite/manifest changes are published together on
+`feat/suite-polish`; ordinary repo sync resolves the pinned Settings source.
+
 ## Popup, glow, keybox and launcher follow-up — 26 October 2026
 
 Suite `d760bfce1ca9e6c018cfaf7dcfcb6b38c1915172` removes the Android 17
 SystemUI-only always-on-top launch option that rejected GameSpace popup apps.
 Dashboard actions use three columns, with brightness/volume in the second control
-row. The native hotseat owns the optional branded Hecker Search row. Genuine Oslo
-feedback can request a proximity-checked native ambient pulse, with bounded
-transition retries and no synthetic gestures or doze state.
+row. The native hotseat owns the optional branded Hecker Search row. This historical change enabled Oslo ambient pulses; the later follow-up below disables ambient glow at the maintainer's request.
 
 The matching dependencies are:
 
 | Project | Immutable revision |
 | --- | --- |
-| Settings | `e97dc8bb729e6a8da69333b63b5dc6c95f500ec1` |
+| Settings | `3831282d93ecda4d52a6894077482fe01ecea903` |
 | frameworks/base | `854e6dbf73ae1cd61095085a9655c8d9136104eb` |
 
 PIF follows current Evolution X Android 17 behavior; overlapping PixelOS certified

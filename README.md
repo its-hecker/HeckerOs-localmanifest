@@ -4,22 +4,37 @@ Coral-first local manifest for HeckerOS Android 17 targeting Google Pixel 4 XL (
 
 The manifest pins the dedicated HeckerOS device, vendor and kernel imports, Motion Sense/3D Face Unlock plugins, Settings/framework baselines and HeckerOS integration. Hecker Launcher supplies HOME customizations; Pixel Launcher supplies Recents. UI pages live directly in native Settings; supporting feature services remain system components.
 
-## Dashboard and ambient follow-up — 26 October 2026
+## Popup, glow, keybox and launcher follow-up — 26 October 2026
 
-Suite `75d1cb36338610a7adefb6cefd1a2af21fb3dceb` adds expanded GameSpace dragging,
-vertical edge-handle movement and independent portrait/landscape positions. It
-repairs charger-triggered ambient pulse races with bounded retries and a short
-CPU wake lock, and restores Oslo's locked-only shade hold, initial doze state and
-native pulse/tick GL refresh without reparenting its view during gesture callbacks.
+Suite `d760bfce1ca9e6c018cfaf7dcfcb6b38c1915172` removes the Android 17
+SystemUI-only always-on-top launch option that rejected GameSpace popup apps.
+Dashboard actions use three columns, with brightness/volume in the second control
+row. The native hotseat owns the optional branded Hecker Search row. Genuine Oslo
+feedback can request a proximity-checked native ambient pulse, with bounded
+transition retries and no synthetic gestures or doze state.
 
-Validation: 101 host tests, 77 integration tests, Android Java/resources/AIDL,
-Kotlin/Compose and native feature compilation; 101 pinned native inputs and 218
-idempotent/reversible adapter operations. Full Android/Soong compilation and Coral
-visual/hardware tests remain required. See the [source and device checklist](https://github.com/its-hecker/HeckerOS/blob/75d1cb36338610a7adefb6cefd1a2af21fb3dceb/docs/dashboard-ambient-followup-2026-10-26.md).
+The matching dependencies are:
 
-NetLab router-peer control and bandwidth enforcement still need the router/AP
-model, firmware and a supported management backend. Discovery and capability-gated
-phone-hotspot pause/restore are retained; this pin does not enable speed enforcement.
+| Project | Immutable revision |
+| --- | --- |
+| Settings | `e97dc8bb729e6a8da69333b63b5dc6c95f500ec1` |
+| frameworks/base | `854e6dbf73ae1cd61095085a9655c8d9136104eb` |
+
+PIF follows current Evolution X Android 17 behavior; overlapping PixelOS certified
+profile/blocking and legacy keybox call paths are removed. Manual keybox imports
+have no provider allowlist and gain JCA/SEC1/BOM/Base64 compatibility and full error
+details. Fetch still requires a usable certificate chain and does not guarantee an
+integrity verdict. The preceding dashboard-drag and charging-ambient fixes remain.
+
+Validation: 101 host tests plus Java regressions, 77 integration tests, 87 native
+configuration/crypto checks and 76 hub checks; Android Java/resources/AIDL and
+native/Kotlin adapter checks, including 102 immutable inputs and 221 reversible
+operations. Full Android/Soong and Coral hardware/visual acceptance remain required.
+See the [source and device checklist](https://github.com/its-hecker/HeckerOS/blob/d760bfce1ca9e6c018cfaf7dcfcb6b38c1915172/docs/dashboard-launcher-integrity-2026-10-26.md).
+
+NetLab router-peer blocking and bandwidth enforcement still need the router/AP
+model, firmware and an authorized management backend. Discovery and capability-
+gated phone-hotspot pause/restore remain; no disruptive interception backend is added.
 
 ## Sync and build
 
@@ -36,8 +51,8 @@ Run these commands in a fresh Android source directory with the normal AOSP buil
 
 ## Upgrade an existing feature-branch checkout
 
-The current pins include dashboard movement and ambient lifecycle repairs in Suite,
-alongside the matching **Settings and frameworks/base** Spoofing hub changes.
+The current pins include dashboard/popup/glow/launcher fixes in Suite and
+matching **Settings and frameworks/base** PIF/keybox changes.
 Let a running build finish first. Remove the old Suite's guarded source adapters
 before syncing the new framework; the build helper then reapplies the new adapters.
 This preserves build outputs and stops if an unfamiliar source edit needs review.

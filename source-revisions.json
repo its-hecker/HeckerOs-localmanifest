@@ -1,5 +1,5 @@
 {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "pixelos_manifest": {
     "repository": "PixelOS-AOSP/android_manifest",
     "branch": "seventeen",
@@ -303,9 +303,11 @@
       "revision": "60b0c615e939cd09ce956e6fe6df5d5aa6ccbdd4"
     },
     "kernel": {
-      "repository": "its-hecker/heckeros-floral-kernel",
-      "branch": "feat/game-booster-reference",
-      "revision": "48d6881fb8537f62811209927022e467d37e3a98"
+      "repository": "its-hecker/HeckerOsfloral-Kernel-NonKsu",
+      "branch": "main",
+      "revision": "ffefc8f518edd3a6de01403b5ea0d68029cd8067",
+      "variant": "nonksu",
+      "rooted_base_revision": "48d6881fb8537f62811209927022e467d37e3a98"
     }
   },
   "platform_ownership": {

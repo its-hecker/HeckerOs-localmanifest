@@ -23,9 +23,8 @@ PROJECTS = {
     "vendor/hecker/floral/motionsense": "its-hecker/floral-motionsense-plugin",
     "vendor/hecker/floral/faceid": "its-hecker/floral-3D-faceid-plugin",
     "vendor/hecker/floral/suite": "its-hecker/HeckerOS",
-    "packages/apps/Launcher3": "RisingOS-Revived/android_packages_apps_Launcher3",
-    "packages/services/OmniJaws": "RisingOS-Revived/android_packages_services_OmniJaws",
 }
+REMOVED_PROJECTS = {"packages/services/OmniJaws"}
 
 
 def require(condition, message):
@@ -39,7 +38,7 @@ def manifest(root=ROOT):
     require(len(projects) == len(PROJECTS), "Unexpected project count")
     require(len({p.get('path') for p in projects}) == len(projects), "Duplicate project path")
     removals = {p.get("path") for p in xml.findall("remove-project") if p.get("optional") == "true"}
-    require(removals == set(PROJECTS), "Every replacement needs an optional path removal")
+    require(removals == (set(PROJECTS) | REMOVED_PROJECTS), "Every replaced/retired project needs an optional path removal")
     for project in projects:
         path = project.get("path")
         require(project.get("name") == PROJECTS[path], "Incorrect repository for " + path)
@@ -50,7 +49,7 @@ def manifest(root=ROOT):
             require(project.get("upstream", "").startswith("refs/heads/"), "Missing upstream ref")
         if path.startswith("kernel/"):
             require(project.get("sync-s") == "true", "KernelSU submodule sync is disabled")
-            require(project.get("upstream") == "refs/heads/test/coral-root-privacy-20261027", "Wrong Coral test kernel branch")
+            require(project.get("upstream") in {"refs/heads/main", "refs/heads/feat/game-booster-reference", "refs/heads/test/coral-root-privacy-20261027"}, "Wrong HeckerOS kernel branch")
     print("Local manifest paths, dependency pins and kernel submodule sync: PASS")
 
 

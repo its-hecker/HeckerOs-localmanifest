@@ -278,3 +278,14 @@ HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
 This pin changes the Suite adapters; the current framework, Settings and kernel source pins are retained. Existing source adaptations upgrade through the build helper. The 79 host tests, 77 integration tests, SDK/Compose compilation and 71 pinned native source roundtrips pass. A full ROM build and on-device visual, Soli, AOD and wired-charging checks remain required. Charging pause is not a guarantee of electrical battery isolation.
 
 [Implementation and verification notes](https://github.com/its-hecker/HeckerOS/blob/8c08d3486ac7c86366075cbf6ea42eeff0b35282/docs/ui-refinement-2026-10-24.md)
+
+## Pakistan IMS test configuration
+
+This manifest pins the shared Suite with VoLTE/Wi-Fi Calling defaults and
+dedicated IMS APNs for Jazz/Warid, Ufone, Zong and Telenor. Independent icon
+switches are under Hecker Suite > Status bar > Calling indicators; icons follow
+actual IMS voice registration and availability for each SIM.
+
+Source, SDK and host checks pass. Working calls and a compatible Pakistan modem
+profile remain unverified; rebuild and test the individual SIMs before marking
+a carrier as supported. See the [IMS implementation and device checks](https://github.com/its-hecker/HeckerOS/blob/a51eacc198efe0a79a1f5e5e455c422064206e95/ims/README.md).

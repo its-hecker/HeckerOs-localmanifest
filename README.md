@@ -297,3 +297,25 @@ actual IMS voice registration and availability for each SIM.
 Source, SDK and host checks pass. Working calls and a compatible Pakistan modem
 profile remain unverified; rebuild and test the individual SIMs before marking
 a carrier as supported. See the [IMS implementation and device checks](https://github.com/its-hecker/HeckerOS/blob/a51eacc198efe0a79a1f5e5e455c422064206e95/ims/README.md).
+
+### Music Motion Island and astronaut on the Coral experiment
+
+Only `test/coral-root-privacy-20261027` selects this experiment. Open
+**Motion Island & creature** from **Hecker Suite → Motion Sense** or **Status bar**.
+During music playback the compact capsule shows album art and thin blue vertical
+bars. Tap it to open the same media card used on the lockscreen. Its expanded
+controls stay pinned to the tapped session, including while paused.
+
+The reference astronaut hangs from the capsule by a rope, swings in the physical
+flick direction and waves for play/pause. It fades after gesture inactivity;
+a pause lets the brief goodbye finish before the capsule hides. The separate
+character toggle requires Motion Island. Screen off/AOD hides both; battery
+saver and reduced motion keep static visuals. Ambiguous non-music sessions are
+filtered conservatively. The selected Suite's `docs/motion-island.md` records
+behavior, artwork provenance, host preview and acceptance checks.
+
+The manifest pins matching immutable Suite and Motion Sense plugin revisions;
+the plugin pins the rebuilt Oslo APK by commit, size, Git blob and SHA-256. The
+ROM build aligns and signs that input with its platform key. Host/SDK/Compose,
+controller, manifest and guarded-adapter checks pass; a full ROM build and Coral
+device validation are still required.

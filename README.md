@@ -1,8 +1,27 @@
 # HeckerOS coral build integration
 
-Coral-first local manifest for HeckerOS Android 17 targeting Google Pixel 4 XL (`coral`). This `test/coral-root-privacy-20261027` branch retains the complete `feat/suite-polish` baseline and layers the Coral root privacy test on it. Pixel 4 (`flame`) support follows successful coral hardware testing.
+Coral-first local manifest for HeckerOS Android 17 targeting Google Pixel 4 XL (`coral`). This `feat/settings-depth-lockscreen-20261028` experiment builds on the complete Coral root-privacy/astronaut test and adds the reference Settings homepage, animated word clock and imported-layer depth clock. Pixel 4 (`flame`) support follows successful Coral hardware testing.
 
 The manifest pins the dedicated HeckerOS device, vendor and kernel imports, Motion Sense/3D Face Unlock plugins, Settings/framework baselines and HeckerOS integration. Hecker Launcher supplies HOME customizations; Pixel Launcher supplies Recents. UI pages live directly in native Settings; supporting feature services remain system components.
+
+## Reference Settings and depth clock — 28 October 2026
+
+The Suite is pinned to `2d531ce0c9c58bf46c80cf895064a8b493e6c880`. Settings retains the HeckerOS card and native controllers,
+with grouped charcoal panels, coloured icons and a floating native Search pill.
+Lockscreen controls add an English word clock with a melting smiley and rotating
+starbursts, plus a large tall clock and a 750 ms depth reveal on wake.
+Depth currently requires a prepared matching background and transparent foreground;
+automatic subject extraction is not included. Existing device/framework/kernel,
+Face Unlock, Soli, root-privacy and launcher/Recents dependencies are retained.
+
+Validation covers 117 Suite host tests, 81 integration tests, owned app Java/resources/AIDL,
+Settings adapters, SystemUI Compose and native source upgrade/revert checks. Full ROM
+build, on-phone appearance, depth wake performance and Coral hardware tests remain pending.
+The intermittent navigation freeze is **not claimed fixed**. The Suite adds a read-only
+frozen/recovered diagnostics helper. See [feature details, artwork previews and gesture diagnostics](https://github.com/its-hecker/HeckerOS/blob/2d531ce0c9c58bf46c80cf895064a8b493e6c880/docs/settings-depth-lockscreen.md).
+
+This branch changes the Suite selection only. Use its fresh-checkout recipe below;
+the historical sections describe earlier work.
 
 ## Root privacy baseline correction — 27 October 2026
 
@@ -78,10 +97,10 @@ gated phone-hotspot pause/restore remain; no disruptive interception backend is 
 ## Sync and build
 
 ```bash
-mkdir -p ~/heckeros-coral-root-privacy
-cd ~/heckeros-coral-root-privacy
-repo init -u https://github.com/its-hecker/HeckerOS -b test/coral-root-privacy-20261027 --git-lfs
-git clone --branch test/coral-root-privacy-20261027 https://github.com/its-hecker/HeckerOs-localmanifest .repo/local_manifests
+mkdir -p ~/heckeros-coral-depth
+cd ~/heckeros-coral-depth
+repo init -u https://github.com/its-hecker/HeckerOS -b feat/settings-depth-lockscreen-20261028 --git-lfs
+git clone --branch feat/settings-depth-lockscreen-20261028 https://github.com/its-hecker/HeckerOs-localmanifest .repo/local_manifests
 repo sync -c -j8 --fail-fast --no-clone-bundle --no-tags
 HECKER_DEV_USB_ADB=false bash .repo/local_manifests/build.sh
 ```

@@ -1,12 +1,29 @@
 # HeckerOS coral build integration
 
-Coral-first local manifest for HeckerOS Android 17 targeting Google Pixel 4 XL (`coral`). This `feat/settings-depth-lockscreen-20261028` experiment builds on the complete Coral root-privacy/astronaut test and adds the reference Settings homepage, animated word clock and imported-layer depth clock. Pixel 4 (`flame`) support follows successful Coral hardware testing.
+Coral-first local manifest for HeckerOS Android 17 targeting Google Pixel 4 XL (`coral`). This `fix/netlab-interaction-20261028` test branch adds NetLab touch/refresh fixes to the `feat/settings-depth-lockscreen-20261028` experiment, retaining its Coral root-privacy/astronaut baseline, reference Settings homepage, animated word clock and imported-layer depth clock. Pixel 4 (`flame`) support follows successful Coral hardware testing.
 
 The manifest pins the dedicated HeckerOS device, vendor and kernel imports, Motion Sense/3D Face Unlock plugins, Settings/framework baselines and HeckerOS integration. Hecker Launcher supplies HOME customizations; Pixel Launcher supplies Recents. UI pages live directly in native Settings; supporting feature services remain system components.
 
-## Reference Settings and depth clock — 28 October 2026
+## NetLab touch and refresh fix — 28 October 2026
 
-The Suite is pinned to `2d531ce0c9c58bf46c80cf895064a8b493e6c880`. Settings retains the HeckerOS card and native controllers,
+Suite `b4f4fc61a73c5ab6f46508e471e1ed58940dc1ff` fixes the slider cancellation
+path that could leave master/individual controls visually frozen until a tab
+change. Sliders claim their gestures from the scrolling parent, cancelled touches
+release the adjustment flag, and refreshes keep button targets stable while a
+finger is down. Device-state comparisons use displayed fields, and actions use
+the current peer state while rejecting a changed MAC identity.
+
+All 118 Suite Python host tests, 13 production gesture/state sequences, existing
+Java/native checks and locked Android Suite/controller Java/AIDL/resource
+compilation pass. Full ROM/Soong compilation and phone reproduction remain
+pending. See [NetLab source details](https://github.com/its-hecker/HeckerOS/blob/b4f4fc61a73c5ab6f46508e471e1ed58940dc1ff/docs/netlab-ui.md#touch-and-refresh-follow-up--28-october-2026).
+
+Only the Suite pin and its branch metadata change; the other project revisions
+remain those of the parent experiment.
+
+## Retained reference Settings and depth clock — 28 October 2026
+
+The parent Suite baseline was `2d531ce0c9c58bf46c80cf895064a8b493e6c880`. Settings retains the HeckerOS card and native controllers,
 with grouped charcoal panels, coloured icons and a floating native Search pill.
 Lockscreen controls add an English word clock with a melting smiley and rotating
 starbursts, plus a large tall clock and a 750 ms depth reveal on wake.
@@ -97,10 +114,10 @@ gated phone-hotspot pause/restore remain; no disruptive interception backend is 
 ## Sync and build
 
 ```bash
-mkdir -p ~/heckeros-coral-depth
-cd ~/heckeros-coral-depth
-repo init -u https://github.com/its-hecker/HeckerOS -b feat/settings-depth-lockscreen-20261028 --git-lfs
-git clone --branch feat/settings-depth-lockscreen-20261028 https://github.com/its-hecker/HeckerOs-localmanifest .repo/local_manifests
+mkdir -p ~/heckeros-coral-netlab
+cd ~/heckeros-coral-netlab
+repo init -u https://github.com/its-hecker/HeckerOS -b fix/netlab-interaction-20261028 --git-lfs
+git clone --branch fix/netlab-interaction-20261028 https://github.com/its-hecker/HeckerOs-localmanifest .repo/local_manifests
 repo sync -c -j8 --fail-fast --no-clone-bundle --no-tags
 HECKER_DEV_USB_ADB=false bash .repo/local_manifests/build.sh
 ```

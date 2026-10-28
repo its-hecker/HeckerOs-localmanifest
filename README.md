@@ -1,9 +1,37 @@
 # HeckerOS coral build integration
 
+## Home depth, weather and modest defaults — 29 October 2026
+
+The same `test/floral-low-brightness-flicker-20261029` compilation branch now
+selects Suite `d9a1ca74aa1fbdac7057d3c2e3e280cc13366019`. Caracal Dawn v2 uses a
+full-coverage high-neck outfit with more clock space. Fresh users receive the
+layered Lock/Home wallpaper, tall 76% lock clock and wake reveal automatically.
+The old bundled v1 updates only while its recorded identity still owns both
+wallpapers; chosen clocks, custom photos and live wallpapers are preserved.
+
+Hecker Launcher adds default-on **Home screen → Depth wallpaper** and **Animate
+depth on unlock**. Prepared layers surround clock artwork while native icons,
+folders, controls and weather stay above the scene. The 750 ms reveal respects
+Battery Saver and reduced motion. Changing the Home wallpaper disables a stale
+subject; importing another pair can apply to Home too or Lock only.
+
+**Clock Studio → Show weather** is on by default in all ten styles, using one
+shared subscription to actual Google Smartspace weather. The Google app must
+provide weather; missing data keeps the clock/date usable. No invented readings
+or added location polling are used. See [Home depth, artwork and validation](https://github.com/its-hecker/HeckerOS/blob/d9a1ca74aa1fbdac7057d3c2e3e280cc13366019/docs/home-depth-weather.md).
+
+Validation passes 127 Suite Python host tests and the complete Java/C++ host
+regressions; app/controller SDK Java/resources/AIDL; 909 Home/Lock crop parity
+cases and production depth/weather lifecycle cases; launcher helpers/resources
+and the pinned native draw/upgrade/idempotence/revert checks. The retained
+low-brightness policy still passes 1,372 checks. Matching-manifest tests pass.
+Full ROM/Soong, Coral boot, final clock placement, weather feed availability and
+physical flicker/animation acceptance remain pending.
+
 ## Experimental low-brightness flicker protection — 29 October 2026
 
 Use branch `test/floral-low-brightness-flicker-20261029` for this test build.
-The exact pins are Suite `b838dd012c9e740fc031c135c24cef831c92956d`, framework
+The exact pins are Suite `d9a1ca74aa1fbdac7057d3c2e3e280cc13366019`, framework
 `f2091fa0550856c69e53afc5f58147acd48d0c52` and device tree
 `4829092f7b7b988fc5fb2efe57c481f266364c71`.
 It includes the complete Settings/depth/Game Space baseline described below,

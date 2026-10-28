@@ -1,12 +1,40 @@
 # HeckerOS coral build integration
 
+## Experimental low-brightness flicker protection — 29 October 2026
+
+Use branch `test/floral-low-brightness-flicker-20261029` for this test build.
+The exact pins are Suite `b838dd012c9e740fc031c135c24cef831c92956d`, framework
+`f2091fa0550856c69e53afc5f58147acd48d0c52` and device tree
+`4829092f7b7b988fc5fb2efe57c481f266364c71`.
+It includes the complete Settings/depth/Game Space baseline described below,
+plus a pinned framework/device change for Coral's low-brightness refresh policy.
+Coral retains its existing protected 90 Hz mode below entry brightness 74,
+independent of ambient light. Four raw brightness steps of exit hysteresis
+prevent repeated 60/90 Hz switching near the boundary; adaptive switching resumes
+above 78 after entry. These are native brightness units, not slider percentages.
+
+The shared Flame overlay retains its original 16/60 Hz policy and gains the
+same exit margin, but the Flame manifest remains unchanged pending Coral testing.
+Native Smooth Display, forced-peak, Battery Saver, thermal and AOD behavior are
+retained. The production constructor, nine observer methods and helper pass
+1,372 host checks; framework/internal-symbol and both panel resources compile
+with AAPT2. Full system-server/ROM compilation and physical flicker reduction
+are not yet verified. See the matching Suite's `docs/floral-display-flicker.md`.
+
+For a fresh test checkout, use the local-manifest clone command in this document
+with `-b test/floral-low-brightness-flicker-20261029`. The historical feature
+sections below describe the retained baseline; `floral.xml` and
+`source-revisions.json` contain the current exact source selections.
+
+## Retained feature baseline
+
 Coral-first local manifest for HeckerOS Android 17 targeting Google Pixel 4 XL (`coral`). This `feat/settings-depth-lockscreen-20261028` experiment retains the complete Coral root-privacy/astronaut and Pakistan IMS work, adds the reference Settings/depth clocks, and includes synchronized launcher glass, default Caracal Dawn artwork and the NetLab touch/refresh fixes, saved device names and automatic manufacturer enrichment. Brightness and volume percentages are included in both Hecker QS and One UI QS. Game Space now has a launcher entry, default-on game-icon hiding, battery temperature in the floating pill and a shortcut that moves in both directions. Use this same branch in both HeckerOS and this local-manifest repository for the combined build. Pixel 4 (`flame`) support follows successful Coral hardware testing.
 
 The manifest pins the dedicated HeckerOS device, vendor and kernel imports, Motion Sense/3D Face Unlock plugins, Settings/framework baselines and HeckerOS integration. Hecker Launcher supplies HOME customizations; Pixel Launcher supplies Recents. UI pages live directly in native Settings; supporting feature services remain system components.
 
 ## Game Space, NetLab and visual features — 28 October 2026
 
-The Suite is pinned to `75a6a0f7b75e74a771276e71519e1c97c417a858`. Folder glass now draws inside the native reveal clip, fixing the separate panel that lingered after the icons closed. Folders, pale app glyphs and both search-bar choices use darker wallpaper-frosted glass. Launcher Studio adds the native **Add new apps to Home screen** switch and a **Google search bar** switch that replaces Hecker search in the same slot. Icon packs and individual icon choices take priority over the default glass glyphs.
+These retained features were introduced at Suite `75a6a0f7b75e74a771276e71519e1c97c417a858`. Folder glass now draws inside the native reveal clip, fixing the separate panel that lingered after the icons closed. Folders, pale app glyphs and both search-bar choices use darker wallpaper-frosted glass. Launcher Studio adds the native **Add new apps to Home screen** switch and a **Google search bar** switch that replaces Hecker search in the same slot. Icon packs and individual icon choices take priority over the default glass glyphs.
 
 Fresh users receive the original anime Caracal-girl home/lock wallpaper pair, a tall live clock at **76% opacity**, and the **750 ms** depth wake reveal. Existing photos/live wallpapers and chosen clock settings are retained on dirty flashes. Existing users can select **Hecker's Suite → Lock screen → Apply Caracal Dawn**. Arbitrary photos still require prepared matching background/transparent-foreground layers; automatic segmentation is not included.
 
@@ -107,7 +135,7 @@ gated phone-hotspot pause/restore remain; no disruptive interception backend is 
 mkdir -p ~/heckeros-coral-depth
 cd ~/heckeros-coral-depth
 repo init -u https://github.com/its-hecker/HeckerOS -b feat/settings-depth-lockscreen-20261028 --git-lfs
-git clone --branch feat/settings-depth-lockscreen-20261028 https://github.com/its-hecker/HeckerOs-localmanifest .repo/local_manifests
+git clone --branch test/floral-low-brightness-flicker-20261029 https://github.com/its-hecker/HeckerOs-localmanifest .repo/local_manifests
 repo sync -c -j8 --fail-fast --no-clone-bundle --no-tags
 HECKER_DEV_USB_ADB=false bash .repo/local_manifests/build.sh
 ```

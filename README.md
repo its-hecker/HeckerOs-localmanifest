@@ -1,27 +1,22 @@
 # HeckerOS coral build integration
 
-Coral-first local manifest for HeckerOS Android 17 targeting Google Pixel 4 XL (`coral`). This `feat/settings-depth-lockscreen-20261028` experiment builds on the complete Coral root-privacy/astronaut test and adds the reference Settings homepage, animated word clock and imported-layer depth clock. Pixel 4 (`flame`) support follows successful Coral hardware testing.
+Coral-first local manifest for HeckerOS Android 17 targeting Google Pixel 4 XL (`coral`). This `feat/settings-depth-lockscreen-20261028` experiment retains the complete Coral root-privacy/astronaut and Pakistan IMS work, adds the reference Settings/depth clocks, and now includes synchronized launcher glass and default Caracal Dawn artwork. Pixel 4 (`flame`) support follows successful Coral hardware testing.
 
 The manifest pins the dedicated HeckerOS device, vendor and kernel imports, Motion Sense/3D Face Unlock plugins, Settings/framework baselines and HeckerOS integration. Hecker Launcher supplies HOME customizations; Pixel Launcher supplies Recents. UI pages live directly in native Settings; supporting feature services remain system components.
 
-## Reference Settings and depth clock — 28 October 2026
+## Glass launcher and Caracal Dawn — 28 October 2026
 
-The Suite is pinned to `2d531ce0c9c58bf46c80cf895064a8b493e6c880`. Settings retains the HeckerOS card and native controllers,
-with grouped charcoal panels, coloured icons and a floating native Search pill.
-Lockscreen controls add an English word clock with a melting smiley and rotating
-starbursts, plus a large tall clock and a 750 ms depth reveal on wake.
-Depth currently requires a prepared matching background and transparent foreground;
-automatic subject extraction is not included. Existing device/framework/kernel,
-Face Unlock, Soli, root-privacy and launcher/Recents dependencies are retained.
+The Suite is pinned to `72689f38b0914318f4f6dc5feb8ff2470d035b63`. Folder glass now draws inside the native reveal clip, fixing the separate panel that lingered after the icons closed. Folders, pale app glyphs and both search-bar choices use darker wallpaper-frosted glass. Launcher Studio adds the native **Add new apps to Home screen** switch and a **Google search bar** switch that replaces Hecker search in the same slot. Icon packs and individual icon choices take priority over the default glass glyphs.
 
-Validation covers 117 Suite host tests, 81 integration tests, owned app Java/resources/AIDL,
-Settings adapters, SystemUI Compose and native source upgrade/revert checks. Full ROM
-build, on-phone appearance, depth wake performance and Coral hardware tests remain pending.
-The intermittent navigation freeze is **not claimed fixed**. The Suite adds a read-only
-frozen/recovered diagnostics helper. See [feature details, artwork previews and gesture diagnostics](https://github.com/its-hecker/HeckerOS/blob/2d531ce0c9c58bf46c80cf895064a8b493e6c880/docs/settings-depth-lockscreen.md).
+Fresh users receive the original anime Caracal-girl home/lock wallpaper pair, a tall live clock at **76% opacity**, and the **750 ms** depth wake reveal. Existing photos/live wallpapers and chosen clock settings are retained on dirty flashes. Existing users can select **Hecker's Suite → Lock screen → Apply Caracal Dawn**. Arbitrary photos still require prepared matching background/transparent-foreground layers; automatic segmentation is not included.
 
-This branch changes the Suite selection only. Use its fresh-checkout recipe below;
-the historical sections describe earlier work.
+Validation: **122 Suite Python host tests** plus Java/C++ regressions; **81 integration tests**; Suite Java/resources/AIDL and controller compilation, SystemUI Compose, launcher SDK/native adapters, **106 immutable native inputs** with exact apply/revert, **404 folder reveal states**, and an upgrade from the previously prepared launcher. Default-appearance/provider tests cover existing-user preservation, per-user/direct-boot storage and changed-wallpaper invalidation. Full ROM/Soong, Coral boot, exact visual matching and device animation performance remain pending. See [implementation, artwork and validation](https://github.com/its-hecker/HeckerOS/blob/72689f38b0914318f4f6dc5feb8ff2470d035b63/docs/launcher-glass-caracal.md).
+
+## Reference Settings and depth clock
+
+Settings retains the HeckerOS card and native controllers, with grouped charcoal panels, coloured icons and a floating native Search pill. Lockscreen controls include the English word clock with a melting smiley and rotating starbursts, plus the large translucent tall clock. See [Settings, clock and gesture details](https://github.com/its-hecker/HeckerOS/blob/72689f38b0914318f4f6dc5feb8ff2470d035b63/docs/settings-depth-lockscreen.md).
+
+The separate intermittent navigation freeze is **not claimed fixed**; the Suite includes a read-only frozen/recovered diagnostic helper. Root-privacy kernel/framework pins, Pakistan IMS/carrier configuration, Face Unlock, Soli and launcher/Recents dependencies are retained. This update changes the Suite selection only. Use the fresh-checkout recipe below; the historical sections describe earlier work.
 
 ## Root privacy baseline correction — 27 October 2026
 

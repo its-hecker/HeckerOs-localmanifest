@@ -1,7 +1,7 @@
 # HeckerOS Coral build integration
 
 This `feat/living-flow-polish-20261030` branch selects Suite
-`d2d9ed510a4cc6fd8c4a6d46ea42fbe5f1ec2c9c`, the screenshot-reference Living Flow polish and the reviewed
+`e9b909878f8dd5a17455702d4744ab5aedbe3c83`, the screenshot-reference Living Flow polish and the reviewed
 PixelOS/Lineage October update. It retains the low-brightness protection, FaceID,
 root-privacy, Motion Sense, NetLab and Game Space work. This update is Coral only.
 
@@ -9,8 +9,11 @@ root-privacy, Motion Sense, NetLab and Game Space work. This update is Coral onl
 
 Tall translucent clock with bundled preview font, continuous doze/mask reveal,
 separate Harbor Home depth layers, additional outline icons and compact search,
-colour-based outlined battery, shared media transitions and consistent QQS/full-QS
-blur for Hecker and One UI layouts. The current Suite UI is retained.
+colour-based outlined battery, animated blue/lavender media glow and consistent
+QQS/full-QS blur for Hecker and One UI layouts. The native Quick QS player now
+flows into either full player using shared scene bounds. Tall lock clock digits
+converge toward Home without replaying an independent Home reveal. The current
+Suite UI is retained.
 
 PixelOS framework/security/privacy, certificate trust, libmeminfo and vendor updates
 are pinned alongside five Lineage kernel cgroup fixes. The Lineage device and
@@ -18,6 +21,7 @@ Muppets vendor bases are already included; their pins remain unchanged. The
 platform release flag is 2026-10-01; vendor/firmware patch levels are unchanged.
 
 See [implementation and validation](https://github.com/its-hecker/HeckerOS/blob/feat/living-flow-polish-20261030/docs/living-flow-polish.md)
+[media glow and handoffs](https://github.com/its-hecker/HeckerOS/blob/feat/living-flow-polish-20261030/docs/media-glow-handoff.md),
 and [upstream review](https://github.com/its-hecker/HeckerOS/blob/feat/living-flow-polish-20261030/docs/coral-upstream-review-2026-10-30.md).
 
 ## Status-bar lyrics and dual rows
@@ -84,9 +88,10 @@ unrelated local edits; the source adapters reject unfamiliar changes.
 
 ## Validation
 
-Suite: 134 Python host tests, existing Java/C++ regressions and production Shell
+Suite: 135 Python host tests, existing Java/C++ regressions and production Shell
 motion checks; 82 integration tests; locked SDK Java/resources/AIDL; SystemUI
-Compose; 17,496 production clock frames; native Launcher helpers/resources; pinned
+Compose; 35,514 production clock frames; 72,072 media layout/reversal samples
+at three font scales; native Launcher helpers/resources; pinned
 source adapters, published Living Flow upgrades, repeat application and exact reversion.
 The matching manifest's integration tests and pin validation also pass.
 

@@ -1,9 +1,24 @@
 # HeckerOS Coral build integration
 
-This `feat/statusbar-lyrics-dual-20261029` branch selects Suite
-`b976e56ce5458e74db7a854a023611c92d374f50`. It retains the previous experimental low-brightness
-framework/device pins, root-privacy kernel, Caracal v2 Home/Lock depth layers,
-NetLab and Game Space work. Both new status-bar switches default off.
+This `feat/living-flow-polish-20261030` branch selects Suite
+`d2d9ed510a4cc6fd8c4a6d46ea42fbe5f1ec2c9c`, the screenshot-reference Living Flow polish and the reviewed
+PixelOS/Lineage October update. It retains the low-brightness protection, FaceID,
+root-privacy, Motion Sense, NetLab and Game Space work. This update is Coral only.
+
+## Living Flow polish and upstream updates
+
+Tall translucent clock with bundled preview font, continuous doze/mask reveal,
+separate Harbor Home depth layers, additional outline icons and compact search,
+colour-based outlined battery, shared media transitions and consistent QQS/full-QS
+blur for Hecker and One UI layouts. The current Suite UI is retained.
+
+PixelOS framework/security/privacy, certificate trust, libmeminfo and vendor updates
+are pinned alongside five Lineage kernel cgroup fixes. The Lineage device and
+Muppets vendor bases are already included; their pins remain unchanged. The
+platform release flag is 2026-10-01; vendor/firmware patch levels are unchanged.
+
+See [implementation and validation](https://github.com/its-hecker/HeckerOS/blob/feat/living-flow-polish-20261030/docs/living-flow-polish.md)
+and [upstream review](https://github.com/its-hecker/HeckerOS/blob/feat/living-flow-polish-20261030/docs/coral-upstream-review-2026-10-30.md).
 
 ## Status-bar lyrics and dual rows
 
@@ -15,7 +30,7 @@ lyric second-row layouts, and lyric alignment/width/font/colour/fade/marquee.
 Built-in signed framework overlays update app and SystemUI insets together; the
 native theme service mirrors the foreground user's height into system resources.
 
-See [implementation, controls and phone acceptance](https://github.com/its-hecker/HeckerOS/blob/feat/statusbar-lyrics-dual-20261029/docs/statusbar-lyrics-dual.md).
+See [implementation, controls and phone acceptance](https://github.com/its-hecker/HeckerOS/blob/feat/living-flow-polish-20261030/docs/statusbar-lyrics-dual.md).
 SDK/Compose, provider/geometry/overlay host checks and both framework adapter
 revisions pass. Full Soong builds and physical phone validation remain required.
 
@@ -39,8 +54,9 @@ not replaced. This is source implementation, not a validated ROM release.
 From the Android source root:
 
 ```bash
-git -C .repo/local_manifests fetch origin feat/statusbar-lyrics-dual-20261029
-git -C .repo/local_manifests switch feat/statusbar-lyrics-dual-20261029
+repo init -u https://github.com/its-hecker/HeckerOS -b feat/living-flow-polish-20261030 --git-lfs
+git -C .repo/local_manifests fetch origin feat/living-flow-polish-20261030
+git -C .repo/local_manifests switch feat/living-flow-polish-20261030
 repo sync -c -j8 --fail-fast --no-clone-bundle --no-tags
 HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
 ```
@@ -53,16 +69,16 @@ unrelated local edits; the source adapters reject unfamiliar changes.
 ## Fresh Coral checkout
 
 ```bash
-repo init -u https://github.com/its-hecker/HeckerOS -b main --git-lfs
-git clone -b feat/statusbar-lyrics-dual-20261029 https://github.com/its-hecker/HeckerOs-localmanifest .repo/local_manifests
+repo init -u https://github.com/its-hecker/HeckerOS -b feat/living-flow-polish-20261030 --git-lfs
+git clone -b feat/living-flow-polish-20261030 https://github.com/its-hecker/HeckerOs-localmanifest .repo/local_manifests
 repo sync -c -j8 --fail-fast --no-clone-bundle --no-tags
 HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
 ```
 
 ## Validation
 
-Suite: 132 Python host tests, existing Java/C++ regressions and production Shell
-motion checks; 81 integration tests; locked SDK Java/resources/AIDL; SystemUI
+Suite: 134 Python host tests, existing Java/C++ regressions and production Shell
+motion checks; 82 integration tests; locked SDK Java/resources/AIDL; SystemUI
 Compose; 17,496 production clock frames; native Launcher helpers/resources; pinned
 source adapters, published Living Flow upgrades, repeat application and exact reversion.
 The matching manifest's integration tests and pin validation also pass.
@@ -72,4 +88,4 @@ parity, AOD/lock/Home handoff, blur availability, fast reversal, frame pacing an
 low-brightness behavior. This is not a claim of the complete proprietary engine,
 identical animations or a guaranteed 90-fps result.
 
-Flame has a [matching feature manifest](https://github.com/its-hecker/HeckerOs-Flame-localmanifest/tree/feat/statusbar-lyrics-dual-20261029), retaining its own hardware/framework/kernel pins; its optional non-KSU build has a separate matching branch.
+Flame manifests, hardware pins and product files were not advanced by this update.

@@ -56,7 +56,7 @@
   },
   "framework": {
     "repository": "its-hecker/heckeros_frameworks_base",
-    "revision": "f2091fa0550856c69e53afc5f58147acd48d0c52",
+    "revision": "c72dce10290956bd3c4bfd23e787800d1340c46e",
     "files": {
       "core/java/android/app/ActivityThread.java": "bbcf0686b14e6191ea14111c3b886d9f53f485bc8c4d5430f8a62a9fe56490bd",
       "core/java/android/app/IActivityManager.aidl": "28ea763ad5aa2fe6344d89dd4207e70d31f0f999dca19d0e44962ec827a7da17",
@@ -79,7 +79,11 @@
       "services/core/java/com/android/server/spoof/HeckerSpoofConfigStore.java": "1233e7bb5c6ed2e96bd7141c09a524079c60a05ed23e0fa7318529254528c27a",
       "tests/hecker/NativeVirtualizationTest.cpp": "8d8685aa6648fb1cd7fa4bc34b3a10da75017e293db1f8b089038e5f93893c6b",
       "tests/hecker/PlayIntegrityScopeTest.java": "aed4ce7277813be55296b8c4da5be950d6fa0cc41bc9629845145ab8e27f0958",
-      "tests/hecker/SpoofingConfigTest.java": "904c40c79b65c89547f82e8e70a6401af1f169e2fcfb7c88aaffb399e32fbbef"
+      "tests/hecker/SpoofingConfigTest.java": "904c40c79b65c89547f82e8e70a6401af1f169e2fcfb7c88aaffb399e32fbbef",
+      "services/core/java/com/android/server/pm/AppsFilterBase.java": "7ef6b6b3d4fe72e2e270c6efd9c7b98abbdee6ba20c9d0acb1e06eab2910870b",
+      "services/core/java/com/android/server/pm/AppsFilterImpl.java": "9bf0abc259958f5b91b1d8e4c802965fdfe401fa4269080bc97b74fca9650e12",
+      "services/core/java/com/android/server/pm/HeckerRootVisibility.java": "225f6dabc2677fb77f3cace35bde7cc6b5592b357a7269d1a352d40766f77a86",
+      "tests/hecker/test_root_visibility.py": "51d13d39c06cfbaeff4cf3236596f7a45cb8c7caa89919782ef4ebbdcf0b3873"
     }
   },
   "settings_java": [

@@ -1,7 +1,7 @@
 # HeckerOS Coral build integration
 
 This `feat/living-flow-polish-20261030` branch selects Suite
-`4f2b448ce4bfde529f8987042d3ff43b1c14a89e`, the screenshot-reference Living Flow polish and the reviewed
+`e86b9ad87e67fc5126e52ef015fa1adda318e057`, the screenshot-reference Living Flow polish and the reviewed
 PixelOS/Lineage October update. It retains the low-brightness protection, FaceID,
 root-privacy, Motion Sense, NetLab and Game Space work. This update is Coral only.
 
@@ -23,6 +23,13 @@ platform release flag is 2026-10-01; vendor/firmware patch levels are unchanged.
 See [implementation and validation](https://github.com/its-hecker/HeckerOS/blob/feat/living-flow-polish-20261030/docs/living-flow-polish.md)
 [media glow and handoffs](https://github.com/its-hecker/HeckerOS/blob/feat/living-flow-polish-20261030/docs/media-glow-handoff.md),
 and [upstream review](https://github.com/its-hecker/HeckerOS/blob/feat/living-flow-polish-20261030/docs/coral-upstream-review-2026-10-30.md).
+
+## Display double-tap to sleep
+
+The existing Settings → Display switch now controls sleep from the collapsed
+status bar and native lockscreen, with live foreground-user preference updates.
+Native AOD wake and lockscreen state handling remain in place. See
+[the cause, implementation and phone checks](https://github.com/its-hecker/HeckerOS/blob/feat/living-flow-polish-20261030/docs/double-tap-sleep.md).
 
 ## Status-bar lyrics and dual rows
 
@@ -74,10 +81,11 @@ HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug HECKER_BUILD_JOBS=8 bash .rep
 From the Android source root:
 
 ```bash
-repo init -u https://github.com/its-hecker/HeckerOS -b feat/living-flow-polish-20261030 --git-lfs
-git -C .repo/local_manifests fetch origin feat/living-flow-polish-20261030
-git -C .repo/local_manifests switch feat/living-flow-polish-20261030
-repo sync -c -j8 --fail-fast --no-clone-bundle --no-tags
+repo init -u https://github.com/its-hecker/HeckerOS -b feat/living-flow-polish-20261030 --git-lfs &&
+git -C .repo/local_manifests fetch origin feat/living-flow-polish-20261030 &&
+git -C .repo/local_manifests switch feat/living-flow-polish-20261030 &&
+git -C .repo/local_manifests merge --ff-only origin/feat/living-flow-polish-20261030 &&
+repo sync -c -j8 --fail-fast --no-clone-bundle --no-tags &&
 HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
 ```
 

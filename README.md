@@ -1,17 +1,27 @@
 # HeckerOS coral build integration
 
-Coral-first local manifest for HeckerOS Android 17. This repository currently has one branch (`main`) and targets Google Pixel 4 XL (`coral`). Pixel 4 (`flame`) support follows coral hardware testing.
+Coral local-manifest baseline for HeckerOS Android 17 on Google Pixel 4 XL (`coral`).
+The commands below build this `main` baseline. For the newer Living Flow polish
+and October platform update, use the [matching Coral feature build guide](https://github.com/its-hecker/HeckerOs-localmanifest/blob/feat/living-flow-polish-20261030/README.md#complete-build-from-mkdir).
+Pixel 4 (`flame`) has a [separate local manifest](https://github.com/its-hecker/HeckerOs-Flame-localmanifest).
 
 The manifest pins the dedicated HeckerOS device, vendor and kernel imports, Motion Sense/3D Face Unlock plugins, Settings/framework baselines, launcher and HeckerOS integration. UI pages live directly in native Settings; supporting feature services remain system components.
 
-## Sync and build
+## Complete build from mkdir
 
 ```bash
-repo init -u https://github.com/its-hecker/HeckerOS -b main --git-lfs
-git clone https://github.com/its-hecker/HeckerOs-localmanifest .repo/local_manifests
-repo sync -c -j8 --fail-fast --no-clone-bundle --no-tags
-bash .repo/local_manifests/build.sh
+mkdir -p ~/heckeros-coral &&
+cd ~/heckeros-coral &&
+git lfs install &&
+repo init -u https://github.com/its-hecker/HeckerOS.git -b main --git-lfs &&
+git clone --branch main --single-branch https://github.com/its-hecker/HeckerOs-localmanifest.git .repo/local_manifests &&
+repo sync -c -j8 --fail-fast --no-clone-bundle --no-tags &&
+HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
 ```
+
+Copy the entire block in the initialized build shell. The `&&` chain stops
+at the first failure; the helper performs environment setup, target selection,
+preparation and compilation. Keep ServerHive's existing RBE settings.
 
 Run these commands in a fresh Android source directory with the normal AOSP build prerequisites, Git LFS, Python 3, Pillow and numpy. The script prepares original APKs, theme assets and guarded source adapters, then builds `hecker_coral-hecker_suite-userdebug` with `m heckeros`. It does not sign or publish a release.
 

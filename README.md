@@ -49,6 +49,22 @@ See [implementation, previews, controls and limits](https://github.com/its-hecke
 Pixel Launcher still owns Recents; its remote Recents/swipe-home animations are
 not replaced. This is source implementation, not a validated ROM release.
 
+## Complete build from mkdir
+
+Use a fresh directory in the provider's initialized Byobu/Tmux/RBE shell, with
+Android 17 build dependencies, Repo, Git LFS, Python, Pillow and numpy installed.
+Copy the whole block; `&&` stops it at the first failure.
+
+```bash
+mkdir -p ~/heckeros-coral &&
+cd ~/heckeros-coral &&
+git lfs install &&
+repo init -u https://github.com/its-hecker/HeckerOS.git -b feat/living-flow-polish-20261030 --git-lfs &&
+git clone --branch feat/living-flow-polish-20261030 --single-branch https://github.com/its-hecker/HeckerOs-localmanifest.git .repo/local_manifests &&
+repo sync -c -j8 --fail-fast --no-clone-bundle --no-tags &&
+HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
+```
+
 ## Existing Coral checkout
 
 From the Android source root:
@@ -65,15 +81,6 @@ The build helper retains the ServerHive RBE environment. Keep it in the normal
 initialized build session. It uses the native Settings and Hecker Suite product
 release and retires obsolete launcher/OmniJaws source with backups. Preserve
 unrelated local edits; the source adapters reject unfamiliar changes.
-
-## Fresh Coral checkout
-
-```bash
-repo init -u https://github.com/its-hecker/HeckerOS -b feat/living-flow-polish-20261030 --git-lfs
-git clone -b feat/living-flow-polish-20261030 https://github.com/its-hecker/HeckerOs-localmanifest .repo/local_manifests
-repo sync -c -j8 --fail-fast --no-clone-bundle --no-tags
-HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
-```
 
 ## Validation
 

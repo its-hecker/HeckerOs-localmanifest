@@ -8,7 +8,7 @@
   <remove-project path="vendor/lunaris/dolby" optional="true" />
   <remove-project path="vendor/hecker/floral/motionsense" optional="true" />
   <remove-project path="vendor/hecker/floral/faceid" optional="true" />
-  <remove-project path="vendor/hecker/floral/suite" optional="true" upstream="refs/heads/feat/living-flow-polish-20261030" dest-branch="feat/living-flow-polish-20261030" revision="e9b909878f8dd5a17455702d4744ab5aedbe3c83" />
+  <remove-project path="vendor/hecker/floral/suite" optional="true" upstream="refs/heads/feat/living-flow-polish-20261030" dest-branch="feat/living-flow-polish-20261030" revision="4f2b448ce4bfde529f8987042d3ff43b1c14a89e" />
   <project name="its-hecker/heckeros-floral-devicetree" path="device/google/coral" remote="floral-github" revision="4829092f7b7b988fc5fb2efe57c481f266364c71" upstream="refs/heads/test/floral-low-brightness-flicker-20261029" dest-branch="test/floral-low-brightness-flicker-20261029" />
   <project name="its-hecker/heckeros-coral-vendor" path="vendor/google/coral" remote="floral-github" revision="60b0c615e939cd09ce956e6fe6df5d5aa6ccbdd4" upstream="refs/heads/main" dest-branch="main" />
   <project name="its-hecker/heckeros-floral-kernel" path="kernel/google/msm-4.14" remote="floral-github" revision="5303303fd0138a719c0077570975fdce6ace661f" upstream="refs/heads/feat/coral-upstream-20261030" dest-branch="feat/coral-upstream-20261030" sync-s="true" />
@@ -16,7 +16,7 @@
   <project name="its-hecker/vendor_lunaris_dolby" path="vendor/lunaris/dolby" remote="floral-github" revision="544e6271c955e2bf450c8481ac1e71551cb5a800" upstream="refs/heads/pixelos-compat" dest-branch="pixelos-compat" />
   <project name="its-hecker/floral-motionsense-plugin" path="vendor/hecker/floral/motionsense" remote="floral-github" revision="87b91ac74c46de0d00992f72c6fe115189a2e83e" upstream="refs/heads/test/coral-root-privacy-20261027" dest-branch="test/coral-root-privacy-20261027" />
   <project name="its-hecker/floral-3D-faceid-plugin" path="vendor/hecker/floral/faceid" remote="floral-github" revision="d998995e1452d2c3d9882bfdf659e1db760a99be" upstream="refs/heads/main" dest-branch="main" />
-  <project name="its-hecker/HeckerOS" path="vendor/hecker/floral/suite" remote="floral-github" revision="e9b909878f8dd5a17455702d4744ab5aedbe3c83" upstream="refs/heads/feat/living-flow-polish-20261030" dest-branch="feat/living-flow-polish-20261030" />
+  <project name="its-hecker/HeckerOS" path="vendor/hecker/floral/suite" remote="floral-github" revision="4f2b448ce4bfde529f8987042d3ff43b1c14a89e" upstream="refs/heads/feat/living-flow-polish-20261030" dest-branch="feat/living-flow-polish-20261030" />
   <remove-project path="packages/services/OmniJaws" optional="true" />
   <extend-project name="PixelOS-AOSP/android_packages_apps_DolbyAtmos" path="packages/apps/DolbyAtmos" revision="13bbe61cf3e1046e3a1f0bda4719c321c953ce50" upstream="refs/heads/seventeen" />
   <extend-project name="LineageOS/android_hardware_lineage_compat" path="hardware/lineage/compat" revision="590c94850e079642136a4577305d02e4174caabc" upstream="refs/heads/lineage-24.0" />

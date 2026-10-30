@@ -1,7 +1,7 @@
 # HeckerOS Coral build integration
 
 This `feat/living-flow-polish-20261030` branch selects Suite
-`e9b909878f8dd5a17455702d4744ab5aedbe3c83`, the screenshot-reference Living Flow polish and the reviewed
+`4f2b448ce4bfde529f8987042d3ff43b1c14a89e`, the screenshot-reference Living Flow polish and the reviewed
 PixelOS/Lineage October update. It retains the low-brightness protection, FaceID,
 root-privacy, Motion Sense, NetLab and Game Space work. This update is Coral only.
 

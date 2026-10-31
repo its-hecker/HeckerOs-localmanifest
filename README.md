@@ -1,7 +1,7 @@
 # HeckerOS Coral build integration
 
 This `feat/living-flow-polish-20261030` branch selects Suite
-`e86b9ad87e67fc5126e52ef015fa1adda318e057`, the screenshot-reference Living Flow polish and the reviewed
+`38230833aab6466314b7ac49360abfaab548785a`, the screenshot-reference Living Flow polish and the reviewed
 PixelOS/Lineage October update. It retains the low-brightness protection, FaceID,
 root-privacy, Motion Sense, NetLab and Game Space work. This update is Coral only.
 
@@ -30,6 +30,19 @@ The existing Settings → Display switch now controls sleep from the collapsed
 status bar and native lockscreen, with live foreground-user preference updates.
 Native AOD wake and lockscreen state handling remain in place. See
 [the cause, implementation and phone checks](https://github.com/its-hecker/HeckerOS/blob/feat/living-flow-polish-20261030/docs/double-tap-sleep.md).
+
+## Reference About phone
+
+The compact About home follows the supplied reference with a rounded HeckerOS
+brand card, device name, Android/processor tiles, joined information rows and
+Credits & legal. The card shares the media player’s blue/lavender glow geometry,
+colours and absolute-time 7.2-second cycle. Native rename, detail pages, legal,
+search and build-number handling remain available. The current Hecker Suite UI
+is retained. See
+[implementation, preview and phone checks](https://github.com/its-hecker/HeckerOS/blob/feat/living-flow-polish-20261030/docs/about-phone-reference.md).
+
+The production glow lifecycle, prepared native navigation, source/translation
+checks and 136 host tests pass. Full ROM and Coral phone validation are pending.
 
 ## Status-bar lyrics and dual rows
 
@@ -96,7 +109,7 @@ unrelated local edits; the source adapters reject unfamiliar changes.
 
 ## Validation
 
-Suite: 135 Python host tests, existing Java/C++ regressions and production Shell
+Suite: 136 Python host tests, existing Java/C++ regressions and production Shell
 motion checks; 82 integration tests; locked SDK Java/resources/AIDL; SystemUI
 Compose; 35,514 production clock frames; 72,072 media layout/reversal samples
 at three font scales; native Launcher helpers/resources; pinned

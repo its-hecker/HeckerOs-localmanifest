@@ -25,7 +25,7 @@
   <extend-project name="its-hecker/heckeros_vendor_custom" path="vendor/custom" revision="82457873ad4f7c75195c21ddf9da35903a0d975f" upstream="refs/heads/feat/coral-upstream-20261030" />
   <extend-project name="its-hecker/heckeros_vendor_lineage" path="vendor/lineage" revision="a8286e3a3edc3aed7e774ca57476477f178a0c46" upstream="refs/heads/feat/coral-upstream-20261030" />
   <extend-project name="its-hecker/heckeros_frameworks_base" path="frameworks/base" revision="c72dce10290956bd3c4bfd23e787800d1340c46e" upstream="refs/heads/feat/coral-upstream-20261030" dest-branch="feat/coral-upstream-20261030" />
-  <extend-project name="platform/hardware/google/camera" path="hardware/google/camera" revision="cd15337bd229dd521a860d88bca3e37c3ca845f7" upstream="refs/heads/android-17.0.0_r1" />
+  <extend-project name="platform/hardware/google/camera" path="hardware/google/camera" revision="cd15337bd229dd521a860d88bca3e37c3ca845f7" upstream="refs/tags/android-17.0.0_r1" />
   <extend-project name="PixelOS-AOSP/android_system_sepolicy" path="system/sepolicy" revision="99c58a7cc9a44fe33c93808452d018e756d84753" upstream="refs/heads/seventeen" />
   <extend-project name="PixelOS-AOSP/android_system_core" path="system/core" revision="a5313eaec0219b021aaa5e59cc10dd07cfa8504c" upstream="refs/heads/seventeen" />
   <extend-project name="its-hecker/heckeros_packages_apps_Settings" path="packages/apps/Settings" revision="3831282d93ecda4d52a6894077482fe01ecea903" upstream="refs/heads/feat/suite-polish" />

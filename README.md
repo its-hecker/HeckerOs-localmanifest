@@ -1,6 +1,24 @@
 # HeckerOS Coral build integration
 
-This `fix/device-ui-feedback-20261101` branch selects the reviewed November 1
+## App compatibility
+
+This branch adds a searchable full installed-app list under Hecker Suite →
+App compatibility, with independent Root manager privacy, Allow app downgrade,
+Hide developer options and Bootloader spoof switches. Existing privacy choices
+are retained. Suite `6963155a0d449cf6a163c391c14c18fafd4cbd41` and framework `cc977dce02b883f8440c240c79996167210a13a1` are selected together.
+
+The matching framework and Suite branches are published on GitHub and pinned
+by this manifest. Full ROM/SELinux compilation and phone tests remain pending. The controls do not lock the bootloader or alter
+hardware-backed attestation; UBL compatibility remains unproven.
+
+Source validation for this work: 158 Suite host tests, 1,296 production installer
+and Settings assertions, package/privacy and native-rule checks, complete Suite
+Java/resources/AIDL and independent Settings dashboard compilation.
+
+See [feature scope and acceptance](https://github.com/its-hecker/HeckerOS/blob/feat/app-compatibility-20261101/docs/app-compatibility.md).
+
+
+This `feat/app-compatibility-20261101` branch selects the reviewed November 1
 Suite fixes, based on the existing Living Flow polish configuration. It retains
 the low-brightness protection, FaceID, root-privacy, Motion Sense, NetLab, Game
 Space and October upstream changes. This update is Coral only.
@@ -85,7 +103,7 @@ not replaced. This is source implementation, not a validated ROM release.
 
 These commands select the reviewed UI, centered GameSpace pill, root-free sensor
 recovery and Russian custom UI translations in both repositories. Suite is pinned to published source commit
-`f6f5c7af09752091d5dd671fa892eb35fca166d5`.
+`6963155a0d449cf6a163c391c14c18fafd4cbd41`.
 
 ## Complete build from mkdir
 
@@ -97,8 +115,8 @@ Copy the whole block; `&&` stops it at the first failure.
 mkdir -p ~/heckeros-coral &&
 cd ~/heckeros-coral &&
 git lfs install &&
-repo init -u https://github.com/its-hecker/HeckerOS.git -b fix/device-ui-feedback-20261101 --git-lfs &&
-git clone --branch fix/device-ui-feedback-20261101 --single-branch https://github.com/its-hecker/HeckerOs-localmanifest.git .repo/local_manifests &&
+repo init -u https://github.com/its-hecker/HeckerOS.git -b feat/app-compatibility-20261101 --git-lfs &&
+git clone --branch feat/app-compatibility-20261101 --single-branch https://github.com/its-hecker/HeckerOs-localmanifest.git .repo/local_manifests &&
 repo sync -c -j8 --fail-fast --no-clone-bundle --no-tags &&
 HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
 ```
@@ -108,8 +126,8 @@ HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug HECKER_BUILD_JOBS=8 bash .rep
 From the Android source root:
 
 ```bash
-repo init -u https://github.com/its-hecker/HeckerOS -b fix/device-ui-feedback-20261101 --git-lfs &&
-git -C .repo/local_manifests fetch origin fix/device-ui-feedback-20261101 &&
+repo init -u https://github.com/its-hecker/HeckerOS -b feat/app-compatibility-20261101 --git-lfs &&
+git -C .repo/local_manifests fetch origin feat/app-compatibility-20261101 &&
 git -C .repo/local_manifests switch --detach FETCH_HEAD &&
 repo sync -c -j8 --fail-fast --no-clone-bundle --no-tags &&
 HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
@@ -122,7 +140,7 @@ unrelated local edits; the source adapters reject unfamiliar changes.
 
 ## Validation
 
-Current preparation: 158 Suite Python host tests, 452 production sensor-broker
+Inherited November 1 preparation: 158 Suite Python host tests, 452 production sensor-broker
 assertions, complete locked SDK Java/resources/AIDL compilation and independent
 Settings dashboard compilation passed. All ten Russian resource groups compile;
 1,120 custom resources retain matching formatting arguments and array structure.

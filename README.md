@@ -83,9 +83,9 @@ not replaced. This is source implementation, not a validated ROM release.
 
 ## Build commands after publication
 
-These commands select the reviewed UI and additional pill/sensor-recovery
-changes in both repositories. Suite is pinned to published source commit
-`6e192a1c57dcc5f1cd52cdb59632e811f3ee1adf`.
+These commands select the reviewed UI, centered GameSpace pill, root-free sensor
+recovery and Russian custom UI translations in both repositories. Suite is pinned to published source commit
+`f6f5c7af09752091d5dd671fa892eb35fca166d5`.
 
 ## Complete build from mkdir
 
@@ -122,22 +122,33 @@ unrelated local edits; the source adapters reject unfamiliar changes.
 
 ## Validation
 
-Current preparation: 158 Suite Python host tests, the remaining Java/C++ and
-production Shell checks, complete locked SDK Java/resources/AIDL compilation,
-77 Coral manifest integration tests, pin validation and build-script syntax
-checks passed. The original reviewed native/Compose adapter validation remains
-recorded in the Suite review. Full ROM compilation and phone tests are pending.
+Current preparation: 158 Suite Python host tests, 452 production sensor-broker
+assertions, complete locked SDK Java/resources/AIDL compilation and independent
+Settings dashboard compilation passed. All ten Russian resource groups compile;
+1,120 custom resources retain matching formatting arguments and array structure.
+127 immutable native inputs pass fresh application, upgrade, repeat and revert
+checks, including both Binder-service fuzzer bindings. Coral integration tests,
+pin validation and build-script syntax checks passed. Full ROM/SELinux compilation
+and phone tests are pending.
 
-## Additional GameSpace and proximity recovery work
+## Additional GameSpace, proximity recovery and Russian work
 
 The selected source centers GameSpace floating-pill labels and values and
-adds the manual root-authorized Sensor recovery page and QS tile.
-The companion shell helper can be tested separately on an existing rooted
-PixelOS build. It restarts an allowlisted running Sensors HAL and verifies a
-changed process ID; physical near/far recovery still needs a cover/uncover
-test on the affected phone. It does not reset calibration or bypass Face Unlock
-proximity checks. See docs/GAME_PILL_SENSOR_RECOVERY_2026-11-01.md in Suite.
+adds the manual Sensor recovery page and QS tile without requiring user root
+access or a KernelSU grant. A platform-authenticated Binder broker requests
+fixed init actions and verifies a changed running Sensors HAL process through
+private init receipts. The app never runs su or a shell command. Recovery is
+manual, limited to an awake, unlocked foreground user with no active call,
+and has a cooldown.
 
-The current Suite changes pass 158 host tests, including 12 helper behavior
-cases, plus complete SDK Java/resources/AIDL and independent Settings dashboard
-compilation. Full ROM and affected-device testing remain pending.
+Build and flash the matching updated ROM to obtain the broker, init rules and
+SELinux policy; an APK update or an older stock/PixelOS image cannot provide
+this service. The helper is now a root-free cmd client with no root fallback.
+Physical near/far recovery still needs a cover/uncover test on the affected
+phone. It does not reset calibration or bypass Face Unlock proximity checks.
+See docs/GAME_PILL_SENSOR_RECOVERY_2026-11-01.md in Suite.
+
+Russian covers 1,120 custom resources across Suite, Hecker Launcher, Settings,
+SystemUI and NetLab. Select Russian in Android's system language settings.
+Existing upstream Android/Google language packs remain under their own projects.
+See docs/RUSSIAN_TRANSLATIONS_2026-11-01.md for coverage and typography limits.

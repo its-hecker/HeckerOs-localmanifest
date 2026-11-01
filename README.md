@@ -83,8 +83,9 @@ not replaced. This is source implementation, not a validated ROM release.
 
 ## Build commands after publication
 
-These commands select the reviewed UI branch in both repositories. Suite is
-pinned to `332eafba6850e4c0e0e2a4af62c28d48ad5a3332`.
+These commands select the reviewed UI and additional pill/sensor-recovery
+changes in both repositories. Suite is pinned to published source commit
+`6e192a1c57dcc5f1cd52cdb59632e811f3ee1adf`.
 
 ## Complete build from mkdir
 
@@ -121,8 +122,22 @@ unrelated local edits; the source adapters reject unfamiliar changes.
 
 ## Validation
 
-Current preparation: 146 Suite Python host tests, the remaining Java/C++ and
+Current preparation: 158 Suite Python host tests, the remaining Java/C++ and
 production Shell checks, complete locked SDK Java/resources/AIDL compilation,
 77 Coral manifest integration tests, pin validation and build-script syntax
 checks passed. The original reviewed native/Compose adapter validation remains
 recorded in the Suite review. Full ROM compilation and phone tests are pending.
+
+## Additional GameSpace and proximity recovery work
+
+The selected source centers GameSpace floating-pill labels and values and
+adds the manual root-authorized Sensor recovery page and QS tile.
+The companion shell helper can be tested separately on an existing rooted
+PixelOS build. It restarts an allowlisted running Sensors HAL and verifies a
+changed process ID; physical near/far recovery still needs a cover/uncover
+test on the affected phone. It does not reset calibration or bypass Face Unlock
+proximity checks. See docs/GAME_PILL_SENSOR_RECOVERY_2026-11-01.md in Suite.
+
+The current Suite changes pass 158 host tests, including 12 helper behavior
+cases, plus complete SDK Java/resources/AIDL and independent Settings dashboard
+compilation. Full ROM and affected-device testing remain pending.

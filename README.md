@@ -7,7 +7,33 @@ Pixel 4 (`flame`) has a [separate local manifest](https://github.com/its-hecker/
 
 The manifest pins the dedicated HeckerOS device, vendor and kernel imports, Motion Sense/3D Face Unlock plugins, Settings/framework baselines, launcher and HeckerOS integration. UI pages live directly in native Settings; supporting feature services remain system components.
 
+## Complete build from mkdir (default jobs)
+
+These commands build this branch's Coral baseline. Use a fresh directory with
+the normal Android build dependencies, Repo, Git LFS, Python 3, Pillow and numpy
+installed. On ServerHive, run this in the provider's initialized Byobu/Tmux/RBE
+shell and keep RBE enabled. Choose this block or the original 8-job block below
+for a fresh checkout.
+
+```bash
+mkdir -p ~/heckeros-coral &&
+cd ~/heckeros-coral &&
+git lfs install &&
+repo init -u https://github.com/its-hecker/HeckerOS.git -b main --git-lfs &&
+git clone --branch main --single-branch https://github.com/its-hecker/HeckerOs-localmanifest.git .repo/local_manifests &&
+repo sync -c --fail-fast --no-clone-bundle --no-tags &&
+env -u HECKER_BUILD_JOBS HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
+```
+
+`env -u HECKER_BUILD_JOBS` clears an inherited job override for this invocation,
+so `build.sh` uses its default available logical CPU count (`nproc`). The source
+sync also uses Repo's default download parallelism. The helper retains all
+preparation and output checks. Build output: `out/target/product/coral/`.
+
 ## Complete build from mkdir
+
+**8 build jobs:** this original block explicitly sets `HECKER_BUILD_JOBS=8`.
+The `repo sync -j8` option separately controls source downloads.
 
 ```bash
 mkdir -p ~/heckeros-coral &&

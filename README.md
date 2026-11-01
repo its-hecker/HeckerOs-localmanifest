@@ -1,9 +1,17 @@
 # HeckerOS Coral build integration
 
-This `feat/living-flow-polish-20261030` branch selects Suite
-`38230833aab6466314b7ac49360abfaab548785a`, the screenshot-reference Living Flow polish and the reviewed
-PixelOS/Lineage October update. It retains the low-brightness protection, FaceID,
-root-privacy, Motion Sense, NetLab and Game Space work. This update is Coral only.
+This `fix/device-ui-feedback-20261101` branch selects the reviewed November 1
+Suite fixes, based on the existing Living Flow polish configuration. It retains
+the low-brightness protection, FaceID, root-privacy, Motion Sense, NetLab, Game
+Space and October upstream changes. This update is Coral only.
+
+The source changes repair Launcher search/icon scope, custom clock application,
+shared lyrics and status rows, Settings/Suite layout, media transitions and
+Motion Sense animation. Automatic depth extraction uses pinned inputs prepared
+by the build helper before Soong. The four binary dependencies are fetched to
+the build machine and verified against the reviewed SHA-256 hashes. No model
+download happens on the phone. `build.sh --offline` requires valid cached inputs.
+Full ROM compilation and Coral phone testing remain pending.
 
 ## Living Flow polish and upstream updates
 
@@ -73,6 +81,11 @@ See [implementation, previews, controls and limits](https://github.com/its-hecke
 Pixel Launcher still owns Recents; its remote Recents/swipe-home animations are
 not replaced. This is source implementation, not a validated ROM release.
 
+## Build commands after publication
+
+These commands select the reviewed UI branch in both repositories. Suite is
+pinned to `332eafba6850e4c0e0e2a4af62c28d48ad5a3332`.
+
 ## Complete build from mkdir
 
 Use a fresh directory in the provider's initialized Byobu/Tmux/RBE shell, with
@@ -83,8 +96,8 @@ Copy the whole block; `&&` stops it at the first failure.
 mkdir -p ~/heckeros-coral &&
 cd ~/heckeros-coral &&
 git lfs install &&
-repo init -u https://github.com/its-hecker/HeckerOS.git -b feat/living-flow-polish-20261030 --git-lfs &&
-git clone --branch feat/living-flow-polish-20261030 --single-branch https://github.com/its-hecker/HeckerOs-localmanifest.git .repo/local_manifests &&
+repo init -u https://github.com/its-hecker/HeckerOS.git -b fix/device-ui-feedback-20261101 --git-lfs &&
+git clone --branch fix/device-ui-feedback-20261101 --single-branch https://github.com/its-hecker/HeckerOs-localmanifest.git .repo/local_manifests &&
 repo sync -c -j8 --fail-fast --no-clone-bundle --no-tags &&
 HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
 ```
@@ -94,10 +107,9 @@ HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug HECKER_BUILD_JOBS=8 bash .rep
 From the Android source root:
 
 ```bash
-repo init -u https://github.com/its-hecker/HeckerOS -b feat/living-flow-polish-20261030 --git-lfs &&
-git -C .repo/local_manifests fetch origin feat/living-flow-polish-20261030 &&
-git -C .repo/local_manifests switch feat/living-flow-polish-20261030 &&
-git -C .repo/local_manifests merge --ff-only origin/feat/living-flow-polish-20261030 &&
+repo init -u https://github.com/its-hecker/HeckerOS -b fix/device-ui-feedback-20261101 --git-lfs &&
+git -C .repo/local_manifests fetch origin fix/device-ui-feedback-20261101 &&
+git -C .repo/local_manifests switch --detach FETCH_HEAD &&
 repo sync -c -j8 --fail-fast --no-clone-bundle --no-tags &&
 HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
 ```
@@ -109,16 +121,8 @@ unrelated local edits; the source adapters reject unfamiliar changes.
 
 ## Validation
 
-Suite: 136 Python host tests, existing Java/C++ regressions and production Shell
-motion checks; 82 integration tests; locked SDK Java/resources/AIDL; SystemUI
-Compose; 35,514 production clock frames; 72,072 media layout/reversal samples
-at three font scales; native Launcher helpers/resources; pinned
-source adapters, published Living Flow upgrades, repeat application and exact reversion.
-The matching manifest's integration tests and pin validation also pass.
-
-A full Soong build, boot and Coral phone tests remain required for font/layout
-parity, AOD/lock/Home handoff, blur availability, fast reversal, frame pacing and
-low-brightness behavior. This is not a claim of the complete proprietary engine,
-identical animations or a guaranteed 90-fps result.
-
-Flame manifests, hardware pins and product files were not advanced by this update.
+Current preparation: 146 Suite Python host tests, the remaining Java/C++ and
+production Shell checks, complete locked SDK Java/resources/AIDL compilation,
+77 Coral manifest integration tests, pin validation and build-script syntax
+checks passed. The original reviewed native/Compose adapter validation remains
+recorded in the Suite review. Full ROM compilation and phone tests are pending.

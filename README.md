@@ -1,35 +1,41 @@
 # HeckerOS Coral build integration
 
-## App compatibility
+## Coral UI and compatibility — 2 November 2026
 
-This branch adds a searchable full installed-app list under Hecker Suite →
-App compatibility, with independent Root manager privacy, Allow app downgrade,
-Hide developer options and Bootloader spoof switches. Existing privacy choices
-are retained. Suite `6963155a0d449cf6a163c391c14c18fafd4cbd41` and framework `cc977dce02b883f8440c240c79996167210a13a1` are selected together.
+This `fix/coral-ui-compatibility-20261102` branch adds independent AOD clock
+sizing, adjustable lighter QS blur, native media visibility and reduced per-frame
+work, single Settings card backgrounds, a colored GameSpace icon and Google Sans
+Cyrillic fallback fonts under the OFL.
 
-The matching framework and Suite branches are published on GitHub and pinned
-by this manifest. Full ROM/SELinux compilation and phone tests remain pending. The controls do not lock the bootloader or alter
-hardware-backed attestation; UBL compatibility remains unproven.
+App compatibility retains the four existing switches and adds **Hide custom ROM**.
+The reviewed VoltageOS Bionic hooks use an opt-in app flag. The build also restricts
+Lineage service discovery for untrusted app domains and excludes `addon.d` from
+Coral images. Removing `addon.d` disables preservation of add-on packages across
+ROM updates; it does not inherently prevent their initial installation.
 
-Source validation for this work: 158 Suite host tests, 1,296 production installer
-and Settings assertions, package/privacy and native-rule checks, complete Suite
-Java/resources/AIDL and independent Settings dashboard compilation.
+The Suite and framework revisions below are pinned together.
 
-See [feature scope and acceptance](https://github.com/its-hecker/HeckerOS/blob/feat/app-compatibility-20261101/docs/app-compatibility.md).
+| Source | Exact revision |
+| --- | --- |
+| Suite | `a3f0f41b94e67c4f961e2daa02f46f6d621d9660` |
+| Framework | `4af276bc5ceea071ef0da5ea440cda4470c08df6` |
 
+ Full Android/APEX/
+SELinux compilation and phone tests remain pending. Pixel Launcher weather still
+needs Smartspace diagnostics; UBL compatibility and hardware attestation are not
+established as fixed. Existing hardware, kernel, camera and RBE configuration is
+retained. This integration update selects Coral only.
 
-This `feat/app-compatibility-20261101` branch selects the reviewed November 1
-Suite fixes, based on the existing Living Flow polish configuration. It retains
-the low-brightness protection, FaceID, root-privacy, Motion Sense, NetLab, Game
-Space and October upstream changes. This update is Coral only.
+See [changes, controls and acceptance](https://github.com/its-hecker/HeckerOS/blob/fix/coral-ui-compatibility-20261102/docs/coral-feedback-2026-11-02.md)
+and [compatibility coverage and limits](https://github.com/its-hecker/HeckerOS/blob/fix/coral-ui-compatibility-20261102/docs/app-compatibility.md).
 
-The source changes repair Launcher search/icon scope, custom clock application,
-shared lyrics and status rows, Settings/Suite layout, media transitions and
-Motion Sense animation. Automatic depth extraction uses pinned inputs prepared
-by the build helper before Soong. The four binary dependencies are fetched to
-the build machine and verified against the reviewed SHA-256 hashes. No model
-download happens on the phone. `build.sh --offline` requires valid cached inputs.
-Full ROM compilation and Coral phone testing remain pending.
+Source checks pass: 164 Suite Python tests, 83 shared integration tests, 78
+Coral manifest tests, 2,590 installer/Settings policy assertions, Suite SDK/resource
+compilation and native adapter/ABI checks. Full ROM and phone acceptance remain
+pending. With `HECKER_BUILD_JOBS` unset, `build.sh` runs `m heckeros` and leaves
+parallelism to Android; existing RBE variables are retained.
+
+The older sections below document inherited features.
 
 ## Living Flow polish and upstream updates
 
@@ -103,7 +109,7 @@ not replaced. This is source implementation, not a validated ROM release.
 
 These commands select the reviewed UI, centered GameSpace pill, root-free sensor
 recovery and Russian custom UI translations in both repositories. Suite is pinned to published source commit
-`6963155a0d449cf6a163c391c14c18fafd4cbd41`.
+`a3f0f41b94e67c4f961e2daa02f46f6d621d9660`.
 
 ## Complete build from mkdir
 
@@ -115,10 +121,10 @@ Copy the whole block; `&&` stops it at the first failure.
 mkdir -p ~/heckeros-coral &&
 cd ~/heckeros-coral &&
 git lfs install &&
-repo init -u https://github.com/its-hecker/HeckerOS.git -b feat/app-compatibility-20261101 --git-lfs &&
-git clone --branch feat/app-compatibility-20261101 --single-branch https://github.com/its-hecker/HeckerOs-localmanifest.git .repo/local_manifests &&
-repo sync -c -j8 --fail-fast --no-clone-bundle --no-tags &&
-HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
+repo init -u https://github.com/its-hecker/HeckerOS.git -b fix/coral-ui-compatibility-20261102 --git-lfs &&
+git clone --branch fix/coral-ui-compatibility-20261102 --single-branch https://github.com/its-hecker/HeckerOs-localmanifest.git .repo/local_manifests &&
+repo sync -c --fail-fast --no-clone-bundle --no-tags &&
+env -u HECKER_BUILD_JOBS HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
 ```
 
 ## Existing Coral checkout
@@ -126,11 +132,11 @@ HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug HECKER_BUILD_JOBS=8 bash .rep
 From the Android source root:
 
 ```bash
-repo init -u https://github.com/its-hecker/HeckerOS -b feat/app-compatibility-20261101 --git-lfs &&
-git -C .repo/local_manifests fetch origin feat/app-compatibility-20261101 &&
+repo init -u https://github.com/its-hecker/HeckerOS -b fix/coral-ui-compatibility-20261102 --git-lfs &&
+git -C .repo/local_manifests fetch origin fix/coral-ui-compatibility-20261102 &&
 git -C .repo/local_manifests switch --detach FETCH_HEAD &&
-repo sync -c -j8 --fail-fast --no-clone-bundle --no-tags &&
-HECKER_BUILD_JOBS=8 bash .repo/local_manifests/build.sh
+repo sync -c --fail-fast --no-clone-bundle --no-tags &&
+env -u HECKER_BUILD_JOBS HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
 ```
 
 The build helper retains the ServerHive RBE environment. Keep it in the normal

@@ -2,6 +2,13 @@
 
 ## Coral UI and compatibility — 2 November 2026
 
+**4 November Settings crash fix:** select the corrected homepage lifecycle
+adapter. Divider suppression now runs after AndroidX initializes its list, and
+existing prepared sources upgrade automatically. Host crash reproduction,
+recreation, source-upgrade and Settings resource/adapter checks pass; the rebuilt
+ROM still needs phone validation. Keep `out/` for an incremental rebuild. See
+[cause and rebuild](https://github.com/its-hecker/HeckerOS/blob/fix/coral-ui-compatibility-20261102/docs/settings-home-crash-2026-11-04.md).
+
 **3 November launcher/depth update:** select the refreshed Launcher Studio and
 depth fixes: dedicated signature access to Home layers, adjustable clock/search
 height and clock information position, manual subject alignment, current-lock
@@ -39,7 +46,7 @@ The Suite and framework revisions below are pinned together.
 
 | Source | Exact revision |
 | --- | --- |
-| Suite | `25642fbfcbd0762eefc213f7a93625e257b5722b` |
+| Suite | `53caa8dc790b67da46fc98fd3908211c66cccb45` |
 | Framework | `4af276bc5ceea071ef0da5ea440cda4470c08df6` |
 
  Full Android/APEX/
@@ -131,7 +138,7 @@ not replaced. This is source implementation, not a validated ROM release.
 
 These commands select the reviewed UI, centered GameSpace pill, root-free sensor
 recovery and Russian custom UI translations in both repositories. Suite is pinned to published source commit
-`25642fbfcbd0762eefc213f7a93625e257b5722b`.
+`53caa8dc790b67da46fc98fd3908211c66cccb45`.
 
 ## Complete build from mkdir
 

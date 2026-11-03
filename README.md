@@ -2,6 +2,13 @@
 
 ## Coral UI and compatibility — 2 November 2026
 
+**4 November stock/plugin clock depth:** select the native clock masking
+adapter. Depth now follows stock and installed SystemUI plugin clocks in their
+small/large native elements. Imports and depth toggles preserve the selected
+clock mode. Keep Custom clock off for stock/plugin styles. Locked Java/Compose,
+resource, mask geometry, extraction-selection and upgrade checks pass; full
+ROM/phone validation is pending. See [implementation and use](https://github.com/its-hecker/HeckerOS/blob/fix/coral-ui-compatibility-20261102/docs/stock-clock-depth-2026-11-04.md).
+
 **4 November Settings crash fix:** select the corrected homepage lifecycle
 adapter. Divider suppression now runs after AndroidX initializes its list, and
 existing prepared sources upgrade automatically. Host crash reproduction,
@@ -46,7 +53,7 @@ The Suite and framework revisions below are pinned together.
 
 | Source | Exact revision |
 | --- | --- |
-| Suite | `53caa8dc790b67da46fc98fd3908211c66cccb45` |
+| Suite | `fefb4453414e4e37c25cb7a256361fdb7a764e31` |
 | Framework | `4af276bc5ceea071ef0da5ea440cda4470c08df6` |
 
  Full Android/APEX/
@@ -138,7 +145,7 @@ not replaced. This is source implementation, not a validated ROM release.
 
 These commands select the reviewed UI, centered GameSpace pill, root-free sensor
 recovery and Russian custom UI translations in both repositories. Suite is pinned to published source commit
-`53caa8dc790b67da46fc98fd3908211c66cccb45`.
+`fefb4453414e4e37c25cb7a256361fdb7a764e31`.
 
 ## Complete build from mkdir
 

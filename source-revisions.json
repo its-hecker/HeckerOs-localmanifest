@@ -202,7 +202,9 @@
         "core/java/com/android/internal/os/AppZygoteInit.java",
         "services/core/java/com/android/server/pm/parsing/PackageInfoUtils.java",
         "services/core/java/com/android/server/pm/InstallPackageHelper.java",
-        "tests/hecker/test_app_compatibility.py"
+        "tests/hecker/test_app_compatibility.py",
+        "packages/SystemUI/src/com/android/systemui/qs/composefragment/QSFragmentCompose.kt",
+        "packages/SystemUI/compose/features/src/com/android/systemui/keyguard/ui/composable/elements/LockscreenElementFactoryImpl.kt"
       ]
     },
     "hardware/google/camera": {
@@ -450,7 +452,7 @@
     "inherited_suite_revision": "6963155a0d449cf6a163c391c14c18fafd4cbd41",
     "device_testing": "pending",
     "source_validation": "host/SDK checked; full ROM and physical acceptance pending",
-    "suite_revision": "53caa8dc790b67da46fc98fd3908211c66cccb45",
+    "suite_revision": "fefb4453414e4e37c25cb7a256361fdb7a764e31",
     "native_source_lock": "native-compat/source-lock.json"
   },
   "device_feedback_20261102": {
@@ -468,7 +470,7 @@
     ],
     "weather": "Pixel Launcher Google Smartspace requires device diagnostics",
     "validation": "Host and SDK checks only; full Android build and device acceptance pending",
-    "suite_revision": "53caa8dc790b67da46fc98fd3908211c66cccb45"
+    "suite_revision": "fefb4453414e4e37c25cb7a256361fdb7a764e31"
   },
   "boot_fix_20261103": {
     "branch": "fix/coral-ui-compatibility-20261102",
@@ -510,7 +512,7 @@
       "remove legacy PixelOS Developer options spoof controls"
     ],
     "validation": "Targeted host geometry, current-wallpaper pipeline, lifecycle/provider, permission, source-upgrade and font regression checks pass; full ROM build and physical Coral acceptance pending",
-    "suite_revision": "53caa8dc790b67da46fc98fd3908211c66cccb45"
+    "suite_revision": "fefb4453414e4e37c25cb7a256361fdb7a764e31"
   },
   "settings_home_crash_20261104": {
     "branch": "fix/coral-ui-compatibility-20261102",
@@ -521,5 +523,21 @@
     "fix": "Move divider suppression after super.onViewCreated; upgrade all published prepared homepage variants",
     "validation": "Host regression reproduces previous null-list crash and passes corrected native callbacks across view recreation; customization/preparation and Settings resource/adapter checks pass; full ROM build and Coral phone acceptance pending",
     "suite_revision": "53caa8dc790b67da46fc98fd3908211c66cccb45"
+  },
+  "native_clock_depth_20261104": {
+    "branch": "fix/coral-ui-compatibility-20261102",
+    "device": "coral",
+    "parent_suite_revision": "53caa8dc790b67da46fc98fd3908211c66cccb45",
+    "framework_revision": "4af276bc5ceea071ef0da5ea440cda4470c08df6",
+    "changes": [
+      "depth with stock and installed native clock plugins",
+      "mask only native small/large clock elements",
+      "draw-time root-to-local geometry",
+      "preserve stock/plugin/Hecker selection on toggles and both import routes",
+      "keep native AOD and non-clock lockscreen content",
+      "guarded upgrade of published depth adapters"
+    ],
+    "validation": "Locked SystemUI Compose/native-hook and complete Suite/Settings SDK compilation, 5184 affine registrations, production selection-retention pipeline, native adapter upgrade/revert and provider/layout/translation checks pass; full ROM/phone validation pending",
+    "suite_revision": "fefb4453414e4e37c25cb7a256361fdb7a764e31"
   }
 }

@@ -450,7 +450,7 @@
     "inherited_suite_revision": "6963155a0d449cf6a163c391c14c18fafd4cbd41",
     "device_testing": "pending",
     "source_validation": "host/SDK checked; full ROM and physical acceptance pending",
-    "suite_revision": "335d398d9fe3a0e2f487424be667b1d8cad10f7f",
+    "suite_revision": "faf6a3b37875b4cc0e5c6a162d31c220dee3ffe7",
     "native_source_lock": "native-compat/source-lock.json"
   },
   "device_feedback_20261102": {
@@ -468,7 +468,17 @@
     ],
     "weather": "Pixel Launcher Google Smartspace requires device diagnostics",
     "validation": "Host and SDK checks only; full Android build and device acceptance pending",
-    "suite_revision": "335d398d9fe3a0e2f487424be667b1d8cad10f7f"
+    "suite_revision": "faf6a3b37875b4cc0e5c6a162d31c220dee3ffe7"
+  },
+  "boot_fix_20261103": {
+    "branch": "fix/coral-ui-compatibility-20261102",
+    "device": "coral",
+    "parent_suite_revision": "335d398d9fe3a0e2f487424be667b1d8cad10f7f",
+    "parent_manifest_revision": "cd6bf7a5ece1739901546f43233bef91f900fde2",
+    "issue": "Cyrillic adapter emits forbidden lang attributes in named family-list children; Zygote fails during Typeface preload",
+    "legacy_config_sha256": "e606e8315cad959520194c7d23e5665065a96f2058b63fd96d6088b78467ce61",
+    "validation": "Pinned Android parser host execution reproduces the old exception and accepts the fixed XML; glyph, migration and built-output tests pass; full ROM build and phone acceptance pending",
+    "suite_revision": "faf6a3b37875b4cc0e5c6a162d31c220dee3ffe7"
   },
   "build_fix_20261103": {
     "branch": "fix/coral-ui-compatibility-20261102",

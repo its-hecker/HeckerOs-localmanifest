@@ -2,6 +2,14 @@
 
 ## Coral UI and compatibility — 2 November 2026
 
+**3 November boot fix:** select the corrected Cyrillic font adapter. The previous
+adapter put `lang="und-Cyrl"` inside named font lists, causing Zygote to fail while
+preloading Typeface. The exact previously prepared XML upgrades automatically;
+the final built-output check verifies the installed XML and both font subsets.
+Host tests with the pinned Android parsers reproduce the old crash and accept
+the correction. A rebuilt ROM and phone test are pending.
+See [boot cause and rebuild](https://github.com/its-hecker/HeckerOS/blob/fix/coral-ui-compatibility-20261102/docs/coral-font-boot-fix-2026-11-03.md).
+
 **3 November build fix:** the ROM-visibility helper now fits Bionic's 2 KiB
 stack-frame limit. The helper is upgraded automatically from the reviewed old
 copy. ARM/ARM64 platform/APEX object checks and boundary tests pass; the resumed
@@ -23,7 +31,7 @@ The Suite and framework revisions below are pinned together.
 
 | Source | Exact revision |
 | --- | --- |
-| Suite | `335d398d9fe3a0e2f487424be667b1d8cad10f7f` |
+| Suite | `faf6a3b37875b4cc0e5c6a162d31c220dee3ffe7` |
 | Framework | `4af276bc5ceea071ef0da5ea440cda4470c08df6` |
 
  Full Android/APEX/
@@ -115,7 +123,7 @@ not replaced. This is source implementation, not a validated ROM release.
 
 These commands select the reviewed UI, centered GameSpace pill, root-free sensor
 recovery and Russian custom UI translations in both repositories. Suite is pinned to published source commit
-`335d398d9fe3a0e2f487424be667b1d8cad10f7f`.
+`faf6a3b37875b4cc0e5c6a162d31c220dee3ffe7`.
 
 ## Complete build from mkdir
 
@@ -130,7 +138,7 @@ git lfs install &&
 repo init -u https://github.com/its-hecker/HeckerOS.git -b fix/coral-ui-compatibility-20261102 --git-lfs &&
 git clone --branch fix/coral-ui-compatibility-20261102 --single-branch https://github.com/its-hecker/HeckerOs-localmanifest.git .repo/local_manifests &&
 repo sync -c --fail-fast --no-clone-bundle --no-tags &&
-env -u HECKER_BUILD_JOBS HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
+env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
 ```
 
 ## Existing Coral checkout
@@ -142,7 +150,7 @@ repo init -u https://github.com/its-hecker/HeckerOS -b fix/coral-ui-compatibilit
 git -C .repo/local_manifests fetch origin fix/coral-ui-compatibility-20261102 &&
 git -C .repo/local_manifests switch --detach FETCH_HEAD &&
 repo sync -c --fail-fast --no-clone-bundle --no-tags &&
-env -u HECKER_BUILD_JOBS HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
+env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
 ```
 
 The build helper retains the ServerHive RBE environment. Keep it in the normal

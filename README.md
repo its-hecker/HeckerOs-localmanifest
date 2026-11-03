@@ -39,7 +39,7 @@ The Suite and framework revisions below are pinned together.
 
 | Source | Exact revision |
 | --- | --- |
-| Suite | `56e458cd21509934b9dbb2fe0b57aa47f15b790d` |
+| Suite | `0584a9894a2bc966f55b26febf56ae94a8c51606` |
 | Framework | `4af276bc5ceea071ef0da5ea440cda4470c08df6` |
 
  Full Android/APEX/
@@ -131,7 +131,7 @@ not replaced. This is source implementation, not a validated ROM release.
 
 These commands select the reviewed UI, centered GameSpace pill, root-free sensor
 recovery and Russian custom UI translations in both repositories. Suite is pinned to published source commit
-`56e458cd21509934b9dbb2fe0b57aa47f15b790d`.
+`0584a9894a2bc966f55b26febf56ae94a8c51606`.
 
 ## Complete build from mkdir
 

@@ -2,6 +2,14 @@
 
 ## Coral UI and compatibility — 2 November 2026
 
+**3 November launcher/depth update:** select the refreshed Launcher Studio and
+depth fixes: dedicated signature access to Home layers, adjustable clock/search
+height and clock information position, manual subject alignment, current-lock
+wallpaper extraction/retry, all built-in Hecker lock-clock styles, a visible QS
+preview and explicitly scoped Home/lock controls. Remove the Caracal Dawn action
+and leftover PixelOS Developer options spoof controls. Exact prepared-source
+copies upgrade in place. See [changes and phone checks](https://github.com/its-hecker/HeckerOS/blob/fix/coral-ui-compatibility-20261102/docs/coral-ui-depth-feedback-2026-11-03.md).
+
 **3 November boot fix:** select the corrected Cyrillic font adapter. The previous
 adapter put `lang="und-Cyrl"` inside named font lists, causing Zygote to fail while
 preloading Typeface. The exact previously prepared XML upgrades automatically;
@@ -31,7 +39,7 @@ The Suite and framework revisions below are pinned together.
 
 | Source | Exact revision |
 | --- | --- |
-| Suite | `faf6a3b37875b4cc0e5c6a162d31c220dee3ffe7` |
+| Suite | `56e458cd21509934b9dbb2fe0b57aa47f15b790d` |
 | Framework | `4af276bc5ceea071ef0da5ea440cda4470c08df6` |
 
  Full Android/APEX/
@@ -123,7 +131,7 @@ not replaced. This is source implementation, not a validated ROM release.
 
 These commands select the reviewed UI, centered GameSpace pill, root-free sensor
 recovery and Russian custom UI translations in both repositories. Suite is pinned to published source commit
-`faf6a3b37875b4cc0e5c6a162d31c220dee3ffe7`.
+`56e458cd21509934b9dbb2fe0b57aa47f15b790d`.
 
 ## Complete build from mkdir
 

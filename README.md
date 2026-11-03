@@ -2,6 +2,12 @@
 
 ## Coral UI and compatibility — 2 November 2026
 
+**3 November build fix:** the ROM-visibility helper now fits Bionic's 2 KiB
+stack-frame limit. The helper is upgraded automatically from the reviewed old
+copy. ARM/ARM64 platform/APEX object checks and boundary tests pass; the resumed
+ServerHive image build remains pending. Keep the existing `out/` directory.
+See [cause and validation](https://github.com/its-hecker/HeckerOS/blob/fix/coral-ui-compatibility-20261102/docs/coral-bionic-stack-fix-2026-11-03.md).
+
 This `fix/coral-ui-compatibility-20261102` branch adds independent AOD clock
 sizing, adjustable lighter QS blur, native media visibility and reduced per-frame
 work, single Settings card backgrounds, a colored GameSpace icon and Google Sans
@@ -17,7 +23,7 @@ The Suite and framework revisions below are pinned together.
 
 | Source | Exact revision |
 | --- | --- |
-| Suite | `a3f0f41b94e67c4f961e2daa02f46f6d621d9660` |
+| Suite | `335d398d9fe3a0e2f487424be667b1d8cad10f7f` |
 | Framework | `4af276bc5ceea071ef0da5ea440cda4470c08df6` |
 
  Full Android/APEX/
@@ -109,7 +115,7 @@ not replaced. This is source implementation, not a validated ROM release.
 
 These commands select the reviewed UI, centered GameSpace pill, root-free sensor
 recovery and Russian custom UI translations in both repositories. Suite is pinned to published source commit
-`a3f0f41b94e67c4f961e2daa02f46f6d621d9660`.
+`335d398d9fe3a0e2f487424be667b1d8cad10f7f`.
 
 ## Complete build from mkdir
 

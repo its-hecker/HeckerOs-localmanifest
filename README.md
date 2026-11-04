@@ -1,5 +1,39 @@
 # HeckerOS Coral build integration
 
+## HeckerVPN feature branch — 4 November 2026
+
+`feat/heckervpn-20261104` pins source `78d85910e2ee75caa36875ec826815c0153b1737`.
+It adds **HeckerLab → HeckerVPN** with a Mullvad country/server adapter, manual
+WireGuard `.conf` import, per-profile app routing, connection statistics and a QS
+tile. The init-owned kernel controller does not request a KSU/Magisk grant or
+require the separate WireGuard app. Provider countries require each user's own
+valid Mullvad account; manual imports support other compatible providers. No
+server hosting or shared/free endpoint service is included.
+
+Local Android/AIDL/resource/native-tool compilation, provider protocol fixtures,
+188 existing Python tests, the complete host test script, and standalone pinned
+platform SELinux smoke checks passed. Actual device policy/Soong compilation,
+Mullvad account provisioning and Coral phone traffic/leak/recovery checks remain
+pending. This feature is not a device-tested release.
+
+After the source and matching manifest branches are published, an existing Coral
+checkout can use the following incremental build command with **RBE and default
+jobs**, preserving `out/`:
+
+```bash
+cd ~/heckeros-coral &&
+git -C .repo/manifests fetch origin feat/heckervpn-20261104 &&
+git -C .repo/manifests switch --detach FETCH_HEAD &&
+git -C .repo/local_manifests fetch origin feat/heckervpn-20261104 &&
+git -C .repo/local_manifests switch --detach FETCH_HEAD &&
+repo sync -c --fail-fast --no-clone-bundle --no-tags &&
+env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug \
+    bash .repo/local_manifests/build.sh
+```
+
+Implementation and acceptance checks are documented in the source repository at
+`docs/heckervpn-2026-11-04.md`.
+
 ## Coral UI and compatibility — 2 November 2026
 
 **4 November Launcher build fix:** correct the unresolved wallpaper Settings

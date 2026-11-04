@@ -2,7 +2,7 @@
 
 ## HeckerVPN feature branch — 4 November 2026
 
-`feat/heckervpn-20261104` pins source `78d85910e2ee75caa36875ec826815c0153b1737`.
+`feat/heckervpn-20261104` pins source `b7b7efa99ee8b6dc65b40915e55bfdf2a483e78b`.
 It adds **HeckerLab → HeckerVPN** with a Mullvad country/server adapter, manual
 WireGuard `.conf` import, per-profile app routing, connection statistics and a QS
 tile. The init-owned kernel controller does not request a KSU/Magisk grant or

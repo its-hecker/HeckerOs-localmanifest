@@ -2,6 +2,13 @@
 
 ## Coral UI and compatibility — 2 November 2026
 
+**4 November Launcher build fix:** correct the unresolved wallpaper Settings
+constant in native Launcher Kotlin. Existing prepared sources upgrade in place;
+keep `out/` for the incremental build. Compile the actual patched wallpaper method
+against the locked SDK and verify its exported handler in pinned Settings. All
+188 host tests and native checks against 136 pinned files pass; full ROM build and
+physical Coral validation remain pending. See [cause and rebuild](https://github.com/its-hecker/HeckerOS/blob/33237726f64cc7d5bcade4783c5529d84d8114b7/docs/coral-launcher-wallpaper-build-fix-2026-11-04.md).
+
 **4 November HeckerLab and device feedback:** select the complete UI/media/depth
 update, including consistent English word-clock AOD, stable Home depth during
 app/unlock transitions, immediate workspace double-tap sleep, a working wallpaper
@@ -13,7 +20,7 @@ continuity and **26–56 dp** bar height. Visible Hecker Suite names are now **H
 existing package IDs and settings remain compatible. The source passed 187 host
 tests, locked Suite/Settings/SystemUI/Launcher compilation and native apply/upgrade/
 revert checks against 135 pinned files. Full Android/Soong and Coral phone tests
-remain pending. See [changes, controls and phone checks](https://github.com/its-hecker/HeckerOS/blob/96508ad689e6bc281a842fc86a1f8f48c6e2d330/docs/coral-heckerlab-feedback-2026-11-04.md).
+remain pending. See [changes, controls and phone checks](https://github.com/its-hecker/HeckerOS/blob/33237726f64cc7d5bcade4783c5529d84d8114b7/docs/coral-heckerlab-feedback-2026-11-04.md).
 
 **4 November native XMorphClock:** select all 86 upstream clock presets and 47
 bundled fonts in HeckerLab → Lock screen → Custom clock → XMorphClock styles.
@@ -21,7 +28,7 @@ The native SystemUI renderer supports small/large clocks, AOD and the shared dep
 mask without root or Xposed. Original assets, licenses and author credit are
 included. Locked library, catalog, packaging, Suite and SystemUI checks pass;
 full ROM compilation and Coral phone validation remain pending. See
-[implementation and phone checks](https://github.com/its-hecker/HeckerOS/blob/96508ad689e6bc281a842fc86a1f8f48c6e2d330/docs/xmorph-clock-native-2026-11-04.md).
+[implementation and phone checks](https://github.com/its-hecker/HeckerOS/blob/33237726f64cc7d5bcade4783c5529d84d8114b7/docs/xmorph-clock-native-2026-11-04.md).
 
 **4 November stock/plugin clock depth:** select the native clock masking
 adapter. Depth now follows stock and installed SystemUI plugin clocks in their
@@ -74,7 +81,7 @@ The Suite and framework revisions below are pinned together.
 
 | Source | Exact revision |
 | --- | --- |
-| Suite | `96508ad689e6bc281a842fc86a1f8f48c6e2d330` |
+| Suite | `33237726f64cc7d5bcade4783c5529d84d8114b7` |
 | Framework | `4af276bc5ceea071ef0da5ea440cda4470c08df6` |
 
  Full Android/APEX/
@@ -86,7 +93,7 @@ retained. This integration update selects Coral only.
 See [changes, controls and acceptance](https://github.com/its-hecker/HeckerOS/blob/fix/coral-ui-compatibility-20261102/docs/coral-feedback-2026-11-02.md)
 and [compatibility coverage and limits](https://github.com/its-hecker/HeckerOS/blob/fix/coral-ui-compatibility-20261102/docs/app-compatibility.md).
 
-Source checks pass: 187 Suite Python tests, 83 shared integration tests, 78
+Source checks pass: 188 Suite Python tests, 83 shared integration tests, 78
 Coral manifest tests, 2,590 installer/Settings policy assertions, Suite SDK/resource
 compilation and native adapter/ABI checks. Full ROM and phone acceptance remain
 pending. With `HECKER_BUILD_JOBS` unset, `build.sh` runs `m heckeros` and leaves
@@ -166,7 +173,7 @@ not replaced. This is source implementation, not a validated ROM release.
 
 These commands select the reviewed UI, centered GameSpace pill, root-free sensor
 recovery and Russian custom UI translations in both repositories. Suite is pinned to published source commit
-`96508ad689e6bc281a842fc86a1f8f48c6e2d330`.
+`33237726f64cc7d5bcade4783c5529d84d8114b7`.
 
 ## Complete build from mkdir
 

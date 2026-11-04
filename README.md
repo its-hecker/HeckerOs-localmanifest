@@ -3,14 +3,21 @@
 ## Current Coral fixes — 5 November 2026
 
 Use **`fix/device-feedback-20261105`** in both repositories. This manifest pins
-source **`5bbf87d2ac2688b6c97a25d4f0cca7a076c7b810`** and includes the complete HeckerVPN
+source **`742e2df6628fef5463c964fc7edc31c671da8a4d`** and includes the complete HeckerVPN
 base together with the latest QS/media, clocks, launcher, Motion Island,
 status-bar and compatibility fixes. See the
-[change list and phone checks](https://github.com/its-hecker/HeckerOS/blob/5bbf87d2ac2688b6c97a25d4f0cca7a076c7b810/docs/device-feedback-2026-11-05.md).
+[change list and phone checks](https://github.com/its-hecker/HeckerOS/blob/742e2df6628fef5463c964fc7edc31c671da8a4d/docs/device-feedback-2026-11-05.md).
 
-190 host tests, Android Java/Kotlin/resource compilation and native adapter
-upgrade/revert checks against 138 pinned inputs passed. Full ROM/Soong, boot,
-visual acceptance and live VPN traffic tests remain pending.
+This checkpoint also fixes the VPN controller's platform-app SELinux service
+access, recoverable binding/account setup, country refresh and document import.
+The native QS host stops drawing immediately at zero outer shade expansion,
+even while the shared media scene settles. See the
+[repair details and validation](https://github.com/its-hecker/HeckerOS/blob/742e2df6628fef5463c964fc7edc31c671da8a4d/docs/vpn-qs-repair-2026-11-05.md).
+
+Focused Android AIDL/Java/resource, native WireGuard, compiled SELinux access and
+neverallow, Binder lifecycle, import, QS dispatch/upgrade/revert, media and
+installed-output checks passed. Full ROM/Soong, boot, visual acceptance and live
+VPN traffic tests remain pending.
 
 ### Fresh checkout from mkdir — RBE and default jobs
 

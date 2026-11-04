@@ -596,5 +596,12 @@
     "suite_revision": "5bbf87d2ac2688b6c97a25d4f0cca7a076c7b810",
     "scope": "Coral; QS/media, native XMorph Home clocks and clock flow/position, launcher glass/icons/privacy, Motion Island, status bar, global ROM visibility and HeckerVPN UI",
     "validation": "190 host tests; Android Java/Kotlin/resources; 138 immutable native inputs with prepared-source upgrades and reverts; physical ROM/VPN acceptance pending"
+  },
+  "vpn_qs_repair_20261105": {
+    "branch": "fix/device-feedback-20261105",
+    "parent_suite_revision": "5bbf87d2ac2688b6c97a25d4f0cca7a076c7b810",
+    "suite_revision": "742e2df6628fef5463c964fc7edc31c671da8a4d",
+    "scope": "Coral; platform-app SELinux service lookup for the VPN controller, recoverable Binder/account/import flows, native outer-shade draw gating and complete VPN runtime installation checks",
+    "validation": "Locked Android AIDL/Java/resources, native tools and key generation, effective compiled SELinux service/Binder/socket permissions with neverallows for user and userdebug, client lifecycle, input formats, pinned native QS callbacks/dispatchDraw and upgrade/revert, media and installed-output regressions passed. Full ROM and physical VPN/UI tests pending."
   }
 }

@@ -593,7 +593,7 @@
   "device_feedback_20261105": {
     "branch": "fix/device-feedback-20261105",
     "parent_suite_revision": "b7b7efa99ee8b6dc65b40915e55bfdf2a483e78b",
-    "suite_revision": "5d58833f8197287048e6c13f496cd6ebcfc966d2",
+    "suite_revision": "5bbf87d2ac2688b6c97a25d4f0cca7a076c7b810",
     "scope": "Coral; QS/media, native XMorph Home clocks and clock flow/position, launcher glass/icons/privacy, Motion Island, status bar, global ROM visibility and HeckerVPN UI",
     "validation": "190 host tests; Android Java/Kotlin/resources; 138 immutable native inputs with prepared-source upgrades and reverts; physical ROM/VPN acceptance pending"
   }

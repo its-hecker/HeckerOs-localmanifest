@@ -3,10 +3,10 @@
 ## Current Coral fixes — 5 November 2026
 
 Use **`fix/device-feedback-20261105`** in both repositories. This manifest pins
-source **`5d58833f8197287048e6c13f496cd6ebcfc966d2`** and includes the complete HeckerVPN
+source **`5bbf87d2ac2688b6c97a25d4f0cca7a076c7b810`** and includes the complete HeckerVPN
 base together with the latest QS/media, clocks, launcher, Motion Island,
 status-bar and compatibility fixes. See the
-[change list and phone checks](https://github.com/its-hecker/HeckerOS/blob/5d58833f8197287048e6c13f496cd6ebcfc966d2/docs/device-feedback-2026-11-05.md).
+[change list and phone checks](https://github.com/its-hecker/HeckerOS/blob/5bbf87d2ac2688b6c97a25d4f0cca7a076c7b810/docs/device-feedback-2026-11-05.md).
 
 190 host tests, Android Java/Kotlin/resource compilation and native adapter
 upgrade/revert checks against 138 pinned inputs passed. Full ROM/Soong, boot,

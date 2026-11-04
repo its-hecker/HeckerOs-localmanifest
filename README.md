@@ -1,5 +1,50 @@
 # HeckerOS Coral build integration
 
+## Current Coral fixes — 5 November 2026
+
+Use **`fix/device-feedback-20261105`** in both repositories. This manifest pins
+source **`5d58833f8197287048e6c13f496cd6ebcfc966d2`** and includes the complete HeckerVPN
+base together with the latest QS/media, clocks, launcher, Motion Island,
+status-bar and compatibility fixes. See the
+[change list and phone checks](https://github.com/its-hecker/HeckerOS/blob/5d58833f8197287048e6c13f496cd6ebcfc966d2/docs/device-feedback-2026-11-05.md).
+
+190 host tests, Android Java/Kotlin/resource compilation and native adapter
+upgrade/revert checks against 138 pinned inputs passed. Full ROM/Soong, boot,
+visual acceptance and live VPN traffic tests remain pending.
+
+### Fresh checkout from mkdir — RBE and default jobs
+
+Run in ServerHive's initialized Byobu/Tmux/RBE shell with normal Android build
+dependencies, Repo, Git LFS, Python, Pillow and numpy installed:
+
+```bash
+mkdir -p ~/heckeros-coral &&
+cd ~/heckeros-coral &&
+git lfs install &&
+repo init -u https://github.com/its-hecker/HeckerOS.git -b fix/device-feedback-20261105 --git-lfs &&
+git clone --branch fix/device-feedback-20261105 --single-branch https://github.com/its-hecker/HeckerOs-localmanifest.git .repo/local_manifests &&
+repo sync -c --fail-fast --no-clone-bundle --no-tags &&
+env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
+```
+
+### Existing Coral checkout — RBE and default jobs
+
+Keep the existing `out/` for an incremental build:
+
+```bash
+cd ~/heckeros-coral &&
+repo init -u https://github.com/its-hecker/HeckerOS.git -b fix/device-feedback-20261105 --git-lfs &&
+git -C .repo/local_manifests fetch origin fix/device-feedback-20261105 &&
+git -C .repo/local_manifests switch --detach FETCH_HEAD &&
+repo sync -c --fail-fast --no-clone-bundle --no-tags &&
+env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
+```
+
+The helper leaves compilation parallelism to Android when `HECKER_BUILD_JOBS` is
+unset and retains RBE. The sections below retain the earlier source checkpoints
+and commands; the two blocks above select this complete update.
+
+
 ## HeckerVPN feature branch — 4 November 2026
 
 `feat/heckervpn-20261104` pins source `b7b7efa99ee8b6dc65b40915e55bfdf2a483e78b`.

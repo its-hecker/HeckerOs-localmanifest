@@ -1,5 +1,5 @@
 {
-  "checked_on": "2026-11-04",
+  "checked_on": "2026-11-05",
   "pixelos_manifest": {
     "repository": "PixelOS-AOSP/android_manifest",
     "branch": "seventeen",
@@ -267,11 +267,11 @@
     }
   },
   "hecker_suite": {
-    "source_branch": "fix/coral-ui-compatibility-20261102",
-    "integration_branch": "fix/coral-ui-compatibility-20261102",
+    "source_branch": "fix/device-feedback-20261105",
+    "integration_branch": "fix/device-feedback-20261105",
     "release": "hecker_suite",
     "base_release": "cp2a",
-    "status": "Source validation only; full ROM build and phone tests required",
+    "status": "Host/native source checks pass; full ROM build and Coral phone acceptance remain required",
     "feature_sources": {
       "risingos": {
         "repository": "RisingOS-Revived/android_frameworks_base",
@@ -589,5 +589,12 @@
     "validation": "Compile the actual prepared native Kotlin method against the locked Android SDK, verify the pinned Settings intent filter, and check prepared-source upgrade/idempotence/revert; full ROM build and physical Coral acceptance pending",
     "suite_revision": "33237726f64cc7d5bcade4783c5529d84d8114b7",
     "parent_manifest_revision": "9a8ec8b73479047fd1045bd32864e36b9c827807"
+  },
+  "device_feedback_20261105": {
+    "branch": "fix/device-feedback-20261105",
+    "parent_suite_revision": "b7b7efa99ee8b6dc65b40915e55bfdf2a483e78b",
+    "suite_revision": "5d58833f8197287048e6c13f496cd6ebcfc966d2",
+    "scope": "Coral; QS/media, native XMorph Home clocks and clock flow/position, launcher glass/icons/privacy, Motion Island, status bar, global ROM visibility and HeckerVPN UI",
+    "validation": "190 host tests; Android Java/Kotlin/resources; 138 immutable native inputs with prepared-source upgrades and reverts; physical ROM/VPN acceptance pending"
   }
 }

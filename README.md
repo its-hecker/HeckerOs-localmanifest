@@ -2,13 +2,26 @@
 
 ## Coral UI and compatibility — 2 November 2026
 
+**4 November HeckerLab and device feedback:** select the complete UI/media/depth
+update, including consistent English word-clock AOD, stable Home depth during
+app/unlock transitions, immediate workspace double-tap sleep, a working wallpaper
+picker fallback and automatic lock-wallpaper extraction. Add media **Hide** and
+**Close app**, common Quick/full-QS blur with an **85% default**, corrected icon
+fallbacks, cold-start lyrics callbacks and automatic GameSpace shutdown/restart.
+Motion Island adds the three reference characters, individual gestures, skip/resume
+continuity and **26–56 dp** bar height. Visible Hecker Suite names are now **HeckerLab**;
+existing package IDs and settings remain compatible. The source passed 187 host
+tests, locked Suite/Settings/SystemUI/Launcher compilation and native apply/upgrade/
+revert checks against 135 pinned files. Full Android/Soong and Coral phone tests
+remain pending. See [changes, controls and phone checks](https://github.com/its-hecker/HeckerOS/blob/96508ad689e6bc281a842fc86a1f8f48c6e2d330/docs/coral-heckerlab-feedback-2026-11-04.md).
+
 **4 November native XMorphClock:** select all 86 upstream clock presets and 47
-bundled fonts in Hecker Suite → Lock screen → Custom clock → XMorphClock styles.
+bundled fonts in HeckerLab → Lock screen → Custom clock → XMorphClock styles.
 The native SystemUI renderer supports small/large clocks, AOD and the shared depth
 mask without root or Xposed. Original assets, licenses and author credit are
 included. Locked library, catalog, packaging, Suite and SystemUI checks pass;
 full ROM compilation and Coral phone validation remain pending. See
-[implementation and phone checks](https://github.com/its-hecker/HeckerOS/blob/1206d50f61572d1fd60ea65c9133bcfb2385bd8c/docs/xmorph-clock-native-2026-11-04.md).
+[implementation and phone checks](https://github.com/its-hecker/HeckerOS/blob/96508ad689e6bc281a842fc86a1f8f48c6e2d330/docs/xmorph-clock-native-2026-11-04.md).
 
 **4 November stock/plugin clock depth:** select the native clock masking
 adapter. Depth now follows stock and installed SystemUI plugin clocks in their
@@ -61,7 +74,7 @@ The Suite and framework revisions below are pinned together.
 
 | Source | Exact revision |
 | --- | --- |
-| Suite | `1206d50f61572d1fd60ea65c9133bcfb2385bd8c` |
+| Suite | `96508ad689e6bc281a842fc86a1f8f48c6e2d330` |
 | Framework | `4af276bc5ceea071ef0da5ea440cda4470c08df6` |
 
  Full Android/APEX/
@@ -73,7 +86,7 @@ retained. This integration update selects Coral only.
 See [changes, controls and acceptance](https://github.com/its-hecker/HeckerOS/blob/fix/coral-ui-compatibility-20261102/docs/coral-feedback-2026-11-02.md)
 and [compatibility coverage and limits](https://github.com/its-hecker/HeckerOS/blob/fix/coral-ui-compatibility-20261102/docs/app-compatibility.md).
 
-Source checks pass: 164 Suite Python tests, 83 shared integration tests, 78
+Source checks pass: 187 Suite Python tests, 83 shared integration tests, 78
 Coral manifest tests, 2,590 installer/Settings policy assertions, Suite SDK/resource
 compilation and native adapter/ABI checks. Full ROM and phone acceptance remain
 pending. With `HECKER_BUILD_JOBS` unset, `build.sh` runs `m heckeros` and leaves
@@ -122,7 +135,7 @@ checks and 136 host tests pass. Full ROM and Coral phone validation are pending.
 
 ## Status-bar lyrics and dual rows
 
-Separate default-off switches under Hecker Suite → Status bar control synchronized
+Separate default-off switches under HeckerLab → Status bar control synchronized
 status lyrics and two native rows. The LRCLIB media engine/cache is shared with the
 independently enabled lock screen, and remains subscribed while unlocked.
 Controls include 44/52/60 dp native heights, row spacing/icon size, notification or
@@ -153,7 +166,7 @@ not replaced. This is source implementation, not a validated ROM release.
 
 These commands select the reviewed UI, centered GameSpace pill, root-free sensor
 recovery and Russian custom UI translations in both repositories. Suite is pinned to published source commit
-`1206d50f61572d1fd60ea65c9133bcfb2385bd8c`.
+`96508ad689e6bc281a842fc86a1f8f48c6e2d330`.
 
 ## Complete build from mkdir
 

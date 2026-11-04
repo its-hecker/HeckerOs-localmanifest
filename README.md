@@ -2,6 +2,14 @@
 
 ## Coral UI and compatibility — 2 November 2026
 
+**4 November native XMorphClock:** select all 86 upstream clock presets and 47
+bundled fonts in Hecker Suite → Lock screen → Custom clock → XMorphClock styles.
+The native SystemUI renderer supports small/large clocks, AOD and the shared depth
+mask without root or Xposed. Original assets, licenses and author credit are
+included. Locked library, catalog, packaging, Suite and SystemUI checks pass;
+full ROM compilation and Coral phone validation remain pending. See
+[implementation and phone checks](https://github.com/its-hecker/HeckerOS/blob/1206d50f61572d1fd60ea65c9133bcfb2385bd8c/docs/xmorph-clock-native-2026-11-04.md).
+
 **4 November stock/plugin clock depth:** select the native clock masking
 adapter. Depth now follows stock and installed SystemUI plugin clocks in their
 small/large native elements. Imports and depth toggles preserve the selected
@@ -53,7 +61,7 @@ The Suite and framework revisions below are pinned together.
 
 | Source | Exact revision |
 | --- | --- |
-| Suite | `fefb4453414e4e37c25cb7a256361fdb7a764e31` |
+| Suite | `1206d50f61572d1fd60ea65c9133bcfb2385bd8c` |
 | Framework | `4af276bc5ceea071ef0da5ea440cda4470c08df6` |
 
  Full Android/APEX/
@@ -145,7 +153,7 @@ not replaced. This is source implementation, not a validated ROM release.
 
 These commands select the reviewed UI, centered GameSpace pill, root-free sensor
 recovery and Russian custom UI translations in both repositories. Suite is pinned to published source commit
-`fefb4453414e4e37c25cb7a256361fdb7a764e31`.
+`1206d50f61572d1fd60ea65c9133bcfb2385bd8c`.
 
 ## Complete build from mkdir
 

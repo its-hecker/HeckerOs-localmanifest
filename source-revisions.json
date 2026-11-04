@@ -1,5 +1,5 @@
 {
-  "checked_on": "2026-11-03",
+  "checked_on": "2026-11-04",
   "pixelos_manifest": {
     "repository": "PixelOS-AOSP/android_manifest",
     "branch": "seventeen",
@@ -204,7 +204,8 @@
         "services/core/java/com/android/server/pm/InstallPackageHelper.java",
         "tests/hecker/test_app_compatibility.py",
         "packages/SystemUI/src/com/android/systemui/qs/composefragment/QSFragmentCompose.kt",
-        "packages/SystemUI/compose/features/src/com/android/systemui/keyguard/ui/composable/elements/LockscreenElementFactoryImpl.kt"
+        "packages/SystemUI/compose/features/src/com/android/systemui/keyguard/ui/composable/elements/LockscreenElementFactoryImpl.kt",
+        "packages/SystemUI/Android.bp"
       ]
     },
     "hardware/google/camera": {
@@ -452,7 +453,7 @@
     "inherited_suite_revision": "6963155a0d449cf6a163c391c14c18fafd4cbd41",
     "device_testing": "pending",
     "source_validation": "host/SDK checked; full ROM and physical acceptance pending",
-    "suite_revision": "fefb4453414e4e37c25cb7a256361fdb7a764e31",
+    "suite_revision": "1206d50f61572d1fd60ea65c9133bcfb2385bd8c",
     "native_source_lock": "native-compat/source-lock.json"
   },
   "device_feedback_20261102": {
@@ -470,7 +471,7 @@
     ],
     "weather": "Pixel Launcher Google Smartspace requires device diagnostics",
     "validation": "Host and SDK checks only; full Android build and device acceptance pending",
-    "suite_revision": "fefb4453414e4e37c25cb7a256361fdb7a764e31"
+    "suite_revision": "1206d50f61572d1fd60ea65c9133bcfb2385bd8c"
   },
   "boot_fix_20261103": {
     "branch": "fix/coral-ui-compatibility-20261102",
@@ -512,7 +513,7 @@
       "remove legacy PixelOS Developer options spoof controls"
     ],
     "validation": "Targeted host geometry, current-wallpaper pipeline, lifecycle/provider, permission, source-upgrade and font regression checks pass; full ROM build and physical Coral acceptance pending",
-    "suite_revision": "fefb4453414e4e37c25cb7a256361fdb7a764e31"
+    "suite_revision": "1206d50f61572d1fd60ea65c9133bcfb2385bd8c"
   },
   "settings_home_crash_20261104": {
     "branch": "fix/coral-ui-compatibility-20261102",
@@ -539,5 +540,20 @@
     ],
     "validation": "Locked SystemUI Compose/native-hook and complete Suite/Settings SDK compilation, 5184 affine registrations, production selection-retention pipeline, native adapter upgrade/revert and provider/layout/translation checks pass; full ROM/phone validation pending",
     "suite_revision": "fefb4453414e4e37c25cb7a256361fdb7a764e31"
+  },
+  "xmorph_clock_20261104": {
+    "branch": "fix/coral-ui-compatibility-20261102",
+    "device": "coral",
+    "parent_suite_revision": "fefb4453414e4e37c25cb7a256361fdb7a764e31",
+    "upstream_repository": "Mahmud0808/XMorphClock",
+    "upstream_revision": "a88005252636f9ac89cd4b8727ee04a57dae2224",
+    "preset_count": 86,
+    "font_count": 47,
+    "clock_family_id": 6,
+    "preset_setting": "hecker_xmorph_clock_preset",
+    "license": "GPL-3.0-or-later",
+    "source_manifest": "third_party/xmorphclock/upstream.lock.json",
+    "validation": "Native library, full app/Settings dashboard and SystemUI Compose checks; 86 model round trips / 344 native states, original asset/font hashes, provider/depth and guarded preparation tests; full ROM and physical Coral acceptance pending",
+    "suite_revision": "1206d50f61572d1fd60ea65c9133bcfb2385bd8c"
   }
 }

@@ -23,10 +23,11 @@ on unfamiliar local changes instead of discarding them.
 ## Current Coral feedback follow-up — 6 November 2026
 
 The `fix/device-feedback-20261105` integration now pins HeckerOS Suite
-[`b9f74fde7d85`](https://github.com/its-hecker/HeckerOS/commit/b9f74fde7d858fc585b4ba43cc59dcd5ad661e34).
+[`4dcfbbbc93a6`](https://github.com/its-hecker/HeckerOS/commit/4dcfbbbc93a6104fd08e5aaa0641bf6af246b943).
 The follow-up detaches QS media on shade closure, provides a dedicated Drive glass
 icon, uses the supplied purple/white GameSpace capsule, and adds validated WireGuard
 paste plus Proton Free manual configuration guidance.
+The Motion Island bar now has a 92–220 dp width slider with live host updates.
 
 A complete ServerHive ROM build and on-device checks remain required. The build
 command below uses RBE and default build parallelism, not `-j8`.

@@ -628,14 +628,15 @@
   },
   "device_feedback_followup_20261106": {
     "branch": "fix/device-feedback-20261105",
-    "suite_revision": "b9f74fde7d858fc585b4ba43cc59dcd5ad661e34",
-    "previous_suite_revision": "8a2905247c37340302d7cc2bd908842ef42fe7a9",
+    "suite_revision": "4dcfbbbc93a6104fd08e5aaa0641bf6af246b943",
+    "previous_suite_revision": "b9f74fde7d858fc585b4ba43cc59dcd5ad661e34",
     "areas": [
       "shared QS media teardown",
       "Drive glass icon",
       "GameSpace adaptive icon",
       "WireGuard paste import",
-      "Proton Free manual configuration guidance"
+      "Proton Free manual configuration guidance",
+      "Motion Island bar width slider and live host update"
     ],
     "validation": "Published source only; full Coral ROM compile, boot, visual QS behavior, VPN handshake and Photos on-device testing pending"
   }

@@ -24,7 +24,7 @@
   <extend-project name="LineageOS/android_hardware_qcom-caf_common" path="hardware/qcom-caf/common" revision="5e84e6f8fc47530881fa8d95cf533617ff51e820" upstream="refs/heads/lineage-24.0" />
   <extend-project name="its-hecker/heckeros_vendor_custom" path="vendor/custom" revision="82457873ad4f7c75195c21ddf9da35903a0d975f" upstream="refs/heads/feat/coral-upstream-20261030" />
   <extend-project name="its-hecker/heckeros_vendor_lineage" path="vendor/lineage" revision="a8286e3a3edc3aed7e774ca57476477f178a0c46" upstream="refs/heads/feat/coral-upstream-20261030" />
-  <extend-project name="its-hecker/heckeros_frameworks_base" path="frameworks/base" revision="db2d4435d1d2cce17d35f6fdc0efb303becfc2c5" upstream="refs/heads/feat/penguin-integrity-20261105" dest-branch="feat/penguin-integrity-20261105" />
+  <extend-project name="its-hecker/heckeros_frameworks_base" path="frameworks/base" revision="52b48def74719b328b3704be72f7c3745299f18a" upstream="refs/heads/feat/penguin-integrity-20261105" dest-branch="feat/penguin-integrity-20261105" />
   <extend-project name="platform/hardware/google/camera" path="hardware/google/camera" revision="cd15337bd229dd521a860d88bca3e37c3ca845f7" upstream="refs/tags/android-17.0.0_r1" />
   <extend-project name="PixelOS-AOSP/android_system_sepolicy" path="system/sepolicy" revision="99c58a7cc9a44fe33c93808452d018e756d84753" upstream="refs/heads/seventeen" />
   <extend-project name="PixelOS-AOSP/android_system_core" path="system/core" revision="a5313eaec0219b021aaa5e59cc10dd07cfa8504c" upstream="refs/heads/seventeen" />

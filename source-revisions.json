@@ -1,5 +1,5 @@
 {
-  "checked_on": "2026-11-05",
+  "checked_on": "2026-11-06",
   "pixelos_manifest": {
     "repository": "PixelOS-AOSP/android_manifest",
     "branch": "seventeen",
@@ -92,7 +92,7 @@
     "frameworks/base": {
       "repository": "its-hecker/heckeros_frameworks_base",
       "branch": "feat/penguin-integrity-20261105",
-      "revision": "db2d4435d1d2cce17d35f6fdc0efb303becfc2c5",
+      "revision": "52b48def74719b328b3704be72f7c3745299f18a",
       "files": [
         "core/res/res/values/config.xml",
         "packages/SystemUI/res/values/config.xml",
@@ -453,7 +453,7 @@
   },
   "app_compatibility": {
     "branch": "feat/penguin-integrity-20261105",
-    "framework_revision": "db2d4435d1d2cce17d35f6fdc0efb303becfc2c5",
+    "framework_revision": "52b48def74719b328b3704be72f7c3745299f18a",
     "backend_version": 3,
     "device": "coral",
     "inherited_suite_revision": "6963155a0d449cf6a163c391c14c18fafd4cbd41",
@@ -610,12 +610,20 @@
   },
   "penguin_integrity_20261105": {
     "branch": "feat/penguin-integrity-20261105",
-    "framework_revision": "db2d4435d1d2cce17d35f6fdc0efb303becfc2c5",
+    "framework_revision": "52b48def74719b328b3704be72f7c3745299f18a",
     "settings_revision": "1cc575774ca85cf5ca5a8cf6a164a4583238c9c5",
     "upstream_repository": "Project-PenguinOS/frameworks_base",
     "upstream_revision": "947644f88d63b82179deec4d9149a1e4332584a3",
     "status": "source integrated; full Coral build and physical validation pending",
     "configuration": "existing Hecker private/Global stores retained; no bundled keys",
     "documentation": "docs/penguin-integrity-2026-11-05.md"
+  },
+  "computer_engine_build_fix_20261106": {
+    "branch": "fix/device-feedback-20261105",
+    "parent_framework_revision": "db2d4435d1d2cce17d35f6fdc0efb303becfc2c5",
+    "framework_revision": "52b48def74719b328b3704be72f7c3745299f18a",
+    "issue": "Turbine cannot resolve the GuardedBy annotation on ComputerEngine.mDefaultHomeCache",
+    "fix": "Import com.android.internal.annotations.GuardedBy",
+    "validation": "One-line source diff and local manifest validator pass; full ServerHive ROM build pending"
   }
 }

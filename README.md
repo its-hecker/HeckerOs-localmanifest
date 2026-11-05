@@ -4,7 +4,7 @@
 
 The current fix/device-feedback-20261105 manifest now selects the completed
 Penguin PIF/TrickyStore/GameProps/ROM visibility integration and matching Settings.
-Suite is pinned to 89f09e7382dc3ae485279dc0bf9a81a0badbe2ee,
+Suite is pinned to 8a2905247c37340302d7cc2bd908842ef42fe7a9,
 framework to db2d4435d1d2cce17d35f6fdc0efb303becfc2c5, and Settings to
 1cc575774ca85cf5ca5a8cf6a164a4583238c9c5.
 
@@ -14,7 +14,7 @@ ROM visibility retains trusted system/shared-UID/current-launcher access.
 Source/SDK/host and guarded native apply/upgrade/revert checks pass; a full Coral
 ROM build, boot and actual phone attestation/UI validation remain required.
 
-See [changes and validation](https://github.com/its-hecker/HeckerOS/blob/89f09e7382dc3ae485279dc0bf9a81a0badbe2ee/docs/penguin-integrity-2026-11-05.md).
+See [changes and validation](https://github.com/its-hecker/HeckerOS/blob/8a2905247c37340302d7cc2bd908842ef42fe7a9/docs/penguin-integrity-2026-11-05.md).
 For an existing prepared checkout, the command below first reverts the old
 Suite adapters before syncing the new native revisions. Preserve out/ and stop
 on unfamiliar local changes instead of discarding them.
@@ -23,16 +23,16 @@ on unfamiliar local changes instead of discarding them.
 ## Current Coral fixes — 5 November 2026
 
 Use **`fix/device-feedback-20261105`** in both repositories. This manifest pins
-source **`89f09e7382dc3ae485279dc0bf9a81a0badbe2ee`** and includes the complete HeckerVPN
+source **`8a2905247c37340302d7cc2bd908842ef42fe7a9`** and includes the complete HeckerVPN
 base together with the latest QS/media, clocks, launcher, Motion Island,
 status-bar and compatibility fixes. See the
-[change list and phone checks](https://github.com/its-hecker/HeckerOS/blob/89f09e7382dc3ae485279dc0bf9a81a0badbe2ee/docs/device-feedback-2026-11-05.md).
+[change list and phone checks](https://github.com/its-hecker/HeckerOS/blob/8a2905247c37340302d7cc2bd908842ef42fe7a9/docs/device-feedback-2026-11-05.md).
 
 This checkpoint also fixes the VPN controller's platform-app SELinux service
 access, recoverable binding/account setup, country refresh and document import.
 The native QS host stops drawing immediately at zero outer shade expansion,
 even while the shared media scene settles. See the
-[repair details and validation](https://github.com/its-hecker/HeckerOS/blob/89f09e7382dc3ae485279dc0bf9a81a0badbe2ee/docs/vpn-qs-repair-2026-11-05.md).
+[repair details and validation](https://github.com/its-hecker/HeckerOS/blob/8a2905247c37340302d7cc2bd908842ef42fe7a9/docs/vpn-qs-repair-2026-11-05.md).
 
 Focused Android AIDL/Java/resource, native WireGuard, compiled SELinux access and
 neverallow, Binder lifecycle, import, QS dispatch/upgrade/revert, media and

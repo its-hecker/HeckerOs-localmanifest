@@ -20,6 +20,17 @@ Suite adapters before syncing the new native revisions. Preserve out/ and stop
 on unfamiliar local changes instead of discarding them.
 
 
+## Current Coral feedback follow-up — 6 November 2026
+
+The `fix/device-feedback-20261105` integration now pins HeckerOS Suite
+[`b9f74fde7d85`](https://github.com/its-hecker/HeckerOS/commit/b9f74fde7d858fc585b4ba43cc59dcd5ad661e34).
+The follow-up detaches QS media on shade closure, provides a dedicated Drive glass
+icon, uses the supplied purple/white GameSpace capsule, and adds validated WireGuard
+paste plus Proton Free manual configuration guidance.
+
+A complete ServerHive ROM build and on-device checks remain required. The build
+command below uses RBE and default build parallelism, not `-j8`.
+
 ## Current Coral fixes — 5 November 2026
 
 Use **`fix/device-feedback-20261105`** in both repositories. This manifest pins

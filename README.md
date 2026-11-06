@@ -1,11 +1,31 @@
 # HeckerOS Coral build integration
 
+## Verified Coral source selection — 6 November 2026
+
+Use `fix/device-feedback-20261105` in both repositories. This manifest pins Suite
+[`2eb5cdae5d40`](https://github.com/its-hecker/HeckerOS/commit/2eb5cdae5d403c5bdaf80d616a757910c1ac1eb0), including the
+functional corrections in `2a219d88fbb7`. The build helper checks core project heads
+before preparation and verifies `ro.heckeros.suite_revision` and
+`ro.heckeros.manifest_revision` in the installed output. After flashing, read the
+same properties with `adb shell getprop` to identify the image.
+
+This release corrects WireGuard socket access using the real app MLS categories,
+removes paid Mullvad setup, drives QS host visibility from the outer panel,
+polishes the media menu, removes dock curve reversals when bounce is off,
+preserves GameSpace artwork, and keeps Bluetooth cards visible if blur fails.
+The Free VPN entry provides Proton configuration instructions and file/paste
+import; a downloaded configuration is required.
+
+Host/SDK/policy and source upgrade/revert checks pass. Full ROM and phone testing
+remain required. UBL and Wallet are unresolved. See [evidence and validation](https://github.com/its-hecker/HeckerOS/blob/2eb5cdae5d403c5bdaf80d616a757910c1ac1eb0/docs/device-feedback-2026-11-06.md).
+All build examples below use the same feedback branch and default build jobs.
+
 ## Penguin integrity integration — selected for Coral
 
 The current fix/device-feedback-20261105 manifest now selects the completed
 Penguin PIF/TrickyStore/GameProps/ROM visibility integration and matching Settings.
-Suite is pinned to 8a2905247c37340302d7cc2bd908842ef42fe7a9,
-framework to db2d4435d1d2cce17d35f6fdc0efb303becfc2c5, and Settings to
+Suite is pinned to 2eb5cdae5d403c5bdaf80d616a757910c1ac1eb0,
+framework to 52b48def74719b328b3704be72f7c3745299f18a, and Settings to
 1cc575774ca85cf5ca5a8cf6a164a4583238c9c5.
 
 HeckerLab opens one Play Integrity page; existing private configuration remains
@@ -22,8 +42,7 @@ on unfamiliar local changes instead of discarding them.
 
 ## Current Coral feedback follow-up — 6 November 2026
 
-The `fix/device-feedback-20261105` integration now pins HeckerOS Suite
-[`4dcfbbbc93a6`](https://github.com/its-hecker/HeckerOS/commit/4dcfbbbc93a6104fd08e5aaa0641bf6af246b943).
+The prior follow-up pinned `4dcfbbbc93a6`; the source selection above supersedes it.
 The follow-up detaches QS media on shade closure, provides a dedicated Drive glass
 icon, uses the supplied purple/white GameSpace capsule, and adds validated WireGuard
 paste plus Proton Free manual configuration guidance.

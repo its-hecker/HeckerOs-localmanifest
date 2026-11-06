@@ -28,6 +28,7 @@ fi
 floral_setup_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 python3 "$floral_setup_dir/tools/retire_launcher.py"
 python3 "$floral_setup_dir/tools/check_qcom_namespaces.py"
+python3 "$floral_setup_dir/tools/check_build_revision.py" --rom-root "$PWD"
 git -C vendor/google/coral lfs pull
 python3 "$floral_setup_dir/tools/prepare.py" "$@"
 python3 "$floral_setup_dir/tools/validate.py" --rom-root "$PWD"

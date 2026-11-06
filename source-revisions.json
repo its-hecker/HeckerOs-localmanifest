@@ -639,5 +639,25 @@
       "Motion Island bar width slider and live host update"
     ],
     "validation": "Published source only; full Coral ROM compile, boot, visual QS behavior, VPN handshake and Photos on-device testing pending"
+  },
+  "device_feedback_20261106": {
+    "branch": "fix/device-feedback-20261105",
+    "suite_revision": "2eb5cdae5d403c5bdaf80d616a757910c1ac1eb0",
+    "functional_fix_revision": "2a219d88fbb72c5cbc551c9464fae0d5b60f6fc1",
+    "previous_suite_revision": "4dcfbbbc93a6104fd08e5aaa0641bf6af246b943",
+    "framework_revision": "52b48def74719b328b3704be72f7c3745299f18a",
+    "settings_revision": "1cc575774ca85cf5ca5a8cf6a164a4583238c9c5",
+    "scope": [
+      "WireGuard actual categorized MLS socket access",
+      "paid Mullvad UI removal and free-provider manual import",
+      "QS outer panel host alpha and overflow menu",
+      "monotonic disabled dock scale/translation",
+      "GameSpace artwork before icon extraction",
+      "Bluetooth blur fallback",
+      "mismatched source preflight and installed revision stamps"
+    ],
+    "validation": "194 Suite tests, 86 integration tests, 81 manifest tests; locked SDK Java/resources/Compose, compiled user/userdebug SELinux access with neverallows, and 138 native inputs including prepared-source upgrade/idempotence/exact revert passed",
+    "device_acceptance": "Full ServerHive ROM compile and physical Coral UI/VPN acceptance pending",
+    "banking": "UBL and Wallet unresolved; StrongBox certificate reports unlocked/unverified. Software property control is not hardware attestation."
   }
 }

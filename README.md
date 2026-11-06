@@ -1,3 +1,54 @@
+# HeckerVault feature build — Coral, 6 November 2026
+
+Use **feat/heckervault-20261106** in both repositories. This manifest selects
+Suite [8abc0bbb4cc6](https://github.com/its-hecker/HeckerOS/commit/8abc0bbb4cc66b16583d69ee897b0ce727ace4ae),
+with Hecker Lab → HeckerVault on top of the 1.5 feedback fixes.
+Framework, Settings, kernel and KernelSU pins retain the working 1.5 baseline.
+
+HeckerVault provides native Android app-data backup, APK/split restore, Wi-Fi,
+local contacts, SMS/MMS attachments, calls, static wallpapers, Hecker preferences,
+portable password-encrypted PC/USB archives, preview, schedules and retention.
+App backup opt-outs are explicitly APK-only. Swift import is deferred until
+physical HeckerVault backup/clean-flash/restore acceptance succeeds.
+
+Passed: 91 production Vault crypto/archive/transport assertions, complete locked
+controller and Suite/Settings SDK/resources/AIDL compilation, 195 Suite tests plus
+host checks, 87 integration tests and 82 manifest tests. Full ROM build and phone
+acceptance remain pending. See [coverage and instructions](https://github.com/its-hecker/HeckerOS/blob/8abc0bbb4cc66b16583d69ee897b0ce727ace4ae/vault/README.md).
+
+## Existing Coral checkout — RBE, default jobs
+
+Run in your initialized ServerHive RBE session. Keep out/ for an incremental build.
+
+```bash
+cd ~/heckeros-coral &&
+python3 vendor/hecker/floral/suite/tools/prepare.py --rom-root "$PWD" --revert &&
+repo init -u https://github.com/its-hecker/HeckerOS.git -b feat/heckervault-20261106 --git-lfs &&
+git -C .repo/local_manifests fetch origin feat/heckervault-20261106 &&
+git -C .repo/local_manifests switch --detach FETCH_HEAD &&
+repo sync -c --fail-fast --no-clone-bundle --no-tags &&
+env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
+```
+
+## Fresh checkout — RBE, default jobs
+
+```bash
+mkdir -p ~/heckeros-coral &&
+cd ~/heckeros-coral &&
+git lfs install &&
+repo init -u https://github.com/its-hecker/HeckerOS.git -b feat/heckervault-20261106 --git-lfs &&
+git clone --branch feat/heckervault-20261106 --single-branch https://github.com/its-hecker/HeckerOs-localmanifest.git .repo/local_manifests &&
+repo sync -c --fail-fast --no-clone-bundle --no-tags &&
+env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
+```
+
+After building, installed-output validation requires the Vault APK and exact
+permission/default-permission/transport configuration. In the ROM, open
+Hecker Lab → HeckerVault and test an encrypted archive copied off-device before
+testing a clean-flash restore. Swift import stays disabled until that succeeds.
+
+The sections below retain the preceding 1.5 baseline and historical commands.
+
 # HeckerOS Coral build integration
 
 ## HeckerOS 1.5 — verified Coral source selection, 6 November 2026

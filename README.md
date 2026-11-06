@@ -1,20 +1,26 @@
 # HeckerOS Coral build integration
 
-## Verified Coral source selection — 6 November 2026
+## HeckerOS 1.5 — verified Coral source selection, 6 November 2026
 
 Use `fix/device-feedback-20261105` in both repositories. This manifest pins Suite
-[`f3d966ac15a1`](https://github.com/its-hecker/HeckerOS/commit/f3d966ac15a1fc48b792e1a80fa10af7ba16b420), including the
-UI/VPN corrections in `2a219d88fbb7` and detector follow-up in `36d147c88d39`. The build helper checks core project heads and the pinned KernelSU gitlink
+[`3186bd2a51cd`](https://github.com/its-hecker/HeckerOS/commit/3186bd2a51cd05ab0875b25e1b8b54a9da1aaca9), including the
+1.5 functional changes in `1315d8caae61` and prior detector follow-up in
+`36d147c88d39`. The build helper checks core project heads and the pinned KernelSU gitlink
 before preparation and verifies `ro.heckeros.suite_revision` and
 `ro.heckeros.manifest_revision` in the installed output. After flashing, read the
 same properties with `adb shell getprop` to identify the image.
 
-This release corrects WireGuard socket access using the real app MLS categories,
-removes paid Mullvad setup, drives QS host visibility from the outer panel,
-polishes the media menu, removes dock curve reversals when bounce is off,
-preserves GameSpace artwork, and keeps Bluetooth cards visible if blur fails.
-The Free VPN entry provides Proton configuration instructions and file/paste
-import; a downloaded configuration is required.
+Version 1.5 makes media-card taps open the displayed session's app and removes
+media's shared scene-overlay promotion to address the full-QS image lingering
+after a fast close. It removes the ineffective dock-bounce toggle, repairs
+GameSpace's adaptive/circular artwork and icon-pack priority, bumps the APK to
+refresh package-version icon caches, matches the Lab dashboard tiles and
+redesigns About.
+
+The Free VPN entry now uses VPNBook's free WireGuard generator: no account or
+payment, one device per profile, seven-day expiry, manual download/paste import.
+It discloses the provider's connection IP/time logging. The native helper gains
+the missing DNS-proxy socket permission and safe per-stage setup errors.
 
 The detector follow-up adds verified signer matching for renamed KernelSU Next,
 scoped native ADB properties/adbd/JDWP probes, partition property alignment and
@@ -24,15 +30,20 @@ enabled TrickyStore backend. Explicit Skip and native authentication-bound keys
 stay native. The kernel is pinned to `e1d6f9ada81b`, with KernelSU `fa03b73617de`.
 No private keys are bundled. Raw policy-file/native-symbol probes remain limits.
 
-Host/SDK/policy and source upgrade/revert checks pass. Full ROM and phone testing
-remain required. UBL and Wallet are unresolved. See [evidence and validation](https://github.com/its-hecker/HeckerOS/blob/f3d966ac15a1fc48b792e1a80fa10af7ba16b420/docs/device-feedback-2026-11-06.md).
+The user reports banking apps, UBL and Wallet working on the prior matched
+detector build; the compatibility/attestation backend pins are unchanged.
+194 Suite and 86 integration tests, locked SDK/Compose compilation, native
+upgrade/revert and compiled SELinux access checks pass. Full 1.5 ROM compilation,
+dirty-flash icon refresh, QS timing and a real VPN handshake/traffic test remain
+required. The intermittent navigation-gesture freeze is not confirmed fixed.
+See [changes and validation](https://github.com/its-hecker/HeckerOS/blob/3186bd2a51cd05ab0875b25e1b8b54a9da1aaca9/docs/release-1.5-2026-11-06.md).
 All build examples below use the same feedback branch and default build jobs.
 
 ## Penguin integrity integration — selected for Coral
 
 The current fix/device-feedback-20261105 manifest now selects the completed
 Penguin PIF/TrickyStore/GameProps/ROM visibility integration and matching Settings.
-Suite is pinned to f3d966ac15a1fc48b792e1a80fa10af7ba16b420,
+Suite is pinned to 3186bd2a51cd05ab0875b25e1b8b54a9da1aaca9,
 framework to 4ff5e646649ad99adb3eeb19133189c811ea1212, and Settings to
 1cc575774ca85cf5ca5a8cf6a164a4583238c9c5.
 

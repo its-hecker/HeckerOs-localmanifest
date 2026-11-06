@@ -651,6 +651,7 @@
   },
   "device_log_feedback_20261106": {
     "branch": "fix/device-log-20261106",
+    "serverhive_build_fix": "VaultService android.app.Service and VaultActivity android.text.InputFilter disambiguated after first javac failure; full ROM build pending",
     "base_suite_revision": "1ac62cb6998a892c54e56ba28cb236723f6cb057",
     "evidence": "06_11-13-00-11_722.log (21,504 lines; private raw log not committed) and six supplied screenshots",
     "changes": [
@@ -664,6 +665,6 @@
     "limits": "No full ROM or phone verification in this environment. Log has no peer/endpoint handshake diagnostics; root cause of the remote non-response remains unconfirmed. HeckerVault including saved groups is retained; Swift import remains deferred.",
     "validation": "195 Suite tests plus complete host runner, 87 integration tests; locked Suite/Settings SDK, QS Compose, Launcher helpers, Motion Island/device features, WireGuard native/controller and HeckerVault archive/transport/SDK checks pass. Full ROM and physical tests pending.",
     "functional_revision": "11ece3f5e8a06d3947a89fe26741235ec1f6f1bd",
-    "suite_revision": "e6ee5b45c225c28c550dd8d6405c1b2d674e0c7f"
+    "suite_revision": "deb0c39a1d045b10948e6641526115115e89c3d7"
   }
 }

@@ -271,11 +271,11 @@
     }
   },
   "hecker_suite": {
-    "source_branch": "fix/device-log-20261106",
-    "integration_branch": "fix/device-log-20261106",
+    "source_branch": "fix/vault-vpn-feedback-20261106",
+    "integration_branch": "fix/vault-vpn-feedback-20261106",
     "release": "hecker_suite",
     "base_release": "cp2a",
-    "status": "Device-log regression fixes and HeckerVault source/SDK checks pass; full ROM and phone acceptance pending",
+    "status": "Local HeckerVault redesign, fast exports and physical-network VPN binding pass source checks; full ROM and phone acceptance pending",
     "feature_sources": {
       "risingos": {
         "repository": "RisingOS-Revived/android_frameworks_base",
@@ -666,5 +666,25 @@
     "validation": "195 Suite tests plus complete host runner, 87 integration tests; locked Suite/Settings SDK, QS Compose, Launcher helpers, Motion Island/device features, WireGuard native/controller and HeckerVault archive/transport/SDK checks pass. Full ROM and physical tests pending.",
     "functional_revision": "11ece3f5e8a06d3947a89fe26741235ec1f6f1bd",
     "suite_revision": "deb0c39a1d045b10948e6641526115115e89c3d7"
+  },
+  "vault_vpn_feedback_20261106": {
+    "branch": "fix/vault-vpn-feedback-20261106",
+    "base_suite_revision": "deb0c39a1d045b10948e6641526115115e89c3d7",
+    "suite_revision": "e573c018818ffddf4a8cf590932a6437a6e994a9",
+    "evidence": "06_11-20-07-15_416.txt (38,521 lines; raw private log not committed) and supplied dark Swift Backup UI references",
+    "changes": [
+      "HeckerVault 1.1 native dark cards, icon toolbar/navigation, app selection cards and backup-parts bottom sheet; no cloud controls",
+      "pending/updated/existing backup selection, recorded backup dates and all/missing/newer restore preselection",
+      "fast default data compression, no APK recompression, buffered encrypted I/O and byte/percentage/speed progress",
+      "cache app labels/icons once off the main thread instead of comparator/resource reloads",
+      "resolve VPN endpoints using the selected Android Network and pin encrypted UDP to its validated physical netId before peer setup",
+      "safe periodic VPN counters, with no endpoint/key logging"
+    ],
+    "retained": "Fixed GameSpace icon, requested shared QQS/full-QS media transition, working provider website and current Motion Sense/creature implementation; framework, Settings, kernel and KernelSU pins unchanged",
+    "validation": "100 archive/security/progress checks, 50 native-transport checks, 17 quick-action scope checks, complete Vault Android SDK/resources and permissions/wiring audit, previous/new v1 archive interoperability both directions, full host runner including 195 Python tests, WireGuard config/provider/native/controller/AIDL/UI compilation and pinned AOSP Fwmark layout audit pass",
+    "benchmark": "CPU-only host export: warm new 1064.5/1060.9 ms versus previous 2514.9/1846.0 ms on the same 32 MiB incompressible APK-shaped and 7.7 MiB repetitive data input; phone/provider performance unverified",
+    "motion_log": "Three left/right swipe detections reach Spotify next/previous; Island and creature windows present. No tap, Motion Sense crash, ANR or SELinux denial in the new capture.",
+    "vpn_log": "Interface configured with tx=296, rx=0, no peer contact; disconnected after approximately 37 seconds. Remote reachability/profile validity unconfirmed.",
+    "limits": "Full ServerHive ROM/Soong build, device UI comparison, physical backup/clean-flash/restore and live VPN handshake/traffic remain pending. Swift Backup archive import remains deferred."
   }
 }

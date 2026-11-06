@@ -1,7 +1,61 @@
+# Vault redesign and VPN network fixes — Coral, 6 November 2026
+
+Use **fix/vault-vpn-feedback-20261106** in both repositories. This manifest pins
+Suite [e573c018818f](https://github.com/its-hecker/HeckerOS/commit/e573c018818ffddf4a8cf590932a6437a6e994a9).
+
+HeckerVault 1.1 follows the supplied dark-card references with icon navigation,
+app cards, quick backup/restore selections and a local backup-parts sheet.
+Fast export avoids recompressing APKs, defaults to fast data compression, buffers
+encrypted I/O and shows byte/percentage/speed progress. App labels/icons are
+loaded once off the main thread. v1 encryption and archive compatibility remain.
+There are no cloud options or Swift Backup archive imports.
+
+VPN now resolves hostname endpoints on the selected Wi-Fi/mobile Network and
+marks encrypted UDP for that physical network before peer setup. The new log
+shows outgoing handshake packets with no reply; a live handshake is still
+unverified. GameSpace, the restored shared QQS/full-QS transition, the working
+free-provider website and Motion Sense implementation are retained. Framework,
+Settings, kernel and KernelSU pins are unchanged.
+
+Passed: full host runner (195 Python tests plus production Java/native checks),
+100 Vault archive checks, 50 transport checks, 17 selection checks, complete Vault
+Android SDK/resource/wiring checks, WireGuard native/controller/AIDL/UI checks,
+and old/new v1 archive interoperability in both directions. Full ServerHive
+ROM compilation and physical backup/restore, UI and VPN testing remain pending.
+See [the evidence and implementation notes](https://github.com/its-hecker/HeckerOS/blob/e573c018818ffddf4a8cf590932a6437a6e994a9/docs/vault-vpn-feedback-2026-11-06.md).
+
+## Existing Coral checkout — RBE, default jobs
+
+```bash
+cd ~/heckeros-coral &&
+python3 vendor/hecker/floral/suite/tools/prepare.py --rom-root "$PWD" --revert &&
+repo init -u https://github.com/its-hecker/HeckerOS.git -b fix/vault-vpn-feedback-20261106 --git-lfs &&
+git -C .repo/local_manifests fetch origin fix/vault-vpn-feedback-20261106 &&
+git -C .repo/local_manifests switch --detach FETCH_HEAD &&
+repo sync -c --fail-fast --no-clone-bundle --no-tags &&
+env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
+```
+
+## Fresh checkout — RBE, default jobs
+
+```bash
+mkdir -p ~/heckeros-coral &&
+cd ~/heckeros-coral &&
+git lfs install &&
+repo init -u https://github.com/its-hecker/HeckerOS.git -b fix/vault-vpn-feedback-20261106 --git-lfs &&
+git clone --branch fix/vault-vpn-feedback-20261106 --single-branch https://github.com/its-hecker/HeckerOs-localmanifest.git .repo/local_manifests &&
+repo sync -c --fail-fast --no-clone-bundle --no-tags &&
+env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
+```
+
+The sections below are retained as historical build instructions.
+
+---
+
 # Device log fixes with HeckerVault — Coral, 6 November 2026
 
 Use **fix/device-log-20261106** in both repositories. This manifest pins Suite
-[e6ee5b45c225](https://github.com/its-hecker/HeckerOS/commit/deb0c39a1d045b10948e6641526115115e89c3d7).
+[deb0c39a1d04](https://github.com/its-hecker/HeckerOS/commit/deb0c39a1d045b10948e6641526115115e89c3d7).
 It restores the shared QQS/full-QS media transition, refreshes the circular
 GameSpace icon/cache identity, skips generated IDs in launcher glass scanning,
 and adds VPN keepalive/first-peer timeout/retry and the official VPNBook mirror.

@@ -1,3 +1,48 @@
+# Device log fixes with HeckerVault — Coral, 6 November 2026
+
+Use **fix/device-log-20261106** in both repositories. This manifest pins Suite
+[e6ee5b45c225](https://github.com/its-hecker/HeckerOS/commit/e6ee5b45c225c28c550dd8d6405c1b2d674e0c7f).
+It restores the shared QQS/full-QS media transition, refreshes the circular
+GameSpace icon/cache identity, skips generated IDs in launcher glass scanning,
+and adds VPN keepalive/first-peer timeout/retry and the official VPNBook mirror.
+HeckerVault (including saved groups and archive search) and the working 1.5
+framework, Settings, kernel and KernelSU selection are retained.
+
+Source/SDK/native checks pass. Full ServerHive ROM compilation and physical
+icon, media animation and VPN handshake/traffic tests remain required. The
+supplied log does not establish why the remote VPN peer failed to respond.
+See [detailed evidence and changes](https://github.com/its-hecker/HeckerOS/blob/e6ee5b45c225c28c550dd8d6405c1b2d674e0c7f/docs/device-log-2026-11-06.md).
+
+## Existing Coral checkout — RBE, default jobs
+
+```bash
+cd ~/heckeros-coral &&
+python3 vendor/hecker/floral/suite/tools/prepare.py --rom-root "$PWD" --revert &&
+repo init -u https://github.com/its-hecker/HeckerOS.git -b fix/device-log-20261106 --git-lfs &&
+git -C .repo/local_manifests fetch origin fix/device-log-20261106 &&
+git -C .repo/local_manifests switch --detach FETCH_HEAD &&
+repo sync -c --fail-fast --no-clone-bundle --no-tags &&
+env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
+```
+
+## Fresh checkout — RBE, default jobs
+
+```bash
+mkdir -p ~/heckeros-coral &&
+cd ~/heckeros-coral &&
+git lfs install &&
+repo init -u https://github.com/its-hecker/HeckerOS.git -b fix/device-log-20261106 --git-lfs &&
+git clone --branch fix/device-log-20261106 --single-branch https://github.com/its-hecker/HeckerOs-localmanifest.git .repo/local_manifests &&
+repo sync -c --fail-fast --no-clone-bundle --no-tags &&
+env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
+```
+
+HeckerVault runtime-output validation is still required; Swift Backup import
+stays deferred until physical backup/off-device copy/clean-flash restore succeeds.
+The sections below retain the preceding feature and baseline instructions.
+
+---
+
 # HeckerVault feature build — Coral, 6 November 2026
 
 Use **feat/heckervault-20261106** in both repositories. This manifest selects

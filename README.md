@@ -1,20 +1,20 @@
 # HeckerVault feature build — Coral, 6 November 2026
 
 Use **feat/heckervault-20261106** in both repositories. This manifest selects
-Suite [8abc0bbb4cc6](https://github.com/its-hecker/HeckerOS/commit/8abc0bbb4cc66b16583d69ee897b0ce727ace4ae),
+Suite [1ac62cb6998a](https://github.com/its-hecker/HeckerOS/commit/1ac62cb6998a892c54e56ba28cb236723f6cb057),
 with Hecker Lab → HeckerVault on top of the 1.5 feedback fixes.
 Framework, Settings, kernel and KernelSU pins retain the working 1.5 baseline.
 
 HeckerVault provides native Android app-data backup, APK/split restore, Wi-Fi,
 local contacts, SMS/MMS attachments, calls, static wallpapers, Hecker preferences,
-portable password-encrypted PC/USB archives, preview, schedules and retention.
+portable password-encrypted PC/USB archives, saved app groups, search, preview, schedules and retention.
 App backup opt-outs are explicitly APK-only. Swift import is deferred until
 physical HeckerVault backup/clean-flash/restore acceptance succeeds.
 
 Passed: 91 production Vault crypto/archive/transport assertions, complete locked
 controller and Suite/Settings SDK/resources/AIDL compilation, 195 Suite tests plus
 host checks, 87 integration tests and 82 manifest tests. Full ROM build and phone
-acceptance remain pending. See [coverage and instructions](https://github.com/its-hecker/HeckerOS/blob/8abc0bbb4cc66b16583d69ee897b0ce727ace4ae/vault/README.md).
+acceptance remain pending. See [coverage and instructions](https://github.com/its-hecker/HeckerOS/blob/1ac62cb6998a892c54e56ba28cb236723f6cb057/vault/README.md).
 
 ## Existing Coral checkout — RBE, default jobs
 

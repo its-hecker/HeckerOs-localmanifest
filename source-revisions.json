@@ -686,5 +686,13 @@
     "motion_log": "Three left/right swipe detections reach Spotify next/previous; Island and creature windows present. No tap, Motion Sense crash, ANR or SELinux denial in the new capture.",
     "vpn_log": "Interface configured with tx=296, rx=0, no peer contact; disconnected after approximately 37 seconds. Remote reachability/profile validity unconfirmed.",
     "limits": "Full ServerHive ROM/Soong build, device UI comparison, physical backup/clean-flash/restore and live VPN handshake/traffic remain pending. Swift Backup archive import remains deferred."
+  },
+  "heckerlab_about_cleanup_20261106": {
+    "branch": "fix/vault-vpn-feedback-20261106",
+    "base_suite_revision": "e573c018818ffddf4a8cf590932a6437a6e994a9",
+    "suite_revision": "b3e859a4634fd3b4ab9bdfd7788b7c376b72b63b",
+    "change": "Remove the duplicate mascot/version/maintainer/build-type card from the HeckerLab About tab. Device details follow the shared header and tabs.",
+    "validation": "Android resource compile/link and independent Settings dashboard Java compilation pass.",
+    "device_acceptance": "Next ROM build and phone UI verification pending."
   }
 }

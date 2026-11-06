@@ -1,7 +1,7 @@
 # Vault redesign and VPN network fixes — Coral, 6 November 2026
 
 Use **fix/vault-vpn-feedback-20261106** in both repositories. This manifest pins
-Suite [e573c018818f](https://github.com/its-hecker/HeckerOS/commit/e573c018818ffddf4a8cf590932a6437a6e994a9).
+Suite [b3e859a4634f](https://github.com/its-hecker/HeckerOS/commit/b3e859a4634fd3b4ab9bdfd7788b7c376b72b63b).
 
 HeckerVault 1.1 follows the supplied dark-card references with icon navigation,
 app cards, quick backup/restore selections and a local backup-parts sheet.
@@ -9,6 +9,8 @@ Fast export avoids recompressing APKs, defaults to fast data compression, buffer
 encrypted I/O and shows byte/percentage/speed progress. App labels/icons are
 loaded once off the main thread. v1 encryption and archive compatibility remain.
 There are no cloud options or Swift Backup archive imports.
+The duplicate HeckerOS identity card in HeckerLab’s About tab is removed;
+device details follow the shared header and tabs.
 
 VPN now resolves hostname endpoints on the selected Wi-Fi/mobile Network and
 marks encrypted UDP for that physical network before peer setup. The new log

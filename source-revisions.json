@@ -91,8 +91,8 @@
     },
     "frameworks/base": {
       "repository": "its-hecker/heckeros_frameworks_base",
-      "branch": "feat/penguin-integrity-20261105",
-      "revision": "52b48def74719b328b3704be72f7c3745299f18a",
+      "branch": "fix/device-feedback-20261105",
+      "revision": "4ff5e646649ad99adb3eeb19133189c811ea1212",
       "files": [
         "core/res/res/values/config.xml",
         "packages/SystemUI/res/values/config.xml",
@@ -313,7 +313,8 @@
         "verified_at": "2026-10-26",
         "notes": "Current PIF Java behavior adapted to HeckerOS Settings/process-scoped native property bridge; overlapping PixelOS PIF/keybox call paths removed."
       }
-    }
+    },
+    "functional_revision": "36d147c88d396e0ffdff6493c5cf80a953c89b2f"
   },
   "heckeros": {
     "version": "1.0",
@@ -338,8 +339,8 @@
     },
     "kernel": {
       "repository": "its-hecker/heckeros-floral-kernel",
-      "branch": "feat/coral-upstream-20261030",
-      "revision": "5303303fd0138a719c0077570975fdce6ace661f"
+      "branch": "fix/device-feedback-20261105",
+      "revision": "e1d6f9ada81bd9bbe040c5fe369f2607b6bd5a64"
     }
   },
   "platform_ownership": {
@@ -452,14 +453,14 @@
     "validation": "Source and host validation only; full ROM, kernel and phone tests required. Vendor/firmware security patch levels unchanged."
   },
   "app_compatibility": {
-    "branch": "feat/penguin-integrity-20261105",
-    "framework_revision": "52b48def74719b328b3704be72f7c3745299f18a",
+    "branch": "fix/device-feedback-20261105",
+    "framework_revision": "4ff5e646649ad99adb3eeb19133189c811ea1212",
     "backend_version": 3,
     "device": "coral",
     "inherited_suite_revision": "6963155a0d449cf6a163c391c14c18fafd4cbd41",
     "device_testing": "pending",
     "source_validation": "host/SDK checked; full ROM and physical acceptance pending",
-    "suite_revision": "1206d50f61572d1fd60ea65c9133bcfb2385bd8c",
+    "suite_revision": "f3d966ac15a1fc48b792e1a80fa10af7ba16b420",
     "native_source_lock": "native-compat/source-lock.json"
   },
   "device_feedback_20261102": {
@@ -659,5 +660,22 @@
     "validation": "194 Suite tests, 86 integration tests, 81 manifest tests; locked SDK Java/resources/Compose, compiled user/userdebug SELinux access with neverallows, and 138 native inputs including prepared-source upgrade/idempotence/exact revert passed",
     "device_acceptance": "Full ServerHive ROM compile and physical Coral UI/VPN acceptance pending",
     "banking": "UBL and Wallet unresolved; StrongBox certificate reports unlocked/unverified. Software property control is not hardware attestation."
+  },
+  "detection_feedback_20261106": {
+    "framework_revision": "4ff5e646649ad99adb3eeb19133189c811ea1212",
+    "kernel_revision": "e1d6f9ada81bd9bbe040c5fe369f2607b6bd5a64",
+    "kernelsu_revision": "fa03b73617de0598e564139cf53f520a8c88a342",
+    "branch": "fix/device-feedback-20261105",
+    "evidence": "duck_detector_report_Pixel_4_XL_20261106_010123.txt (private report, not committed)",
+    "scope": [
+      "verified renamed KSU Next signer privacy",
+      "app-local debugging properties and opt-in kernel adbd/JDWP probes",
+      "partition software property alignment and LineageBlackTheme path",
+      "scoped configured-keybox recovery for attestation generation failure",
+      "matching kernel/submodule build preflight"
+    ],
+    "limits": "Full ROM/kernel and device Wallet/UBL tests required. No private keybox bundled, bootloader locking or guaranteed absence of all raw ROM/integrity signals.",
+    "suite_revision": "f3d966ac15a1fc48b792e1a80fa10af7ba16b420",
+    "validation": "194 Suite and 86 integration tests; 114 configuration/crypto checks, real Android 17 ABI and keystore compile, full Suite SDK/resource/AIDL compile, ASan/UBSan kernel helpers, ARM/ARM64 Bionic platform/APEX compile, and pinned source upgrade/revert. Full kernel/ROM/device acceptance remains required."
   }
 }

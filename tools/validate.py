@@ -50,7 +50,7 @@ def manifest(root=ROOT):
         if path.startswith("kernel/"):
             require(project.get("sync-s") == "true", "KernelSU submodule sync is disabled")
             kernel_branches = {"refs/heads/main", "refs/heads/feat/game-booster-reference", "refs/heads/test/coral-root-privacy-20261027"}
-            kernel_branches.add("refs/heads/feat/coral-upstream-20261030")
+            kernel_branches.update({"refs/heads/feat/coral-upstream-20261030", "refs/heads/fix/device-feedback-20261105"})
             require(project.get("upstream") in kernel_branches, "Wrong HeckerOS kernel branch")
     print("Local manifest paths, dependency pins and kernel submodule sync: PASS")
 

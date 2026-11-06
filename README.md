@@ -1,17 +1,17 @@
 # Device log fixes with HeckerVault — Coral, 6 November 2026
 
 Use **fix/device-log-20261106** in both repositories. This manifest pins Suite
-[e6ee5b45c225](https://github.com/its-hecker/HeckerOS/commit/e6ee5b45c225c28c550dd8d6405c1b2d674e0c7f).
+[e6ee5b45c225](https://github.com/its-hecker/HeckerOS/commit/deb0c39a1d045b10948e6641526115115e89c3d7).
 It restores the shared QQS/full-QS media transition, refreshes the circular
 GameSpace icon/cache identity, skips generated IDs in launcher glass scanning,
 and adds VPN keepalive/first-peer timeout/retry and the official VPNBook mirror.
 HeckerVault (including saved groups and archive search) and the working 1.5
 framework, Settings, kernel and KernelSU selection are retained.
 
-Source/SDK/native checks pass. Full ServerHive ROM compilation and physical
+HeckerVault Android `Service`/`InputFilter` import ambiguities found by the first ServerHive javac run are corrected in this pin; a complete ServerHive ROM compilation and physical
 icon, media animation and VPN handshake/traffic tests remain required. The
 supplied log does not establish why the remote VPN peer failed to respond.
-See [detailed evidence and changes](https://github.com/its-hecker/HeckerOS/blob/e6ee5b45c225c28c550dd8d6405c1b2d674e0c7f/docs/device-log-2026-11-06.md).
+See [detailed evidence and changes](https://github.com/its-hecker/HeckerOS/blob/deb0c39a1d045b10948e6641526115115e89c3d7/docs/device-log-2026-11-06.md).
 
 ## Existing Coral checkout — RBE, default jobs
 

@@ -3,8 +3,9 @@
 ## HeckerOS 1.5 — verified Coral source selection, 6 November 2026
 
 Use `fix/device-feedback-20261105` in both repositories. This manifest pins Suite
-[`3186bd2a51cd`](https://github.com/its-hecker/HeckerOS/commit/3186bd2a51cd05ab0875b25e1b8b54a9da1aaca9), including the
-1.5 functional changes in `1315d8caae61` and prior detector follow-up in
+[`42978704bdfe`](https://github.com/its-hecker/HeckerOS/commit/42978704bdfe69e1de4384eebf4d49d0f6781733), including the
+1.5 changes in `1315d8caae61`, the legacy-icon correction in `ffd227eda1a1`,
+and the prior detector follow-up in
 `36d147c88d39`. The build helper checks core project heads and the pinned KernelSU gitlink
 before preparation and verifies `ro.heckeros.suite_revision` and
 `ro.heckeros.manifest_revision` in the installed output. After flashing, read the
@@ -36,14 +37,14 @@ detector build; the compatibility/attestation backend pins are unchanged.
 upgrade/revert and compiled SELinux access checks pass. Full 1.5 ROM compilation,
 dirty-flash icon refresh, QS timing and a real VPN handshake/traffic test remain
 required. The intermittent navigation-gesture freeze is not confirmed fixed.
-See [changes and validation](https://github.com/its-hecker/HeckerOS/blob/3186bd2a51cd05ab0875b25e1b8b54a9da1aaca9/docs/release-1.5-2026-11-06.md).
+See [changes and validation](https://github.com/its-hecker/HeckerOS/blob/42978704bdfe69e1de4384eebf4d49d0f6781733/docs/release-1.5-2026-11-06.md).
 All build examples below use the same feedback branch and default build jobs.
 
 ## Penguin integrity integration — selected for Coral
 
 The current fix/device-feedback-20261105 manifest now selects the completed
 Penguin PIF/TrickyStore/GameProps/ROM visibility integration and matching Settings.
-Suite is pinned to 3186bd2a51cd05ab0875b25e1b8b54a9da1aaca9,
+Suite is pinned to 42978704bdfe69e1de4384eebf4d49d0f6781733,
 framework to 4ff5e646649ad99adb3eeb19133189c811ea1212, and Settings to
 1cc575774ca85cf5ca5a8cf6a164a4583238c9c5.
 

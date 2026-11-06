@@ -314,7 +314,7 @@
         "notes": "Current PIF Java behavior adapted to HeckerOS Settings/process-scoped native property bridge; overlapping PixelOS PIF/keybox call paths removed."
       }
     },
-    "functional_revision": "1315d8caae615514b351929769339d7238758f1d"
+    "functional_revision": "ffd227eda1a15dc49b3cde9383c677a9b7f8585c"
   },
   "heckeros": {
     "version": "1.5",
@@ -460,7 +460,7 @@
     "inherited_suite_revision": "6963155a0d449cf6a163c391c14c18fafd4cbd41",
     "device_testing": "User reports banking apps, UBL and Wallet working on the prior matched detector build. The 1.5 backend is unchanged; a full new-build device regression remains required.",
     "source_validation": "host/SDK checked; full ROM and physical acceptance pending",
-    "suite_revision": "3186bd2a51cd05ab0875b25e1b8b54a9da1aaca9",
+    "suite_revision": "42978704bdfe69e1de4384eebf4d49d0f6781733",
     "native_source_lock": "native-compat/source-lock.json"
   },
   "device_feedback_20261102": {
@@ -693,8 +693,8 @@
     ],
     "device_report": "User reports UBL, banking apps and Wallet working on the prior matched detector build. Compatibility/attestation backend remains unchanged.",
     "validation": "194 Suite host tests and 86 integration tests; locked Suite/Settings SDK/AIDL/resources, SystemUI Compose against the pinned ActivityStarter API, 138 native inputs with fresh/upgrade/idempotent/exact revert checks, native VPN checks, and compiled user/userdebug SELinux policies with neverallows and DNS access probes pass. Full 1.5 ROM build and physical UI/icon-cache/tunnel acceptance remain required.",
-    "suite_revision": "3186bd2a51cd05ab0875b25e1b8b54a9da1aaca9",
-    "functional_revision": "1315d8caae615514b351929769339d7238758f1d",
+    "suite_revision": "42978704bdfe69e1de4384eebf4d49d0f6781733",
+    "functional_revision": "ffd227eda1a15dc49b3cde9383c677a9b7f8585c",
     "manifest_validation": "81 manifest host tests, local manifest validation and exact Suite/framework/Settings/kernel pin assertions pass."
   }
 }

@@ -1,3 +1,24 @@
+# Vault 1.3 and VPN storage/network fixes — Coral, 7 November 2026
+
+Use **fix/vault-vpn-storage-20261107** in both repositories.
+This manifest pins Suite [cf1597649336](https://github.com/its-hecker/HeckerOS/commit/cf15976493367c00318010040c418450ccfdd7ce).
+
+This follows the November 7 device-feedback build. It fixes native snapshot
+package metadata, adds bounded MediaProvider access for package media, provides
+one-time encryption setup with phone-credential password reset, and places a
+storage dashboard and Wi-Fi backup/restore actions on Home. VPN handles a missing
+old network correctly and adds endpoint-family/NAT64 handling for mobile data.
+Motion Sense and all existing device/framework/kernel/Settings pins are retained.
+
+Passed: 199 Suite Python tests, 87 integration tests, production Vault archive /
+transport / external-folder checks and full Vault/VPN Android SDK/resource checks.
+A ServerHive ROM build and physical backup/restore/VPN testing remain pending.
+See [the evidence, recovery details and build command](https://github.com/its-hecker/HeckerOS/blob/cf15976493367c00318010040c418450ccfdd7ce/docs/vault-vpn-storage-2026-11-07.md).
+
+The instructions below are historical tracks.
+
+---
+
 # Vault redesign and VPN network fixes — Coral, 6 November 2026
 
 Use **fix/vault-vpn-feedback-20261106** in both repositories. This manifest pins

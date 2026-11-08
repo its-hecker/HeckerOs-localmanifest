@@ -2,12 +2,13 @@
 
 Use **fix/xda-improvements-20261108** in both the Suite/ROM manifest and this
 local manifest after publishing the accompanying branches. This pins the tested
-source port of items 2–7: Google-signed Motion Sense Bridge, dynamic Settings
+source port of all seven items: Google-signed Motion Sense Bridge, dynamic Settings
 colours and aligned cards, optional gesture-pill/space removal, uniform shade,
 dark-theme fallback and face-enrollment preview/progress.
 
-**The eSIM setup-wizard fix is pending its exact updated Google APK.** Its five
-additional permissions are prepared, but the existing vendor APK is retained.
+**SIM Manager is updated to Google-signed D.2.1.989982212-google (306110).**
+Its original v3 signature and all 14 required privileged permission grants are
+verified. The exact APK is included in the vendor bundle.
 Full ROM compilation and physical testing are still required.
 
 ```bash

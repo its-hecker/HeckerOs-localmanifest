@@ -334,8 +334,8 @@
     },
     "vendor": {
       "repository": "its-hecker/heckeros-coral-vendor",
-      "branch": "main",
-      "revision": "60b0c615e939cd09ce956e6fe6df5d5aa6ccbdd4"
+      "branch": "fix/xda-improvements-20261108",
+      "revision": "5c9d58d059b092359f7be8f1fec478bac650d76a"
     },
     "kernel": {
       "repository": "its-hecker/heckeros-floral-kernel",
@@ -696,9 +696,10 @@
     "device_acceptance": "Next ROM build and phone UI verification pending."
   },
   "xda_improvements_20261108": {
-    "suite_revision": "c3fa033f4df73b570b14d8e93dbe5ce4909ee294",
+    "suite_revision": "e13a6b93ea82e882eb50b934c75096169972475f",
     "branch": "fix/xda-improvements-20261108",
     "implemented": [
+      1,
       2,
       3,
       4,
@@ -706,6 +707,7 @@
       6,
       7
     ],
-    "euicc": "Additional product allowlist prepared; exact D.2.1.989982212-google APK is still required. Vendor APK unchanged."
+    "euicc": "Integrated Google-signed D.2.1.989982212-google (306110), SHA-256 579f75da460e6a6137a1f2b39e603e20999b4f55c2ec1bde51acc4feac1c6760",
+    "vendor_revision": "5c9d58d059b092359f7be8f1fec478bac650d76a"
   }
 }

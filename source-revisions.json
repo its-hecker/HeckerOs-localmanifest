@@ -709,5 +709,18 @@
     ],
     "euicc": "Integrated Google-signed D.2.1.989982212-google (306110), SHA-256 579f75da460e6a6137a1f2b39e603e20999b4f55c2ec1bde51acc4feac1c6760",
     "vendor_revision": "5c9d58d059b092359f7be8f1fec478bac650d76a"
+  },
+  "vpn_tests_20261109": {
+    "branch": "fix/vpn-tests-20261109",
+    "base_suite_revision": "0d453746366ad7b2bb72ab587b9f096c62a91a86",
+    "suite_revision": "b584715f23d936a890548c45e03815b90612ae54",
+    "base_localmanifest_revision": "4123adeaaecaa54f1d3a95725add9811517e9761",
+    "changes": [
+      "Replace the incompatible WhiteVPN Android core with pinned FlClash 0.8.92 arm64 core.",
+      "Add sequential WireGuard/TCP connection tests, live results, protocol filters and cancellation.",
+      "Add optional bounded speed checks, network/time labels, stale results and safe sharing."
+    ],
+    "retained": "All previously published XDA device, framework, Settings, Motion Sense, vendor and kernel revisions.",
+    "limits": "Full ROM build and physical Wi-Fi/mobile testing remain required. ONIC-specific investigation is deferred."
   }
 }

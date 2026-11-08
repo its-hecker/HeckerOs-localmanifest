@@ -1,3 +1,29 @@
+# TCP startup fix and VPN connection tests — Coral, 9 November 2026
+
+Use **fix/vpn-tests-20261109** in HeckerOS and this local manifest after publishing both
+bundles. This pins Suite `b584715f23d936a890548c45e03815b90612ae54` and retains all existing XDA dependencies.
+
+The TCP update replaces the incompatible Android core. HeckerVPN gains Run tests,
+WireGuard/TCP filters, per-profile tests, live results, Stop, optional 1 MiB speed
+checks, network/time labels, stale-result marking and safe result sharing.
+
+Full ROM compilation and phone Wi-Fi/mobile testing remain required.
+ONIC-specific work follows general TCP validation.
+
+```bash
+cd ~/heckeros-coral &&
+python3 vendor/hecker/floral/suite/tools/prepare.py --rom-root "$PWD" --revert &&
+repo init -u https://github.com/its-hecker/HeckerOS.git -b fix/vpn-tests-20261109 --git-lfs &&
+git -C .repo/local_manifests fetch origin fix/vpn-tests-20261109 &&
+git -C .repo/local_manifests switch --detach FETCH_HEAD &&
+repo sync -c --fail-fast --no-clone-bundle --no-tags &&
+env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
+```
+
+The instructions below describe historical tracks.
+
+---
+
 # XDA improvements — Coral, 8 November 2026
 
 Use **fix/xda-improvements-20261108** in both the Suite/ROM manifest and this

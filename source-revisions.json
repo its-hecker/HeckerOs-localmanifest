@@ -271,11 +271,11 @@
     }
   },
   "hecker_suite": {
-    "source_branch": "fix/vault-vpn-feedback-20261106",
-    "integration_branch": "fix/vault-vpn-feedback-20261106",
+    "source_branch": "feat/bluetooth-glass-navigation-20261109",
+    "integration_branch": "feat/bluetooth-glass-navigation-20261109",
     "release": "hecker_suite",
     "base_release": "cp2a",
-    "status": "Local HeckerVault redesign, fast exports and physical-network VPN binding pass source checks; full ROM and phone acceptance pending",
+    "status": "Material You frosted headphone popup and grouped Gestures/navigation pass source checks; full ROM and phone acceptance pending",
     "feature_sources": {
       "risingos": {
         "repository": "RisingOS-Revived/android_frameworks_base",
@@ -722,5 +722,17 @@
     ],
     "retained": "All previously published XDA device, framework, Settings, Motion Sense, vendor and kernel revisions.",
     "limits": "Full ROM build and physical Wi-Fi/mobile testing remain required. ONIC-specific investigation is deferred."
+  },
+  "bluetooth_navigation_20261109": {
+    "branch": "feat/bluetooth-glass-navigation-20261109",
+    "baseline_suite_revision": "b584715f23d936a890548c45e03815b90612ae54",
+    "changes": [
+      "Material 3 wallpaper colors and light/dark connection card",
+      "Frosted background blur with runtime solid fallback and listener cleanup",
+      "Gestures and navigation page with moved hide-pill/inset toggle and original swipe Lottie",
+      "English, Russian and Simplified Chinese labels"
+    ],
+    "validation": "Complete Suite/Settings Java and Android resource/AIDL linking; native headphone popup Java/resources; navigation transaction and Russian resource checks pass. Full ROM build and phone appearance/blur/navigation acceptance pending.",
+    "suite_revision": "ac9ef75d03059febfe7dd76b65c5c4baae512953"
   }
 }

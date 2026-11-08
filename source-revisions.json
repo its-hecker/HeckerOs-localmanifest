@@ -91,8 +91,8 @@
     },
     "frameworks/base": {
       "repository": "its-hecker/heckeros_frameworks_base",
-      "branch": "fix/device-feedback-20261105",
-      "revision": "4ff5e646649ad99adb3eeb19133189c811ea1212",
+      "branch": "fix/xda-improvements-20261108",
+      "revision": "32c50e2a85da710694f8e18ea2452aef1c7a1933",
       "files": [
         "core/res/res/values/config.xml",
         "packages/SystemUI/res/values/config.xml",
@@ -244,8 +244,8 @@
     },
     "packages/apps/Settings": {
       "repository": "its-hecker/heckeros_packages_apps_Settings",
-      "branch": "feat/penguin-integrity-20261105",
-      "revision": "1cc575774ca85cf5ca5a8cf6a164a4583238c9c5",
+      "branch": "fix/xda-improvements-20261108",
+      "revision": "d2cef314d2899f4cdf5acd31881c803f2d55f3f0",
       "files": [
         "src/com/android/settings/homepage/",
         "src/com/android/settings/DisplaySettings.java",
@@ -694,5 +694,18 @@
     "change": "Remove the duplicate mascot/version/maintainer/build-type card from the HeckerLab About tab. Device details follow the shared header and tabs.",
     "validation": "Android resource compile/link and independent Settings dashboard Java compilation pass.",
     "device_acceptance": "Next ROM build and phone UI verification pending."
+  },
+  "xda_improvements_20261108": {
+    "suite_revision": "8d91273e90516198200cd99199f6ec4bd51e63a4",
+    "branch": "fix/xda-improvements-20261108",
+    "implemented": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "euicc": "Additional product allowlist prepared; exact D.2.1.989982212-google APK is still required. Vendor APK unchanged."
   }
 }

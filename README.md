@@ -1,3 +1,29 @@
+# XDA improvements — Coral, 8 November 2026
+
+Use **fix/xda-improvements-20261108** in both the Suite/ROM manifest and this
+local manifest after publishing the accompanying branches. This pins the tested
+source port of items 2–7: Google-signed Motion Sense Bridge, dynamic Settings
+colours and aligned cards, optional gesture-pill/space removal, uniform shade,
+dark-theme fallback and face-enrollment preview/progress.
+
+**The eSIM setup-wizard fix is pending its exact updated Google APK.** Its five
+additional permissions are prepared, but the existing vendor APK is retained.
+Full ROM compilation and physical testing are still required.
+
+```bash
+cd ~/heckeros-coral &&
+python3 vendor/hecker/floral/suite/tools/prepare.py --rom-root "$PWD" --revert &&
+repo init -u https://github.com/its-hecker/HeckerOS.git -b fix/xda-improvements-20261108 --git-lfs &&
+git -C .repo/local_manifests fetch origin fix/xda-improvements-20261108 &&
+git -C .repo/local_manifests switch --detach FETCH_HEAD &&
+repo sync -c --fail-fast --no-clone-bundle --no-tags &&
+env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
+```
+
+The instructions below are historical tracks.
+
+---
+
 # Vault 1.3 and VPN storage/network fixes — Coral, 7 November 2026
 
 Use **fix/vault-vpn-storage-20261107** in both repositories.

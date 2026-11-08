@@ -92,7 +92,7 @@
     "frameworks/base": {
       "repository": "its-hecker/heckeros_frameworks_base",
       "branch": "fix/xda-improvements-20261108",
-      "revision": "32c50e2a85da710694f8e18ea2452aef1c7a1933",
+      "revision": "1c4177ea2bf71de8bbb556ad480f59673c8ba31f",
       "files": [
         "core/res/res/values/config.xml",
         "packages/SystemUI/res/values/config.xml",
@@ -696,7 +696,7 @@
     "device_acceptance": "Next ROM build and phone UI verification pending."
   },
   "xda_improvements_20261108": {
-    "suite_revision": "e13a6b93ea82e882eb50b934c75096169972475f",
+    "suite_revision": "0d453746366ad7b2bb72ab587b9f096c62a91a86",
     "branch": "fix/xda-improvements-20261108",
     "implemented": [
       1,

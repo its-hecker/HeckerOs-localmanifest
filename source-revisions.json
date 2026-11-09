@@ -61,7 +61,7 @@
     },
     "vendor/custom": {
       "repository": "its-hecker/heckeros_vendor_custom",
-      "branch": "feat/coral-upstream-20261030",
+      "branch": "cnb_latest_stable",
       "revision": "82457873ad4f7c75195c21ddf9da35903a0d975f",
       "files": [
         "config/",
@@ -74,7 +74,7 @@
     },
     "vendor/lineage": {
       "repository": "its-hecker/heckeros_vendor_lineage",
-      "branch": "feat/coral-upstream-20261030",
+      "branch": "cnb_latest_stable",
       "revision": "a8286e3a3edc3aed7e774ca57476477f178a0c46",
       "files": [
         "overlay/common/",
@@ -91,7 +91,7 @@
     },
     "frameworks/base": {
       "repository": "its-hecker/heckeros_frameworks_base",
-      "branch": "fix/xda-improvements-20261108",
+      "branch": "cnb_latest_stable",
       "revision": "1c4177ea2bf71de8bbb556ad480f59673c8ba31f",
       "files": [
         "core/res/res/values/config.xml",
@@ -244,7 +244,7 @@
     },
     "packages/apps/Settings": {
       "repository": "its-hecker/heckeros_packages_apps_Settings",
-      "branch": "fix/xda-improvements-20261108",
+      "branch": "cnb_latest_stable",
       "revision": "d2cef314d2899f4cdf5acd31881c803f2d55f3f0",
       "files": [
         "src/com/android/settings/homepage/",
@@ -271,8 +271,8 @@
     }
   },
   "hecker_suite": {
-    "source_branch": "fix/vpn-terminal-20261109",
-    "integration_branch": "fix/vpn-terminal-20261109",
+    "source_branch": "cnb_latest_stable",
+    "integration_branch": "cnb_latest_stable",
     "release": "hecker_suite",
     "base_release": "cp2a",
     "status": "Material You frosted headphone popup and grouped Gestures/navigation pass source checks; full ROM and phone acceptance pending",
@@ -329,18 +329,18 @@
   "hardware_sources": {
     "device": {
       "repository": "its-hecker/heckeros-floral-devicetree",
-      "branch": "test/floral-low-brightness-flicker-20261029",
+      "branch": "cnb_latest_stable",
       "revision": "4829092f7b7b988fc5fb2efe57c481f266364c71"
     },
     "vendor": {
       "repository": "its-hecker/heckeros-coral-vendor",
-      "branch": "fix/xda-improvements-20261108",
+      "branch": "cnb_latest_stable",
       "revision": "e8732539ab2292d269827d45940c148ccf4042a7"
     },
     "kernel": {
       "repository": "its-hecker/heckeros-floral-kernel",
-      "branch": "fix/device-feedback-20261105",
-      "revision": "e1d6f9ada81bd9bbe040c5fe369f2607b6bd5a64"
+      "branch": "cnb_latest_stable",
+      "revision": "358d9f4bbe23acfd721d2ea002b3c97a800f1d5b"
     }
   },
   "platform_ownership": {

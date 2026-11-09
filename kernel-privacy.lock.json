@@ -1,7 +1,7 @@
 {
   "kernel": {
     "repository": "its-hecker/heckeros-floral-kernel",
-    "revision": "e1d6f9ada81bd9bbe040c5fe369f2607b6bd5a64",
+    "revision": "358d9f4bbe23acfd721d2ea002b3c97a800f1d5b",
     "files": {
       "security/selinux/hooks.c": "05737ca4e564060d43be1195b75cb426b0180e323dc710ed460219413ebe8554",
       "security/selinux/include/objsec.h": "5bf823d3a86741f1abe3b4190c8de9e2895264d12f32fd8124af8a9179a9e41e"

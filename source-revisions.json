@@ -271,8 +271,8 @@
     }
   },
   "hecker_suite": {
-    "source_branch": "feat/bluetooth-glass-navigation-20261109",
-    "integration_branch": "feat/bluetooth-glass-navigation-20261109",
+    "source_branch": "fix/vpn-terminal-20261109",
+    "integration_branch": "fix/vpn-terminal-20261109",
     "release": "hecker_suite",
     "base_release": "cp2a",
     "status": "Material You frosted headphone popup and grouped Gestures/navigation pass source checks; full ROM and phone acceptance pending",
@@ -734,5 +734,11 @@
     ],
     "validation": "Complete Suite/Settings Java and Android resource/AIDL linking; native headphone popup Java/resources; navigation transaction and Russian resource checks pass. Full ROM build and phone appearance/blur/navigation acceptance pending.",
     "suite_revision": "ac9ef75d03059febfe7dd76b65c5c4baae512953"
+  },
+  "vpn_terminal_20261109": {
+    "branch": "fix/vpn-terminal-20261109",
+    "baseline_suite_revision": "ac9ef75d03059febfe7dd76b65c5c4baae512953",
+    "suite_revision": "d59cee28eb9113f740d4333314ba8381b3d6c2c6",
+    "changes": "WireGuard-only VPN, legacy TCP profile migration, independently scrolling test log and stale TCP build output cleanup."
   }
 }

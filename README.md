@@ -1,20 +1,19 @@
-# TCP startup fix and VPN connection tests — Coral, 9 November 2026
+# WireGuard test log — Coral, 9 November 2026
 
-Use **fix/vpn-tests-20261109** in HeckerOS and this local manifest after publishing both
-bundles. This pins Suite `b584715f23d936a890548c45e03815b90612ae54` and retains all existing XDA dependencies.
+Use **fix/vpn-terminal-20261109** in HeckerOS and this local manifest after publishing both bundles.
+The update includes the Bluetooth popup and navigation changes.
 
-The TCP update replaces the incompatible Android core. HeckerVPN gains Run tests,
-WireGuard/TCP filters, per-profile tests, live results, Stop, optional 1 MiB speed
-checks, network/time labels, stale-result marking and safe result sharing.
+HeckerVPN uses WireGuard. On first access after upgrade it removes the experimental
+TCP profiles and cached catalog while keeping WireGuard profiles and app routing.
+The test log scrolls independently of the page and shares the full results.
 
-Full ROM compilation and phone Wi-Fi/mobile testing remain required.
-ONIC-specific work follows general TCP validation.
+Full ROM compilation and phone testing remain pending.
 
 ```bash
 cd ~/heckeros-coral &&
 python3 vendor/hecker/floral/suite/tools/prepare.py --rom-root "$PWD" --revert &&
-repo init -u https://github.com/its-hecker/HeckerOS.git -b fix/vpn-tests-20261109 --git-lfs &&
-git -C .repo/local_manifests fetch origin fix/vpn-tests-20261109 &&
+repo init -u https://github.com/its-hecker/HeckerOS.git -b fix/vpn-terminal-20261109 --git-lfs &&
+git -C .repo/local_manifests fetch origin fix/vpn-terminal-20261109 &&
 git -C .repo/local_manifests switch --detach FETCH_HEAD &&
 repo sync -c --fail-fast --no-clone-bundle --no-tags &&
 env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh

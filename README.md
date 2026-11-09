@@ -1,7 +1,7 @@
-# HeckerOS stable build for Coral
+# HeckerOS smoothness test for Coral
 
-Use **cnb_latest_stable** in HeckerOS and this local manifest.
-The update includes the Bluetooth popup and navigation changes.
+Use **perf/coral-smoothness** in HeckerOS and this local manifest.
+This build tests quicker Quick Settings dismissal and launcher glass caching.
 
 HeckerVPN uses WireGuard. On first access after upgrade it removes the experimental
 TCP profiles and cached catalog while keeping WireGuard profiles and app routing.
@@ -12,8 +12,8 @@ Full ROM compilation and phone testing remain pending.
 ```bash
 cd ~/heckeros-coral &&
 python3 vendor/hecker/floral/suite/tools/prepare.py --rom-root "$PWD" --revert &&
-repo init -u https://github.com/its-hecker/HeckerOS.git -b cnb_latest_stable --git-lfs &&
-git -C .repo/local_manifests fetch origin cnb_latest_stable &&
+repo init -u https://github.com/its-hecker/HeckerOS.git -b perf/coral-smoothness --git-lfs &&
+git -C .repo/local_manifests fetch origin perf/coral-smoothness &&
 git -C .repo/local_manifests switch --detach FETCH_HEAD &&
 repo sync -c --fail-fast --no-clone-bundle --no-tags &&
 env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh

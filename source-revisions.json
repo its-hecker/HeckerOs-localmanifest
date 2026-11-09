@@ -91,8 +91,8 @@
     },
     "frameworks/base": {
       "repository": "its-hecker/heckeros_frameworks_base",
-      "branch": "cnb_latest_stable",
-      "revision": "e0ed62e80adbd915c7ad9776e5ccd166dd72c28f",
+      "branch": "perf/floral-smoothness",
+      "revision": "f048f9de9902e2aa9ed82373954ff98541928e03",
       "files": [
         "core/res/res/values/config.xml",
         "packages/SystemUI/res/values/config.xml",
@@ -271,8 +271,8 @@
     }
   },
   "hecker_suite": {
-    "source_branch": "cnb_latest_stable",
-    "integration_branch": "cnb_latest_stable",
+    "source_branch": "perf/coral-smoothness",
+    "integration_branch": "perf/coral-smoothness",
     "release": "hecker_suite",
     "base_release": "cp2a",
     "status": "Material You frosted headphone popup and grouped Gestures/navigation pass source checks; full ROM and phone acceptance pending",
@@ -314,7 +314,7 @@
         "notes": "Current PIF Java behavior adapted to HeckerOS Settings/process-scoped native property bridge; overlapping PixelOS PIF/keybox call paths removed."
       }
     },
-    "functional_revision": "5a0ce893d05fe780f2858a6e90ee6d00cadd58f0"
+    "functional_revision": "18e92c250977ee16ae7e83575a05fe552ccc94ee"
   },
   "heckeros": {
     "version": "1.5",

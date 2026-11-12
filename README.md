@@ -1,7 +1,7 @@
 # Coral test: Fix navigation-pill freeze (13 November 2026)
 
 This **experimental** branch builds from `cnb_latest_stable` Coral sources
-and pins Suite commit `a3bbb33afbb5179acde208d01ed0e94aa84f84c1`.
+and pins Suite commit `28c4ce5b67b8e7ac154aaa4b2b51b8b696623a9c`.
 
 The old "hide gesture pill and bottom space" option applied a framework
 `taskbar_stashed_size=0dp` overlay. That RRO is now retired from

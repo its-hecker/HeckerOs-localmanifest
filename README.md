@@ -1,3 +1,39 @@
+# HeckerOS Coral stable: Smoothness 2.0 integration (13 November 2026)
+
+The Coral `cnb_latest_stable` manifest now pins the eight HeckerOS 2.0
+performance tracks promoted following a successful boot and positive
+smoothness report on the experimental image. The source changes cover
+QS/SystemUI blur, launch power hints, PSI LMKD, launcher caching,
+GameSpace telemetry, decorative animations, targeted ART preopt, and
+adaptive refresh selection.
+
+**Known unresolved issue:** Cancelled Back gesture → Recents → re-enter app
+can still leave the UI frozen. The experimental Recents task-alpha patch
+(`3eaa11f` and test `9394d9e`) was **not** promoted to stable and
+should not be advertised as a fix. Keep `perf/heckeros-2.0` available
+for further debugging.
+
+### Build the promoted Coral stable track on ServerHive
+
+For an existing tree with a checkout of the local manifest:
+
+```bash
+cd ~/heckeros-coral
+python3 vendor/hecker/floral/suite/tools/prepare.py --rom-root "$PWD" --revert
+repo init -u https://github.com/its-hecker/HeckerOS.git -b cnb_latest_stable --git-lfs
+git -C .repo/local_manifests fetch origin cnb_latest_stable
+git -C .repo/local_manifests switch --detach FETCH_HEAD
+repo sync -c --fail-fast --no-clone-bundle --no-tags
+python3 vendor/hecker/floral/suite/tools/check_smoothness_2.py --rom-root "$PWD"
+env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
+```
+
+Confirm that the `floral.xml` pins the corresponding
+`cnb_latest_stable` device tree/framework/Suite commits. These
+optimizations are **not yet a claim that the unresolved freeze is fixed**.
+
+---
+
 # HeckerOS smoothness test for Coral
 
 Use **perf/coral-smoothness** in HeckerOS and this local manifest.

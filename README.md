@@ -5,7 +5,7 @@ startup, Suite, launcher, frame pacing, limited animation timing, and
 game-monitor efficiency work. It builds on the same
 `cnb_latest_stable` device tree, framework, kernel, vendor, Face ID,
 Motion Sense, Dolby and other production dependencies. The Suite pin is
-`191e2f9991ee13a7bbb73382a6d11f17a37bceb8`.
+`6076cf4492420ad9aa9aa1b29afc5a10c8dc5845`.
 
 **Do not publish an OTA or claim that the existing Back/Recents freeze or
 the app-drawer Home animation jump are fixed.**

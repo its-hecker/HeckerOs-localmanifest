@@ -1,3 +1,42 @@
+# HeckerOS Smoothness 2.0 — Coral integration
+
+**Experimental, not a stable release.** This `perf/heckeros-2.0` manifest
+pins the reviewed Suite, device tree and SystemUI/framework changes without
+altering `cnb_latest_stable`. Motion Sense, 3D Face Unlock, KernelSU Next,
+Dolby and the remaining feature pins remain as in the stable manifest.
+
+## Fresh ServerHive checkout
+
+```bash
+mkdir -p ~/heckeros-coral &&
+cd ~/heckeros-coral &&
+git lfs install &&
+repo init -u https://github.com/its-hecker/HeckerOS.git -b perf/heckeros-2.0 --git-lfs &&
+git clone --branch perf/heckeros-2.0 --single-branch https://github.com/its-hecker/HeckerOs-localmanifest.git .repo/local_manifests &&
+repo sync -c --fail-fast --no-clone-bundle --no-tags &&
+python3 vendor/hecker/floral/suite/tools/check_smoothness_2.py --rom-root "$PWD" &&
+env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
+```
+
+## Existing Coral checkout
+
+```bash
+cd ~/heckeros-coral &&
+python3 vendor/hecker/floral/suite/tools/prepare.py --rom-root "$PWD" --revert &&
+repo init -u https://github.com/its-hecker/HeckerOS.git -b perf/heckeros-2.0 --git-lfs &&
+git -C .repo/local_manifests fetch origin perf/heckeros-2.0 &&
+git -C .repo/local_manifests switch --detach FETCH_HEAD &&
+repo sync -c --fail-fast --no-clone-bundle --no-tags &&
+python3 vendor/hecker/floral/suite/tools/check_smoothness_2.py --rom-root "$PWD" &&
+env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
+```
+
+Release/validation notes: [Smoothness 2.0](https://github.com/its-hecker/HeckerOS/blob/perf/heckeros-2.0/docs/performance-2.0.md).
+Full Android compilation, Perfetto runs, thermal checks and phone acceptance
+are still pending. Do not publish an OTA or upgrade users to this branch yet.
+
+---
+
 # HeckerOS smoothness test for Coral
 
 Use **perf/coral-smoothness** in HeckerOS and this local manifest.

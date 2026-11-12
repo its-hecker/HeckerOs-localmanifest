@@ -1,3 +1,28 @@
+# Settings fluidity test — Coral (13 November 2026)
+
+This is a **draft test branch**. It inherits the latest `cnb_latest_stable`
+Coral dependencies and pins the experimental Settings Suite revision
+`bfbd57ef69ec4674608de6fb24439ce5ae2f5c45`. The unrelated
+Back → Recents freeze is **not** fixed by this branch.
+
+From an existing Coral checkout (after reverting any applied Suite adapters):
+
+```bash
+cd ~/heckeros-coral
+python3 vendor/hecker/floral/suite/tools/prepare.py --rom-root "$PWD" --revert
+repo init -u https://github.com/its-hecker/HeckerOS.git -b cnb_latest_stable --git-lfs
+git -C .repo/local_manifests fetch origin perf/settings-fluid-20261113
+git -C .repo/local_manifests switch --detach FETCH_HEAD
+repo sync -c --fail-fast --no-clone-bundle --no-tags
+python3 vendor/hecker/floral/suite/tools/check_smoothness_2.py --rom-root "$PWD"
+env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
+```
+
+See the Suite's `docs/settings-fluid-2026-11-13.md` for controlled cold/warm
+Settings launch comparisons, visual acceptance and rollback.
+
+---
+
 # HeckerOS Coral stable: Smoothness 2.0 integration (13 November 2026)
 
 The Coral `cnb_latest_stable` manifest now pins the eight HeckerOS 2.0

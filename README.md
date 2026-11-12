@@ -1,3 +1,38 @@
+# Coral test: Fix navigation-pill freeze (13 November 2026)
+
+This **experimental** branch builds from `cnb_latest_stable` Coral sources
+and pins Suite commit `a3bbb33afbb5179acde208d01ed0e94aa84f84c1`.
+
+The old "hide gesture pill and bottom space" option applied a framework
+`taskbar_stashed_size=0dp` overlay. That RRO is now retired from
+`PRODUCT_PACKAGES`. The toggle only hides the visual Pixel Launcher
+taskbar handle and disables the legacy inset overlay if it remains
+installed from an older build. Native gesture spacing stays intact.
+
+The user isolated a Back/Recents screen-freeze reproduction with pill
+hidden; the overlay geometry is the leading *unverified* cause. Verify
+that the patch actually fixes the freeze, and that the pill still hides
+as expected, before merging.
+
+## Existing Coral checkout (ServerHive)
+
+```bash
+cd ~/heckeros-coral || exit 1
+python3 vendor/hecker/floral/suite/tools/prepare.py --rom-root "$PWD" --revert
+repo init -u https://github.com/its-hecker/HeckerOS.git -b cnb_latest_stable --git-lfs
+git -C .repo/local_manifests fetch origin fix/gesture-pill-freeze-20261113
+git -C .repo/local_manifests switch --detach FETCH_HEAD
+repo sync -c --fail-fast --no-clone-bundle --no-tags
+env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
+```
+
+After boot, test pill enabled and hidden through Settings → HeckerLab →
+Gestures and navigation, and reproduce incomplete Back → Recents → app
+re-entry 20+ times. The full device checks are in Suite
+`docs/gesture-pill-freeze-2026-11-13.md`.
+
+---
+
 # HeckerOS Coral stable: Smoothness 2.0 integration (13 November 2026)
 
 The Coral `cnb_latest_stable` manifest now pins the eight HeckerOS 2.0

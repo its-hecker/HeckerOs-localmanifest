@@ -1,3 +1,37 @@
+# HeckerOS Coral fluidity — pass 2 test build (13 Nov 2026)
+
+This draft build combines pass-1 Settings row optimization with pass-2
+startup, Suite, launcher, frame pacing, limited animation timing, and
+game-monitor efficiency work. It builds on the same
+`cnb_latest_stable` device tree, framework, kernel, vendor, Face ID,
+Motion Sense, Dolby and other production dependencies. The Suite pin is
+`6076cf4492420ad9aa9aa1b29afc5a10c8dc5845`.
+
+**Do not publish an OTA or claim that the existing Back/Recents freeze or
+the app-drawer Home animation jump are fixed.**
+
+### Existing ServerHive Coral checkout
+
+```bash
+cd ~/heckeros-coral || exit 1
+python3 vendor/hecker/floral/suite/tools/prepare.py --rom-root "$PWD" --revert
+repo init -u https://github.com/its-hecker/HeckerOS.git -b cnb_latest_stable --git-lfs
+git -C .repo/local_manifests fetch origin perf/heckeros-fluid-pass2-20261113
+git -C .repo/local_manifests switch --detach FETCH_HEAD
+repo sync -c --fail-fast --no-clone-bundle --no-tags
+python3 vendor/hecker/floral/suite/tools/check_smoothness_2.py --rom-root "$PWD"
+env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug bash .repo/local_manifests/build.sh
+```
+
+After build and boot, compare Settings startup, Suite tab switching,
+launcher glass, folder transitions, Quick Settings, GameSpace activation,
+frame times, pressure, thermal state and battery. Gesture jump and
+cancelled Back freeze remain separate functional bugs.
+
+See Suite `docs/fluidity-pass2-2026-11-13.md`.
+
+---
+
 # Settings fluidity test — Coral (13 November 2026)
 
 This is a **draft test branch**. It inherits the latest `cnb_latest_stable`

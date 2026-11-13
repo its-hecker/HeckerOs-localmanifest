@@ -9,14 +9,14 @@
   <remove-project path="vendor/hecker/floral/motionsense" optional="true" />
   <remove-project path="vendor/hecker/floral/faceid" optional="true" />
   <remove-project path="vendor/hecker/floral/suite" optional="true" />
-  <project name="its-hecker/heckeros-floral-devicetree" path="device/google/coral" remote="floral-github" revision="b07bd534386afa7af80f6940ebcfb48d63c4c961" upstream="refs/heads/cnb_latest_stable" dest-branch="cnb_latest_stable" />
+  <project name="its-hecker/heckeros-floral-devicetree" path="device/google/coral" remote="floral-github" revision="193aee4e31c6e839a7ce58f01bfcd7adc3bd4918" upstream="refs/heads/perf/heckeros-kernel-device-2.0" dest-branch="perf/heckeros-kernel-device-2.0" />
   <project name="its-hecker/heckeros-coral-vendor" path="vendor/google/coral" remote="floral-github" revision="e5dbd92c40314ec1c17eab7887c7c13a5e87fa0c" upstream="refs/heads/cnb_latest_stable" dest-branch="cnb_latest_stable" />
-  <project name="its-hecker/heckeros-floral-kernel" path="kernel/google/msm-4.14" remote="floral-github" revision="358d9f4bbe23acfd721d2ea002b3c97a800f1d5b" upstream="refs/heads/cnb_latest_stable" dest-branch="cnb_latest_stable" sync-s="true" />
+  <project name="its-hecker/heckeros-floral-kernel" path="kernel/google/msm-4.14" remote="floral-github" revision="4ede75e390cb150358b80d5c16e36ed63a6b3442" upstream="refs/heads/perf/heckeros-kernel-device-2.0" dest-branch="perf/heckeros-kernel-device-2.0" sync-s="true" />
   <project name="LineageOS/android_packages_apps_ElmyraService" path="packages/apps/ElmyraService" remote="floral-github" revision="baab2beb7165caef27b4ee235641775e9d189acc" upstream="refs/heads/lineage-24.0" />
   <project name="its-hecker/vendor_lunaris_dolby" path="vendor/lunaris/dolby" remote="floral-github" revision="544e6271c955e2bf450c8481ac1e71551cb5a800" upstream="refs/heads/cnb_latest_stable" dest-branch="cnb_latest_stable" />
   <project name="its-hecker/floral-motionsense-plugin" path="vendor/hecker/floral/motionsense" remote="floral-github" revision="8c14ea2952305004a658ed0506e39f0b5b1e3c58" upstream="refs/heads/fix/xda-improvements-20261108" dest-branch="fix/xda-improvements-20261108" />
   <project name="its-hecker/floral-3D-faceid-plugin" path="vendor/hecker/floral/faceid" remote="floral-github" revision="d998995e1452d2c3d9882bfdf659e1db760a99be" upstream="refs/heads/main" dest-branch="main" />
-  <project name="its-hecker/HeckerOS" path="vendor/hecker/floral/suite" remote="floral-github" revision="3eaba2a3d75d513b7da86cc1a064813cdc7410a5" upstream="refs/heads/cnb_latest_stable" dest-branch="cnb_latest_stable" />
+  <project name="its-hecker/HeckerOS" path="vendor/hecker/floral/suite" remote="floral-github" revision="9f47e0331f294483f4432db4de828c13eb484574" upstream="refs/heads/perf/heckeros-kernel-device-2.0" dest-branch="perf/heckeros-kernel-device-2.0" />
   <remove-project path="packages/services/OmniJaws" optional="true" />
   <extend-project name="PixelOS-AOSP/android_packages_apps_DolbyAtmos" path="packages/apps/DolbyAtmos" revision="13bbe61cf3e1046e3a1f0bda4719c321c953ce50" upstream="refs/heads/seventeen" />
   <extend-project name="LineageOS/android_hardware_lineage_compat" path="hardware/lineage/compat" revision="590c94850e079642136a4577305d02e4174caabc" upstream="refs/heads/lineage-24.0" />

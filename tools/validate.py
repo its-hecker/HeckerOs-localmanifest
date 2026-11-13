@@ -54,6 +54,8 @@ def manifest(root=ROOT):
                 "refs/heads/feat/coral-upstream-20261030",
                 "refs/heads/fix/device-feedback-20261105",
                 "refs/heads/cnb_latest_stable",
+                # Isolated Coral kernel/device trial. Stable remains unchanged.
+                "refs/heads/perf/heckeros-kernel-device-2.0",
             })
             require(project.get("upstream") in kernel_branches, "Wrong HeckerOS kernel branch")
     print("Local manifest paths, dependency pins and kernel submodule sync: PASS")

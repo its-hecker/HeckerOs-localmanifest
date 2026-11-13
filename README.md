@@ -1,3 +1,36 @@
+# Hecker Recovery 2.0 on HeckerOS Coral
+
+This branch inherits the Coral stable source pins and selects the HeckerOS
+Recovery 2.0 integration branch for the Suite. The ROM ZIP includes the
+current Hecker-branded AOSP recovery. The OrangeFox-based Hecker Recovery
+2.0 image is built in its
+[standalone Coral tree](https://github.com/its-hecker/orangefox_device_google_coral/tree/feat/hecker-recovery-2.0).
+Coral uses recovery-as-boot, so the standalone image is for temporary device
+testing while dual-mode Android boot and OTA integration are evaluated.
+
+## Build the Coral integration branch on ServerHive
+
+From an existing Coral checkout:
+
+```bash
+(
+  set -eo pipefail
+  cd ~/heckeros-coral
+  python3 vendor/hecker/floral/suite/tools/prepare.py --rom-root "$PWD" --revert
+  repo init -u https://github.com/its-hecker/HeckerOS.git -b feat/hecker-recovery-2.0 --git-lfs
+  git -C .repo/local_manifests fetch origin feat/hecker-recovery-2.0
+  git -C .repo/local_manifests switch --detach FETCH_HEAD
+  repo sync -c --fail-fast --no-clone-bundle --no-tags
+  env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug \
+    bash .repo/local_manifests/build.sh 2>&1 | tee ~/heckeros-coral-recovery-build.log
+)
+```
+
+See the [ROM boot integration notes](https://github.com/its-hecker/HeckerOS/blob/feat/hecker-recovery-2.0/docs/hecker-recovery-2.0.md)
+for the boot image comparison and device validation plan.
+
+---
+
 # HeckerOS Coral stable: Smoothness 2.0 integration (13 November 2026)
 
 The Coral `cnb_latest_stable` manifest now pins the eight HeckerOS 2.0

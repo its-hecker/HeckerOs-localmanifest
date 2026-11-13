@@ -26,10 +26,13 @@ if [[ ! -f trusty/vendor/google/aosp/lk_inc.mk || ! -f lk_inc.mk ]] || \
     exit 1
 fi
 floral_setup_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+# The Recovery 2.0 manifest selects the bundled OrangeFox recovery for Coral.
+export HECKER_RECOVERY2=1
 python3 "$floral_setup_dir/tools/retire_launcher.py"
 python3 "$floral_setup_dir/tools/check_qcom_namespaces.py"
 python3 "$floral_setup_dir/tools/check_build_revision.py" --rom-root "$PWD"
 git -C vendor/google/coral lfs pull
+python3 vendor/hecker/floral/suite/tools/recovery2_rom.py download out/hecker-recovery2-coral.cpio.gz
 python3 "$floral_setup_dir/tools/prepare.py" "$@"
 python3 "$floral_setup_dir/tools/validate.py" --rom-root "$PWD"
 source build/envsetup.sh

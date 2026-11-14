@@ -34,6 +34,12 @@ python3 "$floral_setup_dir/tools/check_build_revision.py" --rom-root "$PWD"
 git -C vendor/google/coral lfs pull
 python3 vendor/hecker/floral/suite/tools/recovery2_rom.py download out/hecker-recovery2-coral.cpio.gz
 python3 "$floral_setup_dir/tools/prepare.py" "$@"
+# Fail before a long Soong build when Suite settings, framework policy or
+# Recovery 2.0 source are out of sync. These tests use the synced local trees.
+python3 -m unittest discover -s vendor/hecker/floral/suite/tests \
+    -p 'test_signature_app_selection.py' -v
+python3 -m unittest discover -s vendor/hecker/floral/suite/tests \
+    -p 'test_recovery2_*.py' -v
 python3 "$floral_setup_dir/tools/validate.py" --rom-root "$PWD"
 source build/envsetup.sh
 # Select the native App Lock and Compose QS flags for HeckerOS.

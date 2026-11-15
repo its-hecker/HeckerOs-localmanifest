@@ -10,6 +10,30 @@ export HECKER_RECOVERY2=0
 # Keep USB debugging OFF by default for the Non-KSU userdebug image.
 # The user can enable authorized ADB later in Developer options.
 export HECKER_DEV_USB_ADB=false
+
+# The old Suite prepare adapter ignored OUT_DIR and left backed-up Android.bp
+# files under out/. With OUT_DIR=out-nonksu, Soong scans those copies and sees
+# duplicate module names (for example libseccomp_policy and libfts).
+# Preserve old backups inside the *active* Soong-excluded output directory.
+if [[ "$(realpath -m -- "$OUT_DIR")" == "$(realpath -m -- out)" ]]; then
+    echo "Non-KSU OUT_DIR must differ from out (reserved for rooted builds)." >&2
+    exit 1
+fi
+legacy_suite_backups="out/hecker-suite-source-backups"
+if [[ -e "$legacy_suite_backups" || -L "$legacy_suite_backups" ]]; then
+    if [[ -L "$legacy_suite_backups" || ! -d "$legacy_suite_backups" ]]; then
+        echo "Unrecognized legacy Suite backup path: $legacy_suite_backups" >&2
+        exit 1
+    fi
+    mkdir -p -- "$OUT_DIR"
+    migrated="$OUT_DIR/hecker-suite-source-backups-legacy-$(date -u +%Y%m%dT%H%M%SZ)"
+    if [[ -e "$migrated" ]]; then
+        echo "Refusing to overwrite Suite backup destination: $migrated" >&2
+        exit 1
+    fi
+    mv -- "$legacy_suite_backups" "$migrated"
+    echo "Preserved legacy Suite backups in: $migrated"
+fi
 case "${HECKER_BUILD_VARIANT:-userdebug}" in
     userdebug|eng) ;;
     *) echo "The validated Coral configuration requires a userdebug or eng build." >&2; exit 1 ;;

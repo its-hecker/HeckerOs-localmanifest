@@ -7,6 +7,9 @@ set -eo pipefail
 export OUT_DIR="${HECKER_NONKSU_OUT_DIR:-out-nonksu}"
 export HECKER_NONKSU=1
 export HECKER_RECOVERY2=0
+# Keep USB debugging OFF by default for the Non-KSU userdebug image.
+# The user can enable authorized ADB later in Developer options.
+export HECKER_DEV_USB_ADB=false
 case "${HECKER_BUILD_VARIANT:-userdebug}" in
     userdebug|eng) ;;
     *) echo "The validated Coral configuration requires a userdebug or eng build." >&2; exit 1 ;;

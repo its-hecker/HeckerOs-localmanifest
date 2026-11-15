@@ -1,12 +1,14 @@
-# Hecker Recovery 2.0 on HeckerOS Coral
+# HeckerOS Coral CNB stable: Recovery 2.0
 
-This branch uses the latest Coral CNB baseline. The build includes the
+The `cnb_latest_stable` branch includes the
 OrangeFox-based Hecker Recovery 2.0 in the Android 17 `boot.img` and checks
 that the A/B OTA carries the same image. A standard recovery boot opens
 OrangeFox. ADB sideload, userspace fastboot and queued update or wipe
 commands use the Android 17 recovery in the same image.
 
-## Build the Coral integration branch on ServerHive
+The Hecker Lab Advanced options signature-compatibility page now uses a searchable per-app opt-in list (default off). It does not disable APK integrity checks or allow system app signature changes. Coral Recovery 2.0 does **not** include password-free FBE decryption. Flame continues to use its own device-specific recovery build path.
+
+## Build Coral CNB stable on ServerHive
 
 From an existing Coral checkout, using its original source configuration:
 
@@ -17,8 +19,8 @@ From an existing Coral checkout, using its original source configuration:
   if [[ -f vendor/hecker/floral/suite/tools/prepare.py ]]; then
     python3 vendor/hecker/floral/suite/tools/prepare.py --rom-root "$PWD" --revert
   fi
-  repo init -u https://github.com/its-hecker/HeckerOS.git -b feat/hecker-recovery-2.0 --git-lfs
-  git -C .repo/local_manifests fetch origin feat/hecker-recovery-2.0
+  repo init -u https://github.com/its-hecker/HeckerOS.git -b cnb_latest_stable --git-lfs
+  git -C .repo/local_manifests fetch origin cnb_latest_stable
   git -C .repo/local_manifests switch --detach FETCH_HEAD
   repo sync -c --fail-fast --no-clone-bundle --no-tags
   env -u HECKER_BUILD_JOBS USE_RBE=true HECKER_DEVICE=coral HECKER_BUILD_VARIANT=userdebug \
@@ -29,7 +31,7 @@ From an existing Coral checkout, using its original source configuration:
 The first build fetches the pinned OrangeFox ramdisk from GitHub. Subsequent
 builds reuse the checksum-verified download. A physical Coral test is still
 needed for both boot paths, KernelSU Next, FBE decryption and an A/B update.
-See the [ROM boot integration notes](https://github.com/its-hecker/HeckerOS/blob/feat/hecker-recovery-2.0/docs/hecker-recovery-2.0.md).
+See the [ROM boot integration notes](https://github.com/its-hecker/HeckerOS/blob/cnb_latest_stable/docs/hecker-recovery-2.0.md).
 
 ---
 

@@ -25,6 +25,9 @@ class BuildPreflightTests(unittest.TestCase):
         (make / "envsetup.sh").write_text("true\n")
         (make / "core/envsetup.mk").write_text("# root marker\n")
         (self.rom / "build/envsetup.sh").symlink_to("make/envsetup.sh")
+        fake_check = self.rom / "kernel/google/msm-4.14/tools/hecker/verify_nonksu.py"
+        fake_check.parent.mkdir(parents=True)
+        fake_check.write_text('print("synthetic NonKSU validated")\n')
         self.source = self.rom / "trusty/vendor/google/aosp/lk_inc.mk"
         self.source.parent.mkdir(parents=True)
         self.source.write_text("# Trusty source\n")
@@ -40,7 +43,7 @@ class BuildPreflightTests(unittest.TestCase):
                        "if 'rev-parse' in sys.argv:\n"
                        " path=sys.argv[2]\n"
                        " print(next((v for k,v in pins.items() if path.endswith(k)), '0'*40))\n"
-                       "elif 'ls-tree' in sys.argv: print('160000 commit '+'0'*40+'\\tKernelSU')\n"
+                       "elif 'ls-tree' in sys.argv: pass\n"
                        "elif 'status' in sys.argv: pass\n"
                        "else:\n print('REACHED_LFS_BOUNDARY',file=sys.stderr);sys.exit(47)\n")
         git.chmod(0o755)

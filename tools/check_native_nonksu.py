@@ -10,6 +10,27 @@ import subprocess
 DENSITIES = ("mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi")
 
 
+def check_usb_debugging_off(product_out: Path):
+    # A dirty flash may retain an earlier USB-debugging choice in /data.
+    props = next((p for p in (product_out / "product/etc/build.prop",
+                              product_out / "product/build.prop") if p.is_file()), None)
+    if props is None:
+        raise ValueError("Non-KSU product properties are missing")
+    values = {}
+    for line in props.read_text().splitlines():
+        if "=" not in line or line.lstrip().startswith("#"):
+            continue
+        key, value = (part.strip() for part in line.split("=", 1))
+        values.setdefault(key, []).append(value)
+    if values.get("ro.heckeros.dev_usb_adb") != ["0"]:
+        raise ValueError("Non-KSU must disable default development USB debugging")
+    if values.get("ro.adb.secure") != ["1"]:
+        raise ValueError("Non-KSU must require ADB host authorization")
+    for value in values.get("persist.sys.usb.config", []):
+        if "adb" in value.split(","):
+            raise ValueError("Non-KSU default USB configuration must not enable ADB")
+
+
 def check(root: Path, product_out: Path | None = None):
     root = root.resolve()
     kernel = root / "kernel/google/msm-4.14"
@@ -38,6 +59,7 @@ def check(root: Path, product_out: Path | None = None):
     subprocess.run(["python3", str(kernel / "tools/hecker/verify_nonksu.py"),
                     "--source-root", str(kernel)], check=True)
     if product_out is not None:
+        check_usb_debugging_off(product_out)
         boot = product_out / "boot.img"
         if not boot.is_file():
             raise ValueError("Non-KSU full ROM output is missing boot.img")

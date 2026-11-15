@@ -21,10 +21,31 @@ class CoralNonKSUTests(unittest.TestCase):
         build = (ROOT / "build.sh").read_text()
         self.assertIn('OUT_DIR="${HECKER_NONKSU_OUT_DIR:-out-nonksu}"', build)
         self.assertIn("export HECKER_RECOVERY2=0", build)
+        self.assertIn("export HECKER_DEV_USB_ADB=false", build)
         self.assertIn("m heckeros", build)
         self.assertNotIn("recovery2_rom.py download", build)
         self.assertIn("check_native_nonksu.py", build)
         self.assertIn("verify_nonksu.py", build)
+
+    def test_usb_debugging_off_and_authenticated_adb_in_product(self):
+        import tempfile
+        from tools.check_native_nonksu import check_usb_debugging_off
+
+        with tempfile.TemporaryDirectory() as temporary:
+            product_out = Path(temporary)
+            props = product_out / "product/etc/build.prop"
+            props.parent.mkdir(parents=True)
+            props.write_text("ro.heckeros.dev_usb_adb=0\nro.adb.secure=1\n"
+                             "persist.sys.usb.config=mtp\n")
+            check_usb_debugging_off(product_out)
+            props.write_text("ro.heckeros.dev_usb_adb=1\nro.adb.secure=0\n"
+                             "persist.sys.usb.config=adb\n")
+            with self.assertRaisesRegex(ValueError, "development USB debugging"):
+                check_usb_debugging_off(product_out)
+            props.write_text("ro.heckeros.dev_usb_adb=0\nro.adb.secure=1\n"
+                             "persist.sys.usb.config=mtp,adb\n")
+            with self.assertRaisesRegex(ValueError, "must not enable ADB"):
+                check_usb_debugging_off(product_out)
 
     def test_boot_guard_requires_branding_and_rejects_orangefox(self):
         guard = (ROOT / "tools/check_native_nonksu.py").read_text()

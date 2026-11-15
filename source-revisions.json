@@ -1,9 +1,9 @@
 {
-  "checked_on": "2026-10-27",
+  "checked_on": "2026-11-06",
   "pixelos_manifest": {
     "repository": "PixelOS-AOSP/android_manifest",
     "branch": "seventeen",
-    "revision": "c16cfd0c95c5c3d7f5f2ef85b5b3140787db2035"
+    "revision": "1f53b335fdbf44bc04906248056f878eb52588fc"
   },
   "base_snapshots": {
     "device": {
@@ -61,8 +61,8 @@
     },
     "vendor/custom": {
       "repository": "its-hecker/heckeros_vendor_custom",
-      "branch": "feat/about-phone-official",
-      "revision": "302ac1f722258085326e38d45e2742a067316d59",
+      "branch": "cnb_latest_stable",
+      "revision": "82457873ad4f7c75195c21ddf9da35903a0d975f",
       "files": [
         "config/",
         "overlay/common/",
@@ -74,8 +74,8 @@
     },
     "vendor/lineage": {
       "repository": "its-hecker/heckeros_vendor_lineage",
-      "branch": "heckeros-17",
-      "revision": "0d2ff0b8055eb745d36dfef3600a73f5185a4fff",
+      "branch": "cnb_latest_stable",
+      "revision": "a8286e3a3edc3aed7e774ca57476477f178a0c46",
       "files": [
         "overlay/common/",
         "config/common_mobile_full.mk"
@@ -91,8 +91,8 @@
     },
     "frameworks/base": {
       "repository": "its-hecker/heckeros_frameworks_base",
-      "branch": "heckeros-17",
-      "revision": "854e6dbf73ae1cd61095085a9655c8d9136104eb",
+      "branch": "perf/floral-smoothness",
+      "revision": "f048f9de9902e2aa9ed82373954ff98541928e03",
       "files": [
         "core/res/res/values/config.xml",
         "packages/SystemUI/res/values/config.xml",
@@ -178,7 +178,39 @@
         "packages/SystemUI/src/com/android/systemui/volume/SafetyWarningDialogDelegate.java",
         "packages/SystemUI/src/com/android/systemui/volume/CsdWarningDialogDelegate.java",
         "packages/SystemUI/plugin/src/com/android/systemui/plugins/VolumeDialog.java",
-        "packages/SystemUI/plugin/src/com/android/systemui/plugins/VolumeDialogController.java"
+        "packages/SystemUI/plugin/src/com/android/systemui/plugins/VolumeDialogController.java",
+        "services/core/java/com/android/server/pm/AppsFilterBase.java",
+        "services/core/java/com/android/server/pm/AppsFilterImpl.java",
+        "services/core/java/com/android/server/pm/HeckerRootVisibility.java",
+        "tests/hecker/test_root_visibility.py",
+        "services/core/java/com/android/server/display/mode/DisplayModeDirector.java",
+        "services/core/java/com/android/server/display/mode/LowZoneBrightnessHysteresis.java",
+        "core/res/res/values/symbols.xml",
+        "packages/SystemUI/src/com/android/systemui/statusbar/window/StatusBarWindowControllerImpl.java",
+        "core/java/com/android/internal/policy/SystemBarUtils.java",
+        "packages/SystemUI/src/com/android/systemui/keyguard/domain/interactor/KeyguardTouchHandlingInteractor.kt",
+        "packages/SystemUI/src/com/android/systemui/common/ui/view/TouchHandlingView.kt",
+        "packages/SystemUI/src/com/android/systemui/shade/QQSGestureListener.kt",
+        "packages/SystemUI/tests/utils/src/com/android/systemui/keyguard/domain/interactor/KeyguardLongPressInteractorKosmos.kt",
+        "packages/SystemUI/multivalentTests/src/com/android/systemui/keyguard/domain/interactor/KeyguardTouchHandlingInteractorTest.kt",
+        "packages/SystemUI/src/com/android/systemui/shade/NotificationPanelViewController.java",
+        "packages/SystemUI/customization/src/com/android/systemui/shared/settings/data/repository/SystemSettingsRepository.kt",
+        "packages/SystemUI/src/com/android/systemui/util/settings/repository/UserAwareSystemSettingsRepository.kt",
+        "packages/SystemUI/src/com/android/systemui/settings/UserSettingsRepositoryModule.kt",
+        "core/java/android/app/HeckerAppCompatibility.java",
+        "core/java/android/provider/Settings.java",
+        "core/java/com/android/internal/os/AppZygoteInit.java",
+        "services/core/java/com/android/server/pm/parsing/PackageInfoUtils.java",
+        "services/core/java/com/android/server/pm/InstallPackageHelper.java",
+        "tests/hecker/test_app_compatibility.py",
+        "packages/SystemUI/src/com/android/systemui/qs/composefragment/QSFragmentCompose.kt",
+        "packages/SystemUI/compose/features/src/com/android/systemui/keyguard/ui/composable/elements/LockscreenElementFactoryImpl.kt",
+        "packages/SystemUI/Android.bp",
+        "packages/SystemUI/src/com/android/systemui/window/domain/interactor/WindowRootViewBlurInteractor.kt",
+        "core/java/android/app/Instrumentation.java",
+        "core/java/android/app/ApplicationPackageManager.java",
+        "services/core/java/com/android/server/wm/ActivityTaskManagerService.java",
+        "tests/hecker/test_penguin_visibility.py"
       ]
     },
     "hardware/google/camera": {
@@ -212,8 +244,8 @@
     },
     "packages/apps/Settings": {
       "repository": "its-hecker/heckeros_packages_apps_Settings",
-      "branch": "feat/suite-polish",
-      "revision": "3831282d93ecda4d52a6894077482fe01ecea903",
+      "branch": "cnb_latest_stable",
+      "revision": "d2cef314d2899f4cdf5acd31881c803f2d55f3f0",
       "files": [
         "src/com/android/settings/homepage/",
         "src/com/android/settings/DisplaySettings.java",
@@ -224,7 +256,8 @@
         "src/com/android/settings/homepage/SettingsHomepageActivity.java",
         "Android.bp",
         "src/com/android/settings/deviceinfo/aboutphone/MyDeviceInfoFragment.java",
-        "res/xml/my_device_info.xml"
+        "res/xml/my_device_info.xml",
+        "AndroidManifest.xml"
       ]
     },
     "packages/apps/Launcher3": {
@@ -238,11 +271,11 @@
     }
   },
   "hecker_suite": {
-    "source_branch": "feat/suite-polish",
-    "integration_branch": "feat/suite-polish",
+    "source_branch": "perf/coral-smoothness",
+    "integration_branch": "perf/coral-smoothness",
     "release": "hecker_suite",
     "base_release": "cp2a",
-    "status": "Source validation only; full ROM build and phone tests required",
+    "status": "Material You frosted headphone popup and grouped Gestures/navigation pass source checks; full ROM and phone acceptance pending",
     "feature_sources": {
       "risingos": {
         "repository": "RisingOS-Revived/android_frameworks_base",
@@ -280,13 +313,15 @@
         "verified_at": "2026-10-26",
         "notes": "Current PIF Java behavior adapted to HeckerOS Settings/process-scoped native property bridge; overlapping PixelOS PIF/keybox call paths removed."
       }
-    }
+    },
+    "functional_revision": "18e92c250977ee16ae7e83575a05fe552ccc94ee"
   },
   "heckeros": {
-    "version": "1.0",
+    "version": "1.5",
     "android": 17,
     "devices": [
-      "coral"
+      "coral",
+      "flame"
     ],
     "boot_animation": "Approved caracal intro, glasses removal and wink; seamless ring loop",
     "validation": "Source and host checks only; full ROM builds and phone validation required"
@@ -294,30 +329,427 @@
   "hardware_sources": {
     "device": {
       "repository": "its-hecker/heckeros-floral-devicetree",
-      "branch": "main",
-      "revision": "8e19009ad632f66473ddcdb10c00595fefdb79b4"
+      "branch": "cnb_latest_stable",
+      "revision": "4829092f7b7b988fc5fb2efe57c481f266364c71"
     },
     "vendor": {
       "repository": "its-hecker/heckeros-coral-vendor",
-      "branch": "main",
-      "revision": "60b0c615e939cd09ce956e6fe6df5d5aa6ccbdd4"
+      "branch": "cnb_latest_stable",
+      "revision": "e8732539ab2292d269827d45940c148ccf4042a7"
     },
     "kernel": {
-      "repository": "its-hecker/HeckerOsfloral-Kernel-NonKsu",
-      "branch": "main",
-      "revision": "ffefc8f518edd3a6de01403b5ea0d68029cd8067",
-      "variant": "nonksu",
-      "rooted_base_revision": "48d6881fb8537f62811209927022e467d37e3a98"
+      "repository": "its-hecker/heckeros-floral-kernel",
+      "branch": "cnb_latest_stable",
+      "revision": "358d9f4bbe23acfd721d2ea002b3c97a800f1d5b"
     }
   },
   "platform_ownership": {
     "status": "pinned-upstream-with-owned-customizations",
     "owned_projects": 4,
-    "total_pixelos_projects": 91,
-    "remaining_projects": 87,
+    "total_pixelos_projects": 92,
+    "remaining_projects": 88,
     "migration": "migration/README.md",
     "updates": "Upstream changes require explicit pin updates, review and another build. No automatic merges or phone updates.",
     "bulk_migration_required": false,
     "upstream_lock": "integration/upstream-platform-lock.json"
+  },
+  "device_variants": {
+    "flame": {
+      "device_path": "device/google/coral",
+      "device_branch": "flame",
+      "vendor_repository": "its-hecker/HeckerOs-Flame-vendor",
+      "vendor_path": "vendor/google/flame",
+      "manifest_repository": "its-hecker/HeckerOs-Flame-localmanifest",
+      "product": "hecker_flame-hecker_suite-userdebug",
+      "base_vendor_repository": "Nahida-Prjkt/proprietary_vendor_google_flame",
+      "base_vendor_revision": "a57f01d5642a55250e48b244f51be9322659eeed",
+      "features": "Same shared sources and product inheritance as Coral; full Flame build and phone validation pending",
+      "device_revision": "e00918e713e8561a8f931d5377c97c5af8d55068",
+      "vendor_revision": "ed43a21e890e8581873566f0b7a03839b3d56b0f"
+    }
+  },
+  "root_privacy_test": {
+    "device": "coral",
+    "branch": "test/coral-root-privacy-20261027",
+    "baseline_branch": "feat/suite-polish",
+    "baseline_revisions": {
+      "manifest": "b09a85d3401a0f568f2e6568a370cc81d722ff63",
+      "suite": "a51eacc198efe0a79a1f5e5e455c422064206e95",
+      "kernel": "48d6881fb8537f62811209927022e467d37e3a98",
+      "framework": "854e6dbf73ae1cd61095085a9655c8d9136104eb"
+    },
+    "kernelsu_revision": "89b7bea65591634bcc6ff040db5fd97c8ca787a9",
+    "baseline_correction": "The initial main-based test snapshot is superseded. Test branches now merge the complete Suite Polish source set and matching dependencies without changing stable branches.",
+    "validation": "112 Suite host tests, locked-SDK Java/resources/AIDL/controller compilation and framework visibility host checks passed. Full kernel/ROM builds and Coral phone acceptance remain required.",
+    "flame": "Not updated; wait for successful Coral phone testing."
+  },
+  "settings_depth_test": {
+    "branch": "feat/settings-depth-lockscreen-20261028",
+    "parent_branch": "test/coral-root-privacy-20261027",
+    "parent_suite_revision": "040820a87ea4d3275451189a3f04d26c9443bae9",
+    "device": "coral",
+    "depth": "Prepared matching background/transparent foreground; no automatic subject extraction.",
+    "navigation": "Read-only frozen/recovered capture helper; root cause and device fix unconfirmed.",
+    "validation": "Owned Java/resources/Compose, native source adapters and host checks; full ROM and phone tests required."
+  },
+  "display_flicker_test": {
+    "branch": "test/floral-low-brightness-flicker-20261029",
+    "parent_branch": "feat/settings-depth-lockscreen-20261028",
+    "parent_suite_revision": "75a6a0f7b75e74a771276e71519e1c97c417a858",
+    "parent_manifest_revision": "06b551437950b1ecdafee57ff841a989196968a6",
+    "framework_revision": "f2091fa0550856c69e53afc5f58147acd48d0c52",
+    "device_revision": "4829092f7b7b988fc5fb2efe57c481f266364c71",
+    "coral": "Display-only entry 74, protected 90 Hz, four raw steps of exit hysteresis.",
+    "flame": "Shared overlay prepared with entry 16/protected 60 Hz; Flame manifest unchanged pending Coral validation.",
+    "validation": "1372 host checks of the real native constructor, nine observer methods and helper; AAPT2 framework/internal symbol/device resources pass. Full system-server/ROM builds and physical display acceptance remain pending."
+  },
+  "statusbar_rows_test": {
+    "branch": "feat/statusbar-lyrics-dual-20261029",
+    "parent_suite_revision": "65f42ab27da9ce25fde3e1bb8862879cd78814f9",
+    "devices": [
+      "flame",
+      "coral"
+    ],
+    "lyrics": "Shared LRCLIB worker/cache/media state with independent per-user lock and status subscriptions; status subscription remains active while unlocked.",
+    "heights_dp": [
+      44,
+      52,
+      60
+    ],
+    "insets": "Built-in signed framework RROs; native theme service mirrors the foreground choice into system-user resources without rewriting preferences.",
+    "flame_framework_revision": "854e6dbf73ae1cd61095085a9655c8d9136104eb",
+    "validation": "Source, SDK, native-adapter and host checks; full Soong/ROM builds and both phones remain required."
+  },
+  "coral_update_review": {
+    "checked_on": "2026-10-30",
+    "scope": [
+      "coral"
+    ],
+    "report": "docs/coral-upstream-review-2026-10-30.md",
+    "platform_security_patch": "2026-10-01",
+    "new_manifest_sources": [
+      {
+        "path": "external/conscrypt",
+        "repository": "LineageOS/android_external_conscrypt",
+        "branch": "lineage-24.0",
+        "revision": "98b5842746b92120e30ba3ddc8b1f975b8b7f897"
+      },
+      {
+        "path": "system/ca-certificates",
+        "repository": "LineageOS/android_system_ca-certificates",
+        "branch": "lineage-24.0",
+        "revision": "3eafa7527b96dee31eb8afd7586f3e4ca8c07de0"
+      },
+      {
+        "path": "system/memory/libmeminfo",
+        "repository": "PixelOS-AOSP/android_system_memory_libmeminfo",
+        "branch": "seventeen",
+        "revision": "e970d14536c482bc08f46b93ed2a6185f83a165c"
+      }
+    ],
+    "device_lineage_already_included": "6a4ad9f39145ba7c6ff927041b6e9ff453edc1f8",
+    "muppets_vendor_already_included": "c957fead4960a897ff75132f3acc5ec64d492ada",
+    "kernel_lineage_import": "bb17b7de4b570f2c0c32ddba0543cac03c58dd84",
+    "validation": "Source and host validation only; full ROM, kernel and phone tests required. Vendor/firmware security patch levels unchanged."
+  },
+  "app_compatibility": {
+    "branch": "feat/penguin-integrity-20261105",
+    "framework_revision": "db2d4435d1d2cce17d35f6fdc0efb303becfc2c5",
+    "backend_version": 3,
+    "device": "coral",
+    "inherited_suite_revision": "6963155a0d449cf6a163c391c14c18fafd4cbd41",
+    "device_testing": "pending",
+    "source_validation": "host/SDK checked; full ROM and physical acceptance pending",
+    "native_source_lock": "native-compat/source-lock.json",
+    "suite_revision": "1ac62cb6998a892c54e56ba28cb236723f6cb057"
+  },
+  "device_feedback_20261102": {
+    "branch": "fix/coral-ui-compatibility-20261102",
+    "device": "coral",
+    "changes": [
+      "independent AOD clock size",
+      "native QS media expansion and faster hiding",
+      "bounded media allocations and blur strength",
+      "single Settings card background",
+      "colored GameSpace launcher icon",
+      "OFL Google Sans Cyrillic fallback",
+      "opt-in ROM software visibility",
+      "build-time addon.d exclusion"
+    ],
+    "weather": "Pixel Launcher Google Smartspace requires device diagnostics",
+    "validation": "Host and SDK checks only; full Android build and device acceptance pending"
+  },
+  "boot_fix_20261103": {
+    "branch": "fix/coral-ui-compatibility-20261102",
+    "device": "coral",
+    "parent_suite_revision": "335d398d9fe3a0e2f487424be667b1d8cad10f7f",
+    "parent_manifest_revision": "cd6bf7a5ece1739901546f43233bef91f900fde2",
+    "issue": "Cyrillic adapter emits forbidden lang attributes in named family-list children; Zygote fails during Typeface preload",
+    "legacy_config_sha256": "e606e8315cad959520194c7d23e5665065a96f2058b63fd96d6088b78467ce61",
+    "validation": "Pinned Android parser host execution reproduces the old exception and accepts the fixed XML; glyph, migration and built-output tests pass; full ROM build and phone acceptance pending"
+  },
+  "build_fix_20261103": {
+    "branch": "fix/coral-ui-compatibility-20261102",
+    "device": "coral",
+    "parent_suite_revision": "a3f0f41b94e67c4f961e2daa02f46f6d621d9660",
+    "issue": "Bionic helper exceeds the 2048-byte stack-frame limit",
+    "validation": "Clang 18 ARM/ARM64 O2/Os platform/APEX object checks and executed native boundary/upgrade tests pass; full ServerHive build pending"
+  },
+  "ui_depth_feedback_20261103": {
+    "branch": "fix/coral-ui-compatibility-20261102",
+    "device": "coral",
+    "parent_suite_revision": "faf6a3b37875b4cc0e5c6a162d31c220dee3ffe7",
+    "parent_manifest_revision": "273cfd57f284dc6544c613624cca69169d09d155",
+    "changes": [
+      "dedicated signature depth-provider permission",
+      "manual layer fit and alignment",
+      "current-lock wallpaper extraction with built-in fallback and retry",
+      "depth mask for all built-in Hecker lock clocks",
+      "Launcher Studio cards and controls",
+      "clock height and top spacing",
+      "message/weather position above depth",
+      "search pill height and glass dock padding",
+      "Hecker Icon Pack action",
+      "explicit home/lock depth labels and independent imports",
+      "native QS dashboard preview",
+      "remove Caracal Dawn action",
+      "remove legacy PixelOS Developer options spoof controls"
+    ],
+    "validation": "Targeted host geometry, current-wallpaper pipeline, lifecycle/provider, permission, source-upgrade and font regression checks pass; full ROM build and physical Coral acceptance pending"
+  },
+  "settings_home_crash_20261104": {
+    "branch": "fix/coral-ui-compatibility-20261102",
+    "device": "coral",
+    "parent_suite_revision": "25642fbfcbd0762eefc213f7a93625e257b5722b",
+    "settings_revision": "1cc575774ca85cf5ca5a8cf6a164a4583238c9c5",
+    "issue": "TopLevelSettings calls setDivider during onCreateRecyclerView before AndroidX assigns mList",
+    "fix": "Move divider suppression after super.onViewCreated; upgrade all published prepared homepage variants",
+    "validation": "Host regression reproduces previous null-list crash and passes corrected native callbacks across view recreation; customization/preparation and Settings resource/adapter checks pass; full ROM build and Coral phone acceptance pending"
+  },
+  "native_clock_depth_20261104": {
+    "branch": "fix/coral-ui-compatibility-20261102",
+    "device": "coral",
+    "parent_suite_revision": "53caa8dc790b67da46fc98fd3908211c66cccb45",
+    "framework_revision": "db2d4435d1d2cce17d35f6fdc0efb303becfc2c5",
+    "changes": [
+      "depth with stock and installed native clock plugins",
+      "mask only native small/large clock elements",
+      "draw-time root-to-local geometry",
+      "preserve stock/plugin/Hecker selection on toggles and both import routes",
+      "keep native AOD and non-clock lockscreen content",
+      "guarded upgrade of published depth adapters"
+    ],
+    "validation": "Locked SystemUI Compose/native-hook and complete Suite/Settings SDK compilation, 5184 affine registrations, production selection-retention pipeline, native adapter upgrade/revert and provider/layout/translation checks pass; full ROM/phone validation pending"
+  },
+  "xmorph_clock_20261104": {
+    "branch": "fix/coral-ui-compatibility-20261102",
+    "device": "coral",
+    "parent_suite_revision": "fefb4453414e4e37c25cb7a256361fdb7a764e31",
+    "upstream_repository": "Mahmud0808/XMorphClock",
+    "upstream_revision": "a88005252636f9ac89cd4b8727ee04a57dae2224",
+    "preset_count": 86,
+    "font_count": 47,
+    "clock_family_id": 6,
+    "preset_setting": "hecker_xmorph_clock_preset",
+    "license": "GPL-3.0-or-later",
+    "source_manifest": "third_party/xmorphclock/upstream.lock.json",
+    "validation": "Native library, full app/Settings dashboard and SystemUI Compose checks; 86 model round trips / 344 native states, original asset/font hashes, provider/depth and guarded preparation tests; full ROM and physical Coral acceptance pending"
+  },
+  "coral_heckerlab_feedback_20261104": {
+    "branch": "fix/coral-ui-compatibility-20261102",
+    "device": "coral",
+    "parent_suite_revision": "1206d50f61572d1fd60ea65c9133bcfb2385bd8c",
+    "changes": [
+      "HeckerLab visible branding",
+      "stable Home depth and affine clock masking",
+      "native-progress clock fade and consistent word-clock AOD",
+      "second-down workspace sleep and resolved wallpaper picker",
+      "colored unsupported icons and separate GameSpace masks",
+      "idle media Hide and current-user Close app",
+      "shared QQS/full-QS blur with 85 percent default",
+      "runtime-triggered automatic lock extraction",
+      "three reference-based Motion Island characters and adjustable height",
+      "skip/resume continuity and cold-start lyrics subscriptions",
+      "GameSpace foreground shutdown and native next-game launch monitor"
+    ],
+    "character_assets": "framework/motionisland/characters.json",
+    "validation": "187 host tests, locked Suite/Settings/SystemUI/Launcher compilation, 29799 character frames and pinned native source preparation/upgrade/revert checks; full ROM build and physical Coral acceptance pending"
+  },
+  "launcher_wallpaper_build_fix_20261104": {
+    "branch": "fix/coral-ui-compatibility-20261102",
+    "device": "coral",
+    "parent_suite_revision": "96508ad689e6bc281a842fc86a1f8f48c6e2d330",
+    "issue": "HeckerLauncher Kotlin cannot resolve Settings.ACTION_WALLPAPER_SETTINGS",
+    "fix": "Use the action string advertised by the pinned exported Settings wallpaper activity and migrate the exact previously prepared fallback",
+    "validation": "Compile the actual prepared native Kotlin method against the locked Android SDK, verify the pinned Settings intent filter, and check prepared-source upgrade/idempotence/revert; full ROM build and physical Coral acceptance pending"
+  },
+  "penguin_integrity_20261105": {
+    "branch": "feat/penguin-integrity-20261105",
+    "framework_revision": "db2d4435d1d2cce17d35f6fdc0efb303becfc2c5",
+    "settings_revision": "1cc575774ca85cf5ca5a8cf6a164a4583238c9c5",
+    "upstream_repository": "Project-PenguinOS/frameworks_base",
+    "upstream_revision": "947644f88d63b82179deec4d9149a1e4332584a3",
+    "status": "source integrated; full Coral build and physical validation pending",
+    "configuration": "existing Hecker private/Global stores retained; no bundled keys",
+    "documentation": "docs/penguin-integrity-2026-11-05.md"
+  },
+  "detection_feedback_20261106": {
+    "framework_revision": "4ff5e646649ad99adb3eeb19133189c811ea1212",
+    "kernel_revision": "e1d6f9ada81bd9bbe040c5fe369f2607b6bd5a64",
+    "kernelsu_revision": "fa03b73617de0598e564139cf53f520a8c88a342",
+    "branch": "fix/device-feedback-20261105",
+    "evidence": "duck_detector_report_Pixel_4_XL_20261106_010123.txt (private report, not committed)",
+    "scope": [
+      "verified renamed KSU Next signer privacy",
+      "app-local debugging properties and opt-in kernel adbd/JDWP probes",
+      "partition software property alignment and LineageBlackTheme path",
+      "scoped configured-keybox recovery for attestation generation failure",
+      "matching kernel/submodule build preflight"
+    ],
+    "limits": "Full ROM/kernel and device Wallet/UBL tests required. No private keybox bundled, bootloader locking or guaranteed absence of all raw ROM/integrity signals."
+  },
+  "release_1_5_20261106": {
+    "branch": "fix/device-feedback-20261105",
+    "scope": [
+      "media card opens its rendered session app through native ActivityStarter",
+      "local QS media rendering without scene-overlay promotion",
+      "remove dock-bounce switch and restore native dock timing",
+      "GameSpace adaptive safe zone, circular round icon, package version 150 and icon-pack precedence",
+      "matching sensor-recovery and compatibility dashboard tiles",
+      "HeckerOS 1.5 and redesigned About page",
+      "VPNBook free expiring WireGuard profiles",
+      "native helper DNS-proxy permission and safe setup-stage errors"
+    ],
+    "device_report": "User reports UBL, banking apps and Wallet working on the prior matched detector build. Compatibility/attestation backend remains unchanged.",
+    "validation": "194 Suite host tests and 86 integration tests; locked Suite/Settings SDK/AIDL/resources, SystemUI Compose against the pinned ActivityStarter API, 138 native inputs with fresh/upgrade/idempotent/exact revert checks, native VPN checks, and compiled user/userdebug SELinux policies with neverallows and DNS access probes pass. Full 1.5 ROM build and physical UI/icon-cache/tunnel acceptance remain required."
+  },
+  "heckervault_20261106": {
+    "branch": "feat/heckervault-20261106",
+    "controller": "org.hecker.vault",
+    "archive_format": 1,
+    "backend": "Native Android full/key-value BackupTransport; app-declared exclusions retained; no root grant",
+    "features": [
+      "APK/splits",
+      "eligible native app data",
+      "Wi-Fi",
+      "local contacts",
+      "SMS/MMS attachments",
+      "call history",
+      "static wallpapers",
+      "Hecker preferences",
+      "native launcher backup",
+      "portable password encryption",
+      "scheduled backup/retention",
+      "saved app/personal-data groups",
+      "app/package and archive-filename search"
+    ],
+    "swift_import": "deferred until physical backup/clean-flash/restore acceptance succeeds",
+    "validation": "41 production crypto/archive and 50 production native-transport checks; complete locked SDK/resource compile and exact Android platform permission/transport wiring audit pass",
+    "device_acceptance": "Full ServerHive ROM build and physical backup/clean-flash/restore acceptance pending",
+    "functional_revision": "5a0ce893d05fe780f2858a6e90ee6d00cadd58f0",
+    "suite_revision": "1ac62cb6998a892c54e56ba28cb236723f6cb057"
+  },
+  "device_log_feedback_20261106": {
+    "branch": "fix/device-log-20261106",
+    "serverhive_build_fix": "VaultService android.app.Service and VaultActivity android.text.InputFilter disambiguated after first javac failure; full ROM build pending",
+    "base_suite_revision": "1ac62cb6998a892c54e56ba28cb236723f6cb057",
+    "evidence": "06_11-13-00-11_722.log (21,504 lines; private raw log not committed) and six supplied screenshots",
+    "changes": [
+      "restore the shared QQS/full-QS media element and geometry weights at the user request",
+      "fresh circular GameSpace vector and package version 151; pack-aware native launcher fallback",
+      "skip generated non-resource view IDs in the glass layout scanner",
+      "session-only keepalive default, 45-second first-peer timeout, retry action and safe VPN diagnostics",
+      "official VPNBook static mirror with provider troubleshooting",
+      "gesture acceptance diagnostics; existing finite character lifecycle retained"
+    ],
+    "limits": "No full ROM or phone verification in this environment. Log has no peer/endpoint handshake diagnostics; root cause of the remote non-response remains unconfirmed. HeckerVault including saved groups is retained; Swift import remains deferred.",
+    "validation": "195 Suite tests plus complete host runner, 87 integration tests; locked Suite/Settings SDK, QS Compose, Launcher helpers, Motion Island/device features, WireGuard native/controller and HeckerVault archive/transport/SDK checks pass. Full ROM and physical tests pending.",
+    "functional_revision": "11ece3f5e8a06d3947a89fe26741235ec1f6f1bd",
+    "suite_revision": "deb0c39a1d045b10948e6641526115115e89c3d7"
+  },
+  "vault_vpn_feedback_20261106": {
+    "branch": "fix/vault-vpn-feedback-20261106",
+    "base_suite_revision": "deb0c39a1d045b10948e6641526115115e89c3d7",
+    "suite_revision": "e573c018818ffddf4a8cf590932a6437a6e994a9",
+    "evidence": "06_11-20-07-15_416.txt (38,521 lines; raw private log not committed) and supplied dark Swift Backup UI references",
+    "changes": [
+      "HeckerVault 1.1 native dark cards, icon toolbar/navigation, app selection cards and backup-parts bottom sheet; no cloud controls",
+      "pending/updated/existing backup selection, recorded backup dates and all/missing/newer restore preselection",
+      "fast default data compression, no APK recompression, buffered encrypted I/O and byte/percentage/speed progress",
+      "cache app labels/icons once off the main thread instead of comparator/resource reloads",
+      "resolve VPN endpoints using the selected Android Network and pin encrypted UDP to its validated physical netId before peer setup",
+      "safe periodic VPN counters, with no endpoint/key logging"
+    ],
+    "retained": "Fixed GameSpace icon, requested shared QQS/full-QS media transition, working provider website and current Motion Sense/creature implementation; framework, Settings, kernel and KernelSU pins unchanged",
+    "validation": "100 archive/security/progress checks, 50 native-transport checks, 17 quick-action scope checks, complete Vault Android SDK/resources and permissions/wiring audit, previous/new v1 archive interoperability both directions, full host runner including 195 Python tests, WireGuard config/provider/native/controller/AIDL/UI compilation and pinned AOSP Fwmark layout audit pass",
+    "benchmark": "CPU-only host export: warm new 1064.5/1060.9 ms versus previous 2514.9/1846.0 ms on the same 32 MiB incompressible APK-shaped and 7.7 MiB repetitive data input; phone/provider performance unverified",
+    "motion_log": "Three left/right swipe detections reach Spotify next/previous; Island and creature windows present. No tap, Motion Sense crash, ANR or SELinux denial in the new capture.",
+    "vpn_log": "Interface configured with tx=296, rx=0, no peer contact; disconnected after approximately 37 seconds. Remote reachability/profile validity unconfirmed.",
+    "limits": "Full ServerHive ROM/Soong build, device UI comparison, physical backup/clean-flash/restore and live VPN handshake/traffic remain pending. Swift Backup archive import remains deferred."
+  },
+  "heckerlab_about_cleanup_20261106": {
+    "branch": "fix/vault-vpn-feedback-20261106",
+    "base_suite_revision": "e573c018818ffddf4a8cf590932a6437a6e994a9",
+    "suite_revision": "b3e859a4634fd3b4ab9bdfd7788b7c376b72b63b",
+    "change": "Remove the duplicate mascot/version/maintainer/build-type card from the HeckerLab About tab. Device details follow the shared header and tabs.",
+    "validation": "Android resource compile/link and independent Settings dashboard Java compilation pass.",
+    "device_acceptance": "Next ROM build and phone UI verification pending."
+  },
+  "xda_improvements_20261108": {
+    "suite_revision": "6c0d63b5f327e1b276be6427783a26f51c542264",
+    "branch": "fix/xda-improvements-20261108",
+    "implemented": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "euicc": "Integrated Google-signed D.2.1.989982212-google (306110), SHA-256 579f75da460e6a6137a1f2b39e603e20999b4f55c2ec1bde51acc4feac1c6760",
+    "vendor_revision": "e8732539ab2292d269827d45940c148ccf4042a7"
+  },
+  "vpn_tests_20261109": {
+    "branch": "fix/vpn-tests-20261109",
+    "base_suite_revision": "6c0d63b5f327e1b276be6427783a26f51c542264",
+    "suite_revision": "cf840332316b03c2885b7296a849f7d44b31748f",
+    "base_localmanifest_revision": "a4502e5b151f8dd478b483874b28ffa0dc3d6643",
+    "changes": [
+      "Replace the incompatible WhiteVPN Android core with pinned FlClash 0.8.92 arm64 core.",
+      "Add sequential WireGuard/TCP connection tests, live results, protocol filters and cancellation.",
+      "Add optional bounded speed checks, network/time labels, stale results and safe sharing."
+    ],
+    "retained": "All previously published XDA device, framework, Settings, Motion Sense, vendor and kernel revisions.",
+    "limits": "Full ROM build and physical Wi-Fi/mobile testing remain required. ONIC-specific investigation is deferred."
+  },
+  "bluetooth_navigation_20261109": {
+    "branch": "feat/bluetooth-glass-navigation-20261109",
+    "baseline_suite_revision": "cf840332316b03c2885b7296a849f7d44b31748f",
+    "changes": [
+      "Material 3 wallpaper colors and light/dark connection card",
+      "Frosted background blur with runtime solid fallback and listener cleanup",
+      "Gestures and navigation page with moved hide-pill/inset toggle and original swipe Lottie",
+      "English, Russian and Simplified Chinese labels"
+    ],
+    "validation": "Complete Suite/Settings Java and Android resource/AIDL linking; native headphone popup Java/resources; navigation transaction and Russian resource checks pass. Full ROM build and phone appearance/blur/navigation acceptance pending.",
+    "suite_revision": "31938d8a9902bc88462e5fa67254367aa8859474"
+  },
+  "vpn_terminal_20261109": {
+    "branch": "fix/vpn-terminal-20261109",
+    "baseline_suite_revision": "31938d8a9902bc88462e5fa67254367aa8859474",
+    "suite_revision": "10cd19d4675b75d00db6b1b67957e6eff38f0982",
+    "changes": "WireGuard-only VPN, legacy TCP profile migration, independently scrolling test log and stale TCP build output cleanup."
+  },
+  "nonksu_variant": {
+    "device": "coral",
+    "base_branch": "cnb_latest_stable",
+    "kernel_repository": "its-hecker/HeckerOsfloral-Kernel-NonKsu",
+    "kernel_revision": "84dd8ffcfcb57effcfc0c65dbc40cae4e2893eda",
+    "source_kernel": "its-hecker/heckeros-floral-kernel@73ede50b7eb81b081a314be06f4fe89fc742946f",
+    "recovery": "HeckerOS-branded PixelOS native Android 17 recovery-as-boot (no OrangeFox payload)",
+    "root": "No KernelSU Next, no SUSFS. userdebug may retain ADB root; not equivalent to production user build.",
+    "output_directory": "out-nonksu",
+    "build_type": "full ROM; avoid swapping boot.img with rooted OrangeFox ROM output"
   }
 }

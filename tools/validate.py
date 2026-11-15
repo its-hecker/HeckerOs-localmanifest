@@ -48,9 +48,11 @@ def manifest(root=ROOT):
             require(re.fullmatch(r"[0-9a-f]{40}", revision), "Unpinned dependency: " + path)
             require(project.get("upstream", "").startswith("refs/heads/"), "Missing upstream ref")
         if path.startswith("kernel/"):
-            require(project.get("sync-s") != "true", "Non-KSU builds must not sync root submodules")
-            require(project.get("upstream") == "refs/heads/main", "Wrong non-KSU kernel branch")
-    print("Local manifest paths, dependency pins and non-KSU kernel selection: PASS")
+            require(project.get("sync-s") != "true",
+                    "Non-KSU kernels must not sync root submodules")
+            require(project.get("upstream") == "refs/heads/main",
+                    "Wrong non-KSU kernel branch")
+    print("Local manifest paths, dependency pins and no KernelSU submodules: PASS")
 
 
 def camera_prebuilt(rom):
@@ -245,6 +247,8 @@ def source(rom):
     expected_kernel = ET.parse(ROOT / "floral.xml").getroot().find("project[@path='kernel/google/msm-4.14']").get("revision")
     kernel_revision = subprocess.check_output(["git", "-C", str(kernel), "rev-parse", "HEAD"], text=True).strip()
     require(kernel_revision == expected_kernel, "Kernel checkout does not match the pinned CNB source")
+    require(not (kernel / "KernelSU").exists() and not (kernel / ".gitmodules").exists(),
+            "Non-KSU kernel contains root submodule")
     subprocess.run([sys.executable, str(kernel / "tools/hecker/verify_nonksu.py"),
                     "--source-root", str(kernel)], check=True)
     device = rom / "device/google/coral"

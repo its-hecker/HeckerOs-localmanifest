@@ -3,9 +3,10 @@
 # Run from the Android source root, after repo sync.
 # Android's envsetup does not support nounset, so do not enable set -u here.
 set -eo pipefail
-# Keep optional kernel builds separate from the normal ROM output.
+# Full non-KSU Coral ROM: keep output separate from the KernelSU release.
 export OUT_DIR="${HECKER_NONKSU_OUT_DIR:-out-nonksu}"
-export HECKER_DEVICE="${HECKER_DEVICE:-coral}"
+export HECKER_NONKSU=1
+export HECKER_RECOVERY2=0
 case "${HECKER_BUILD_VARIANT:-userdebug}" in
     userdebug|eng) ;;
     *) echo "The validated Coral configuration requires a userdebug or eng build." >&2; exit 1 ;;
@@ -31,8 +32,26 @@ fi
 floral_setup_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 python3 "$floral_setup_dir/tools/retire_launcher.py"
 python3 "$floral_setup_dir/tools/check_qcom_namespaces.py"
+python3 "$floral_setup_dir/tools/check_build_revision.py" --rom-root "$PWD"
 git -C vendor/google/coral lfs pull
+# The non-KSU variant ships native PixelOS recovery with HeckerOS branding.
+# Never fetch or install OrangeFox for this build.
+python3 kernel/google/msm-4.14/tools/hecker/verify_nonksu.py \
+    --source-root kernel/google/msm-4.14
+# Refuse stale source edits from a prior OrangeFox build.
+if [[ -e system/core/init/hecker_recovery_boot.cpp ]] || \
+    grep -q 'hecker_recovery2_rom install' build/make/core/Makefile; then
+    echo "STOP: OrangeFox Recovery 2.0 source is active. Use a clean non-KSU checkout." >&2
+    exit 1
+fi
 python3 "$floral_setup_dir/tools/prepare.py" "$@"
+python3 "$floral_setup_dir/tools/check_native_nonksu.py" --rom-root "$PWD"
+# Fail before a long Soong build when Suite settings, framework policy or
+# Recovery 2.0 source are out of sync. These tests use the synced local trees.
+python3 -m unittest discover -s vendor/hecker/floral/suite/tests \
+    -p 'test_signature_app_selection.py' -v
+python3 -m unittest discover -s vendor/hecker/floral/suite/tests \
+    -p 'test_recovery2_*.py' -v
 python3 "$floral_setup_dir/tools/validate.py" --rom-root "$PWD"
 source build/envsetup.sh
 # Select the native App Lock and Compose QS flags for HeckerOS.
@@ -50,17 +69,27 @@ for floral_partition in system system_ext product vendor; do
     done
 done
 if find "$floral_product_out"/product/overlay -maxdepth 3 -iname '*HeckerLauncherRecents*' -print -quit 2>/dev/null | read -r; then floral_stale_app=true; fi
+for floral_addon_path in system/addon.d system/system/addon.d system_ext/addon.d product/addon.d vendor/addon.d; do
+    if [[ -e "$floral_product_out/$floral_addon_path" || -L "$floral_product_out/$floral_addon_path" ]]; then
+        floral_stale_app=true
+    fi
+done
+if [[ -e "$floral_product_out/system_ext/bin/hecker-tcp-core" || \
+      -e "$floral_product_out/system_ext/lib64/libclash.so" ]]; then
+    floral_stale_app=true
+fi
 if [[ "$floral_stale_app" == true ]]; then
-    echo "Removing retired app installations from build outputs (installclean)."
+    echo "Removing retired files from build outputs (installclean)."
     m installclean
 fi
-if [[ "${HECKER_NONKSU_BOOT_ONLY:-false}" == true ]]; then
-    : "${HECKER_KSU_PRODUCT_OUT:?Run build-nonksu-boot.sh with the matching rooted ROM output}"
-    m -j"${HECKER_BUILD_JOBS:-$(nproc)}" bootimage
-    python3 kernel/google/msm-4.14/tools/hecker/package_boot.py \
-        --device "$HECKER_DEVICE" --rooted-out "$HECKER_KSU_PRODUCT_OUT" \
-        --nonksu-out "$floral_product_out"
+if [[ -n "${HECKER_BUILD_JOBS:-}" ]]; then
+    if [[ ! "$HECKER_BUILD_JOBS" =~ ^[1-9][0-9]*$ ]]; then
+        echo "HECKER_BUILD_JOBS must be a positive integer." >&2
+        exit 1
+    fi
+    m -j"$HECKER_BUILD_JOBS" heckeros
 else
-    m -j"${HECKER_BUILD_JOBS:-$(nproc)}" heckeros
-    python3 "$floral_setup_dir/tools/check_built_output.py" "$floral_product_out"
+    m heckeros
 fi
+python3 "$floral_setup_dir/tools/check_built_output.py" "$floral_product_out"
+python3 "$floral_setup_dir/tools/check_native_nonksu.py" --rom-root "$PWD" --product-out "$floral_product_out"

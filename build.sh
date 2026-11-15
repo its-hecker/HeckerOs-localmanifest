@@ -33,6 +33,10 @@ python3 "$floral_setup_dir/tools/check_qcom_namespaces.py"
 python3 "$floral_setup_dir/tools/check_build_revision.py" --rom-root "$PWD"
 git -C vendor/google/coral lfs pull
 python3 vendor/hecker/floral/suite/tools/recovery2_rom.py download out/hecker-recovery2-coral.cpio.gz
+# Validate the pinned OrangeFox ramdisk and splash branding before a long build.
+python3 vendor/hecker/floral/suite/tools/recovery2_rom.py preflight \
+    out/hecker-recovery2-coral.cpio.gz \
+    vendor/hecker/floral/suite/recovery/res-xxhdpi/images/logo_image.png
 python3 "$floral_setup_dir/tools/prepare.py" "$@"
 # Fail before a long Soong build when Suite settings, framework policy or
 # Recovery 2.0 source are out of sync. These tests use the synced local trees.

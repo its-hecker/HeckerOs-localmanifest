@@ -11,7 +11,7 @@ only the verified [non-KernelSU floral kernel](https://github.com/its-hecker/Hec
   This remains a `userdebug` build; authorized ADB debugging/root may be available.
   It is **not** equivalent to a production locked-down `user` build.
 - **USB debugging:** Disabled by default even in the non-KSU `userdebug` build. If enabled manually in Developer options, normal ADB host authorization applies. An existing `/data` preference may persist after a dirty flash.
-- **Build:** Full ROM in a separate `out-nonksu` directory. Do **not** swap a
+- **Build:** Full ROM in the standard `out` directory of this separate non-KSU checkout. Do **not** swap a
   standalone non-KSU `boot.img` into an OrangeFox ROM without compatibility
   checks: the boot ramdisk includes recovery and must match the ROM/OTA.
 - **Kernel fixes:** CNB cgroup/freezer, schedutil fast-switch retry, BBR+fq,

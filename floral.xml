@@ -23,7 +23,7 @@
   <extend-project name="LineageOS/android_vendor_qcom_opensource_audioreach-graphservices" path="hardware/qcom-caf/sm8750/audio/graphservices" revision="62591b81ddb14cb1ddecf2a8e7162f2082456793" upstream="refs/heads/lineage-24.0-caf-sm8750" />
   <extend-project name="LineageOS/android_hardware_qcom-caf_common" path="hardware/qcom-caf/common" revision="5e84e6f8fc47530881fa8d95cf533617ff51e820" upstream="refs/heads/lineage-24.0" />
   <extend-project name="its-hecker/heckeros_vendor_custom" path="vendor/custom" revision="82457873ad4f7c75195c21ddf9da35903a0d975f" upstream="refs/heads/cnb_latest_stable" />
-  <extend-project name="its-hecker/heckeros_vendor_lineage" path="vendor/lineage" revision="6516205c43cd596fa591e5b6545a7e783003fe43" upstream="refs/heads/cnb_latest_stable" />
+  <extend-project name="its-hecker/heckeros_vendor_lineage" path="vendor/lineage" revision="e4de1bd1e0bc61e8bc497b9e2466fa7134062915" upstream="refs/heads/nonksu" dest-branch="nonksu" />
   <extend-project name="its-hecker/heckeros_frameworks_base" path="frameworks/base" revision="dcf320845748da474e8e511a019cc7741358d149" upstream="refs/heads/cnb_latest_stable" dest-branch="cnb_latest_stable" />
   <extend-project name="platform/hardware/google/camera" path="hardware/google/camera" revision="cd15337bd229dd521a860d88bca3e37c3ca845f7" upstream="refs/tags/android-17.0.0_r1" />
   <extend-project name="PixelOS-AOSP/android_system_sepolicy" path="system/sepolicy" revision="99c58a7cc9a44fe33c93808452d018e756d84753" upstream="refs/heads/seventeen" />

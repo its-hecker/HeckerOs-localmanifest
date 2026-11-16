@@ -19,7 +19,7 @@ class CoralNonKSUTests(unittest.TestCase):
 
     def test_build_keeps_separate_full_rom_and_native_recovery(self):
         build = (ROOT / "build.sh").read_text()
-        self.assertIn('OUT_DIR="${HECKER_NONKSU_OUT_DIR:-out-nonksu}"', build)
+        self.assertIn('OUT_DIR="${HECKER_NONKSU_OUT_DIR:-out}"', build)
         self.assertIn("export HECKER_RECOVERY2=0", build)
         self.assertIn("export HECKER_DEV_USB_ADB=false", build)
         self.assertIn("m heckeros", build)
